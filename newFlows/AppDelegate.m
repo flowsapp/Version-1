@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "SARate.h"
+
 
 @interface AppDelegate ()
 
@@ -15,10 +17,44 @@
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        
     return YES;
 }
+
+//+ (void)initialize
+//{
+//    //configure
+//    [SARate sharedInstance].daysUntilPrompt = 5;
+//    [SARate sharedInstance].usesUntilPrompt = 1;
+//    [SARate sharedInstance].remindPeriod = 30;
+//    [SARate sharedInstance].promptForNewVersionIfUserRated = YES;
+//    //enable preview mode
+//    [SARate sharedInstance].previewMode = YES;
+//    
+//    [SARate sharedInstance].email = @"email here";
+//    // 4 and 5 stars
+//    [SARate sharedInstance].minAppStoreRaiting = 4;
+//    [SARate sharedInstance].emailSubject = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+//    [SARate sharedInstance].emailText = @"Disadvantages: ";
+//    [SARate sharedInstance].headerLabelText = @"Like Flows?";
+//    [SARate sharedInstance].descriptionLabelText = @"Touch the star to rate.";
+//    [SARate sharedInstance].rateButtonLabelText = @"Rate";
+//    [SARate sharedInstance].cancelButtonLabelText = @"Not Now";
+//    [SARate sharedInstance].setRaitingAlertTitle = @"Rate";
+//    [SARate sharedInstance].setRaitingAlertMessage = @"Touch the star to rate.";
+//    [SARate sharedInstance].appstoreRaitingAlertTitle = @"Write a review on the AppStore";
+//    [SARate sharedInstance].appstoreRaitingAlertMessage = @"Would you mind taking a moment to rate it on the AppStore? It won’t take more than a minute. Thanks for your support!";
+//    [SARate sharedInstance].appstoreRaitingCancel = @"Cancel";
+//    [SARate sharedInstance].appstoreRaitingButton = @"Rate It Now";
+//    [SARate sharedInstance].disadvantagesAlertTitle = @"Disadvantages";
+//    [SARate sharedInstance].disadvantagesAlertMessage = @"Please specify the issues in the application. We will try to fix it!";
+//}
+//
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

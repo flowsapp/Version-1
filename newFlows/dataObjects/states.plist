@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>replace</key>
+		<string> MT</string>
+		<key>incoming</key>
+		<string>Montana</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> FLA</string>
+		<key>incoming</key>
+		<string>Florida</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> FL </string>
+		<key>incoming</key>
+		<string>Florida</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> OH </string>
+		<key>incoming</key>
+		<string>Ohio</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> CA </string>
+		<key>incoming</key>
+		<string>California</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> NY </string>
+		<key>incoming</key>
+		<string>New York</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> CO</string>
+		<key>incoming</key>
+		<string>Colorado</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> ID </string>
+		<key>incoming</key>
+		<string>Idaho</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> AL </string>
+		<key>incoming</key>
+		<string>Alabama</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> AK </string>
+		<key>incoming</key>
+		<string>Alaska</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> AZ </string>
+		<key>incoming</key>
+		<string>Arizona</string>
+	</dict>
+	<dict>
+		<key>replace</key>
+		<string> CA </string>
+		<key>incoming</key>
+		<string>California</string>
+	</dict>
+</array>
+</plist>

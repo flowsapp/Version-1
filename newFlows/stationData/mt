@@ -1,0 +1,230 @@
+#
+#
+# US Geological Survey
+# retrieved: 2015-09-30 19:07:10 EDT
+# URL: http://nwis.waterdata.usgs.gov/nwis/current
+#
+# The Site File stores location and general information about groundwater,
+# surface water, and meteorological sites
+# for sites in USA.
+#
+# The following selected fields are included in this output:
+#
+#  agency_cd       -- Agency
+#  site_no         -- Site identification number
+#  station_nm      -- Site name
+#
+#
+# query started 2015-09-30 19:07:10 EDT
+#
+# there are 206 sites matching the search criteria.
+#
+#
+agency_cd	site_no	station_nm
+5s	15s	50s
+USGS	05014300	Swiftcurrent Cr ab Swiftcurrent Lk at Many Glacier
+USGS	05014500	Swiftcurrent Creek at Many Glacier MT
+USGS	05017500	St. Mary River near Babb MT
+USGS	05018000	St. Mary Canal at intake near Babb MT
+USGS	05018500	St. Mary Canal at St. Mary Crossing near Babb MT
+USGS	06006000	Red Rock Cr ab Lakes nr Lakeview MT
+USGS	06012500	Red Rock R bl Lima Reservoir nr Monida MT
+USGS	06016000	Beaverhead River at Barretts MT
+USGS	06017000	Beaverhead River at Dillon MT
+USGS	06018500	Beaverhead River near Twin Bridges MT
+USGS	06019500	Ruby River above reservoir near Alder, MT
+USGS	06020600	Ruby River below reservoir near Alder, MT
+USGS	06023000	Ruby River near Twin Bridges MT
+USGS	06023100	Beaverhead River at Twin Bridges, MT
+USGS	06023500	Big Hole River near Jackson MT
+USGS	06023800	Big Hole River ab Spring Creek nr Jackson MT
+USGS	06024020	Big Hole River at Miner Creek nr Jackson MT
+USGS	06024450	Big Hole River bl Big Lake Cr at Wisdom MT
+USGS	06024540	Big Hole River bl Mudd Cr nr Wisdom MT
+USGS	06024580	Big Hole River near Wise River MT
+USGS	06025250	Big Hole River at Maiden Rock nr Divide MT
+USGS	06025500	Big Hole River near Melrose MT
+USGS	06026210	Big Hole River near Glen MT
+USGS	06026420	Big Hole R bl Hamilton Ditch nr Twin Bridges, MT
+USGS	06026500	Jefferson River near Twin Bridges MT
+USGS	06027600	Jefferson River at Parsons Bdg nr Silver Star, MT
+USGS	06033000	Boulder River near Boulder MT
+USGS	06035000	Willow Creek near Harrison MT
+USGS	06036650	Jefferson River near Three Forks MT
+USGS	06037500	Madison River near West Yellowstone MT
+USGS	06038500	Madison River bl Hebgen Lake nr Grayling MT
+USGS	06038800	Madison River at Kirby Ranch nr Cameron MT
+USGS	06040000	Madison River near Cameron MT
+USGS	06040800	Madison River ab powerplant nr McAllister MT
+USGS	06041000	Madison River bl Ennis Lake nr McAllister MT
+USGS	06043500	Gallatin River near Gallatin Gateway MT
+USGS	06048650	E Gallatin R ab Water Reclamation Fa nr Bozeman MT
+USGS	06050000	Hyalite C at Hyalite R S nr Bozeman MT
+USGS	06052500	Gallatin River at Logan MT
+USGS	06054500	Missouri River at Toston MT
+USGS	06061500	Prickly Pear Creek near Clancy MT
+USGS	06062500	Tenmile Creek near Rimini MT
+USGS	06063000	Tenmile Creek near Helena MT
+USGS	06065500	Missouri River bl Hauser Dam near Helena MT
+USGS	06066500	Missouri River bl Holter Dam nr Wolf Cr MT
+USGS	06071300	Little Prickly Pear Cr at Wolf Cr MT
+USGS	06073500	Dearborn River near Craig MT
+USGS	06074000	Missouri River at Cascade MT
+USGS	06076690	Smith River near Ft Logan MT
+USGS	06077200	Smith River bl Eagle Cr nr Fort Logan MT
+USGS	06077500	Smith River near Eden MT
+USGS	06078200	Missouri River near Ulm MT
+USGS	06078500	North Fork Sun River near Augusta MT
+USGS	06079000	South Fork Sun River near Augusta MT
+USGS	06082200	Sun River bl Willow Cr nr Augusta MT
+USGS	06085800	Sun River at Simms MT
+USGS	06088500	Muddy Creek at Vaughn MT
+USGS	06089000	Sun River near Vaughn MT
+USGS	06090300	Missouri River near Great Falls MT
+USGS	06090500	Belt Creek near Monarch MT
+USGS	06090650	Lake Creek near Power MT
+USGS	06090800	Missouri River at Fort Benton MT
+USGS	06091700	Two Medicine River bl South Fork nr Browning MT
+USGS	06093200	Badger Cr bl Four Horns Canal nr Browning MT
+USGS	06099000	Cut Bank Creek at Cut Bank MT
+USGS	06099500	Marias River near Shelby MT
+USGS	06101500	Marias River near Chester MT
+USGS	06102050	Marias River near Loma MT
+USGS	06102500	Teton River bl South Fork nr Choteau MT
+USGS	06108000	Teton River near Dutton MT
+USGS	06108800	Teton River at Loma MT
+USGS	06109500	Missouri River at Virgelle MT
+USGS	06110020	Judith River above Carr Creek near Utica MT
+USGS	06111800	Big Spring Cr at R&B Trading Post nr Lewistown MT
+USGS	06114700	Judith River nr mouth, nr Winifred MT
+USGS	06115200	Missouri River near Landusky MT
+USGS	06118500	South Fork Musselshell R ab Martinsdale MT
+USGS	06119600	Musselshell River nr Martinsdale, MT
+USGS	06120500	Musselshell River at Harlowton MT
+USGS	06123030	Musselshell River ab Mud Cr nr Shawmut MT
+USGS	06125600	Musselshell River ab Big Coulee Creek at Lavina MT
+USGS	06126500	Musselshell River near Roundup MT
+USGS	06127500	Musselshell River at Musselshell MT
+USGS	06130500	Musselshell River at Mosby MT
+USGS	06131200	Nelson Creek near Van Norman MT
+USGS	06133500	N F Milk River ab St. Mary canal nr Browning MT
+USGS	06135000	Milk River at Eastern Crossing of Int Bndry
+USGS	06139500	Big Sandy Creek near Havre MT
+USGS	06140500	Milk River at Havre MT
+USGS	06142400	Clear Creek near Chinook MT
+USGS	06151500	Battle Creek near Chinook MT
+USGS	06154100	Milk River near Harlem MT
+USGS	06154400	Peoples Creek near Hays MT
+USGS	06155030	Milk River near Dodson MT
+USGS	06155500	Milk River at Malta MT
+USGS	06164510	Milk River at Juneberg Bridge nr Saco MT
+USGS	06166000	Beaver Cr bl Guston Coulee nr Saco MT
+USGS	06167500	Beaver Creek near Hinsdale MT
+USGS	06169500	Rock Creek bl Horse Creek nr int'l boundary
+USGS	06172310	Milk River at Tampico MT
+USGS	06174500	Milk River at Nashua MT
+USGS	06177000	Missouri River near Wolf Point MT
+USGS	06177500	Redwater River at Circle MT
+USGS	06178000	Poplar River at international boundary
+USGS	06181000	Poplar River near Poplar MT
+USGS	06183450	Big Muddy Creek near Antelope MT
+USGS	06185110	Big Muddy Creek nr mouth nr Culbertson MT
+USGS	06185500	Missouri River near Culbertson MT
+USGS	06187915	Soda Butte Cr at Park Bndry at Silver Gate
+USGS	06191000	Gardner River near Mammoth YNP
+USGS	06191500	Yellowstone River at Corwin Springs MT
+USGS	06192500	Yellowstone River near Livingston MT
+USGS	06195600	Shields River nr Livingston MT
+USGS	06200000	Boulder River at Big Timber MT
+USGS	06204050	West Rosebud Creek near Roscoe MT
+USGS	06204070	W Rosebud Cr at Emerald Lk Campground nr Roscoe
+USGS	06205000	Stillwater River near Absarokee MT
+USGS	06207500	Clarks Fork Yellowstone River nr Belfry MT
+USGS	06208500	Clarks Fork Yellowstone River at Edgar MT
+USGS	06209500	Rock Creek near Red Lodge MT
+USGS	06211000	Red Lodge Cr ab Cooney Re nr Boyd MT
+USGS	06211500	Willow Creek near Boyd MT
+USGS	06214500	Yellowstone River at Billings MT
+USGS	06216900	Pryor Creek nr Huntley MT
+USGS	06287000	Bighorn River near St. Xavier, MT
+USGS	06287800	Bighorn River at bridge, at St. Xavier, MT
+USGS	06288400	Bighorn River at Two Leggins Bridge, near Hardin
+USGS	06289000	Little Bighorn River at State Line nr Wyola MT
+USGS	06294000	Little Bighorn River near Hardin MT
+USGS	06294500	Bighorn River ab Tullock Cr nr Bighorn MT
+USGS	06295000	Yellowstone River at Forsyth MT
+USGS	06295113	Rosebud C at Reservation Bndry nr Kirby MT
+USGS	06295220	Rosebud C Bel Lame Deer C nr Lame Deer MT
+USGS	06296003	Rosebud Creek at mouth near Rosebud MT
+USGS	06306300	Tongue River at State Line nr Decker MT
+USGS	06307500	Tongue River at Tongue R Dam nr Decker MT
+USGS	06307600	Hanging Woman Creek near Birney MT
+USGS	06307616	Tongue R at Birney Day School Br nr Birney MT
+USGS	06307740	Otter Creek at Ashland MT
+USGS	06307830	Tongue R bl Brandenberg bridge nr Ashland MT
+USGS	06308400	Pumpkin Creek near Miles City MT
+USGS	06308500	Tongue River at Miles City MT
+USGS	06309000	Yellowstone River at Miles City MT
+USGS	06324500	Powder River at Moorhead MT
+USGS	06326500	Powder River near Locate MT
+USGS	06327500	Yellowstone River at Glendive MT
+USGS	06329500	Yellowstone River near Sidney MT
+USGS	12301300	Tobacco River near Eureka MT
+USGS	12301933	Kootenai River bl Libby Dam nr Libby MT
+USGS	12302055	Fisher River near Libby MT
+USGS	12304500	Yaak River near Troy MT
+USGS	12323240	Blacktail Creek at Butte MT
+USGS	12323250	Silver Bow Cr bl Blacktail Cr at Butte MT
+USGS	12323600	Silver Bow Creek at Opportunity MT
+USGS	12323670	Mill Creek nr Anaconda, MT
+USGS	12323700	Mill Creek at Opportunity, MT
+USGS	12323710	Willow Creek nr Anaconda, MT
+USGS	12323720	Willow Creek at Opportunity, MT
+USGS	12323750	Silver Bow Creek at Warm Springs MT
+USGS	12323760	Warm Springs Creek near Anaconda MT
+USGS	12323770	Warm Springs Creek at Warm Springs MT
+USGS	12323800	Clark Fork near Galen MT
+USGS	12323840	Lost Creek near Anaconda MT
+USGS	12323850	Lost Creek near Galen, MT
+USGS	12324200	Clark Fork at Deer Lodge MT
+USGS	12324400	Clark Fork ab Little Blackfoot R nr Garrison MT
+USGS	12324590	Little Blackfoot River near Garrison MT
+USGS	12324680	Clark Fork at Goldcreek MT
+USGS	12325500	Flint Creek near Southern Cross MT
+USGS	12329500	Flint Creek at Maxville MT
+USGS	12330000	Boulder Creek at Maxville MT
+USGS	12331500	Flint Creek near Drummond MT
+USGS	12331800	Clark Fork near Drummond MT
+USGS	12332000	Middle Fork Rock Cr nr Philipsburg MT
+USGS	12334510	Rock Creek near Clinton MT
+USGS	12334550	Clark Fork at Turah Bridge nr Bonner MT
+USGS	12335100	Blackfoot R ab Nevada Cr nr Helmville MT
+USGS	12335500	Nevada Cr ab reservoir, nr Helmville, MT
+USGS	12338300	NF Blackfoot R ab Dry Gulch nr Ovando MT
+USGS	12340000	Blackfoot River near Bonner MT
+USGS	12340500	Clark Fork above Missoula MT
+USGS	12342500	West Fork Bitterroot River nr Conner MT
+USGS	12344000	Bitterroot River near Darby MT
+USGS	12350250	Bitterroot River at Bell Crossing nr Victor MT
+USGS	12352500	Bitterroot River near Missoula MT
+USGS	12353000	Clark Fork below Missoula MT
+USGS	12354000	St. Regis River near St. Regis, MT
+USGS	12354500	Clark Fork at St. Regis MT
+USGS	12355500	N F Flathead River nr Columbia Falls MT
+USGS	12358500	M F Flathead River near West Glacier MT
+USGS	12359800	S F Flathead R ab Twin C nr Hungry Horse MT
+USGS	12362500	S F Flathead River nr Columbia Falls MT
+USGS	12363000	Flathead River at Columbia Falls MT
+USGS	12365700	Stillwater River at Lawrence Park, at Kalispell
+USGS	12366080	Whitefish River nr mouth at Kalispell, MT
+USGS	12370000	Swan River near Bigfork, MT
+USGS	12372000	Flathead River near Polson MT
+USGS	12374250	Mill Cr ab Bassoo Cr nr Niarada MT
+USGS	12375900	South Crow Creek near Ronan MT
+USGS	12377150	Mission Creek ab reservoir nr St. Ignatius MT
+USGS	12381400	South Fork Jocko River near Arlee MT
+USGS	12388700	Flathead River at Perma MT
+USGS	12389000	Clark Fork near Plains MT
+USGS	12389500	Thompson River near Thompson Falls MT
+USGS	12390700	Prospect Creek at Thompson Falls MT
+USGS	480608115242901	Libby Wetland Site bl Schrieber Lake nr Libby, MT
