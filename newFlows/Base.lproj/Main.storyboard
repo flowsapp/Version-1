@@ -358,27 +358,9 @@
                                 <string key="text">Water levels are gathered from the United States Geologic Survey (USGS) and displayed in cubic feet per second (cfs). The color of the value depicts streamflow as a percentile, which is computed from a historical average for that day.
 </string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fQ-Fi-QMq">
-                                <rect key="frame" x="47" y="327" width="71" height="30"/>
-                                <state key="normal" title="Rate It"/>
-                                <connections>
-                                    <action selector="ratingClicked:" destination="yFY-AM-URM" eventType="touchUpInside" id="QCE-EH-A2T"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaL-QR-aqz">
-                                <rect key="frame" x="214" y="334" width="68" height="30"/>
-                                <state key="normal" title="Feedback"/>
-                                <connections>
-                                    <action selector="feedbackClicked:" destination="yFY-AM-URM" eventType="touchUpInside" id="5Fl-vA-bXc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESP-zt-qYv">
-                                <rect key="frame" x="149" y="315" width="102" height="30"/>
-                                <state key="normal" title="Restore in-app"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For those who call the river home" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01s-qs-kwF">
                                 <rect key="frame" x="70" y="82" width="181" height="60"/>
                                 <constraints>
@@ -389,30 +371,53 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HbQ-r7-MBl">
-                                <rect key="frame" x="0.0" y="372" width="320" height="196"/>
-                                <color key="backgroundColor" red="0.061945337819222512" green="0.66666666666666663" blue="0.044785979284138001" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="HbQ-r7-MBl">
+                                <rect key="frame" x="0.0" y="436" width="320" height="132"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="v8a-6U-OBB"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" id="XMw-dA-JLU">
+                                        <rect key="frame" x="0.0" y="1" width="320" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XMw-dA-JLU" id="wLL-qu-4O7">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="yFY-AM-URM" id="IlH-Yr-tuQ"/>
                                     <outlet property="delegate" destination="yFY-AM-URM" id="DrH-j2-9WZ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSc-pE-0y3">
-                                <rect key="frame" x="105" y="334" width="72" height="30"/>
-                                <state key="normal" title="Disclaimer"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fQ-Fi-QMq">
+                                <rect key="frame" x="70" y="366" width="180" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Smu-Hu-OsU"/>
+                                    <constraint firstAttribute="width" constant="180" id="waA-u3-nQo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Rate Flows" backgroundImage="addStation.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="disclaimerClicked:" destination="yFY-AM-URM" eventType="touchUpInside" id="gco-xn-Adc"/>
+                                    <action selector="ratingClicked:" destination="yFY-AM-URM" eventType="touchUpInside" id="QCE-EH-A2T"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ryx-B6-j6g" firstAttribute="leading" secondItem="LGT-VM-iei" secondAttribute="leadingMargin" constant="-20" id="0i8-rO-KXH"/>
+                            <constraint firstItem="HbQ-r7-MBl" firstAttribute="top" secondItem="5fQ-Fi-QMq" secondAttribute="bottom" constant="30" id="6uZ-HS-w6X"/>
                             <constraint firstItem="VGR-Yr-0gO" firstAttribute="top" secondItem="HbQ-r7-MBl" secondAttribute="bottom" id="8Uk-9i-Bbo"/>
                             <constraint firstItem="VGR-Yr-0gO" firstAttribute="top" secondItem="Ryx-B6-j6g" secondAttribute="bottom" id="P8Z-jN-bJv"/>
                             <constraint firstItem="oNa-Kh-eFc" firstAttribute="top" secondItem="01s-qs-kwF" secondAttribute="bottom" constant="8" id="cvM-Mw-emE"/>
                             <constraint firstItem="HbQ-r7-MBl" firstAttribute="leading" secondItem="LGT-VM-iei" secondAttribute="leadingMargin" constant="-20" id="fb4-9j-NmW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HbQ-r7-MBl" secondAttribute="trailing" constant="-20" id="fcc-MG-tQn"/>
                             <constraint firstItem="01s-qs-kwF" firstAttribute="centerX" secondItem="oNa-Kh-eFc" secondAttribute="centerX" id="fuZ-lq-v0h"/>
+                            <constraint firstItem="5fQ-Fi-QMq" firstAttribute="centerX" secondItem="LGT-VM-iei" secondAttribute="centerX" id="icv-eD-s6L"/>
                             <constraint firstAttribute="leadingMargin" secondItem="oNa-Kh-eFc" secondAttribute="leading" id="mpr-Q9-KKW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ryx-B6-j6g" secondAttribute="trailing" constant="-20" id="ooA-vv-3wa"/>
                             <constraint firstItem="Ryx-B6-j6g" firstAttribute="top" secondItem="LGT-VM-iei" secondAttribute="topMargin" id="qgG-Hd-y1w"/>
@@ -421,7 +426,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CEt-S3-N2u">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Rua-ns-Kpm">
+                        <barButtonItem key="leftBarButtonItem" image="close.png" id="Rua-ns-Kpm">
                             <color key="tintColor" red="0.67450980390000004" green="0.67450980390000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelClicked:" destination="yFY-AM-URM" id="x2M-oc-gCS"/>
@@ -457,15 +462,28 @@
                                 <string key="text">The real-time data provided by FLOWS is gathered from the United States Geologic Survey (USGS). Provisional data may be inaccurate due to instrument malfunctions, internet connectivity issues, or physical changes beyond the control of this application and its developers.
 </string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXP-3c-rDB">
+                                <rect key="frame" x="20" y="361" width="138" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DKL-ZZ-8bm"/>
+                                    <constraint firstAttribute="width" constant="138" id="GRQ-lP-254"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Restore Purchase">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EPP-Rz-g0N" firstAttribute="top" secondItem="cwC-sr-6mO" secondAttribute="bottom" constant="40" id="1V3-2M-K3h"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="kXP-3c-rDB" secondAttribute="leading" id="1uq-ml-Thf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ugJ-hN-KmD" secondAttribute="trailing" constant="-20" id="6R2-CR-mET"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EPP-Rz-g0N" secondAttribute="trailing" id="EFC-hA-vb9"/>
+                            <constraint firstItem="kXP-3c-rDB" firstAttribute="top" secondItem="EPP-Rz-g0N" secondAttribute="bottom" constant="8" id="Q83-xQ-yGl"/>
                             <constraint firstItem="1mI-uM-bmo" firstAttribute="top" secondItem="ugJ-hN-KmD" secondAttribute="bottom" id="VQm-ep-Rxc"/>
                             <constraint firstItem="ugJ-hN-KmD" firstAttribute="leading" secondItem="qe7-GF-r8w" secondAttribute="leadingMargin" constant="-20" id="Z7N-QR-GqJ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="EPP-Rz-g0N" secondAttribute="leading" id="g17-Bd-V3v"/>
@@ -489,6 +507,8 @@
     <resources>
         <image name="AddIcon.png" width="20" height="20"/>
         <image name="BackIcon.png" width="16" height="14"/>
+        <image name="addStation.png" width="200" height="41"/>
         <image name="background.png" width="414" height="736"/>
+        <image name="close.png" width="20" height="20"/>
     </resources>
 </document>

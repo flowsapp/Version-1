@@ -35,6 +35,8 @@
     UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeaderLogo"]];
     self.navigationItem.titleView = img;
     
+    [self.mainTable setSeparatorColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
+    
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
 //    label.backgroundColor = [UIColor clearColor];
 //    label.numberOfLines = 0;
@@ -77,6 +79,106 @@
     
 }
 
+#pragma mark - UITableviewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    //if (chosenObjectArray.count == 0) {
+    //    return 1;
+    //}else{
+    return 2;
+    //}
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    
+    return 66.0f;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"infoCell";
+    UITableViewCell *cell = [_mainTable dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //cell.textLabel.text = @"title";
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.textColor = [UIColor whiteColor];
+    
+    NSString *titleString;
+    
+    if (indexPath.row == 0) {
+        titleString = @"Send Feedback";
+    }else{
+        titleString = @"Disclaimer & Restore";
+    }
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};//[UIColor colorWithHex:@"ACACAC"]};
+    NSAttributedString *cellString = [[NSAttributedString alloc] initWithString:titleString attributes:attributes];
+    
+    cell.textLabel.attributedText = cellString;
+    
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Remove seperator inset
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    
+    return 0.5f;
+    
+}
+
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    
+    view.tintColor = [UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0];
+    
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        [self feedbackClicked];
+    }else{
+        [self performSegueWithIdentifier:@"disclaimerSegue" sender:self];
+    }
+}
+
+
+
+#pragma mark - IBActions
+
 - (IBAction)disclaimerClicked:(id)sender {
     [self performSegueWithIdentifier:@"disclaimerSegue" sender:self];
 }
@@ -87,7 +189,7 @@
     
     //[[iRate sharedInstance] promptForRating];
 }
-- (IBAction)feedbackClicked:(id)sender {
+- (void)feedbackClicked{
 #pragma mark - Mail
     
     if ([MFMailComposeViewController canSendMail])
