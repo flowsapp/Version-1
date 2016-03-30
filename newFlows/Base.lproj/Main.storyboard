@@ -118,7 +118,7 @@
                         <outlet property="mainTable" destination="lTh-5a-Fjj" id="4RH-cj-qrY"/>
                         <segue destination="f2g-Ah-QNA" kind="modal" identifier="swipeSegue" modalTransitionStyle="crossDissolve" id="Tmn-Wq-OQl"/>
                         <segue destination="jZz-gT-UX5" kind="push" identifier="addStationSegue" id="6zC-cj-3ON"/>
-                        <segue destination="yFY-AM-URM" kind="push" identifier="aboutSegue" id="8i5-0I-94l"/>
+                        <segue destination="yFY-AM-URM" kind="push" identifier="aboutSegue" customClass="LeftSegue" id="8i5-0I-94l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -353,21 +353,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ryx-B6-j6g">
                                 <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNa-Kh-eFc">
-                                <rect key="frame" x="20" y="150" width="280" height="202"/>
-                                <string key="text">Water levels are gathered from the United States Geologic Survey (USGS) and displayed in cubic feet per second (cfs). The color of the value depicts streamflow as a percentile, which is computed from a historical average for that day.
-</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For those who call the river home" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01s-qs-kwF">
-                                <rect key="frame" x="70" y="82" width="181" height="60"/>
+                                <rect key="frame" x="54" y="109" width="212" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="4En-19-cwS"/>
-                                    <constraint firstAttribute="width" constant="181" id="7Qy-QK-wLg"/>
+                                    <constraint firstAttribute="height" constant="72" id="4En-19-cwS"/>
+                                    <constraint firstAttribute="width" constant="212" id="7Qy-QK-wLg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -393,35 +385,27 @@
                                     <outlet property="delegate" destination="yFY-AM-URM" id="DrH-j2-9WZ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fQ-Fi-QMq">
-                                <rect key="frame" x="70" y="366" width="180" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Smu-Hu-OsU"/>
-                                    <constraint firstAttribute="width" constant="180" id="waA-u3-nQo"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNa-Kh-eFc">
+                                <rect key="frame" x="20" y="226" width="280" height="163"/>
+                                <string key="text">Water levels are gathered from the United States Geologic Survey (USGS) and displayed in cubic feet per second (cfs). The color of the value depicts streamflow as a percentile, which is computed from a historical average for that day.
+</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Rate Flows" backgroundImage="addStation.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="ratingClicked:" destination="yFY-AM-URM" eventType="touchUpInside" id="QCE-EH-A2T"/>
-                                </connections>
-                            </button>
+                                <color key="textColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ryx-B6-j6g" firstAttribute="leading" secondItem="LGT-VM-iei" secondAttribute="leadingMargin" constant="-20" id="0i8-rO-KXH"/>
-                            <constraint firstItem="HbQ-r7-MBl" firstAttribute="top" secondItem="5fQ-Fi-QMq" secondAttribute="bottom" constant="30" id="6uZ-HS-w6X"/>
                             <constraint firstItem="VGR-Yr-0gO" firstAttribute="top" secondItem="HbQ-r7-MBl" secondAttribute="bottom" id="8Uk-9i-Bbo"/>
                             <constraint firstItem="VGR-Yr-0gO" firstAttribute="top" secondItem="Ryx-B6-j6g" secondAttribute="bottom" id="P8Z-jN-bJv"/>
-                            <constraint firstItem="oNa-Kh-eFc" firstAttribute="top" secondItem="01s-qs-kwF" secondAttribute="bottom" constant="8" id="cvM-Mw-emE"/>
+                            <constraint firstItem="oNa-Kh-eFc" firstAttribute="top" secondItem="01s-qs-kwF" secondAttribute="bottom" constant="45" id="cvM-Mw-emE"/>
                             <constraint firstItem="HbQ-r7-MBl" firstAttribute="leading" secondItem="LGT-VM-iei" secondAttribute="leadingMargin" constant="-20" id="fb4-9j-NmW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HbQ-r7-MBl" secondAttribute="trailing" constant="-20" id="fcc-MG-tQn"/>
                             <constraint firstItem="01s-qs-kwF" firstAttribute="centerX" secondItem="oNa-Kh-eFc" secondAttribute="centerX" id="fuZ-lq-v0h"/>
-                            <constraint firstItem="5fQ-Fi-QMq" firstAttribute="centerX" secondItem="LGT-VM-iei" secondAttribute="centerX" id="icv-eD-s6L"/>
                             <constraint firstAttribute="leadingMargin" secondItem="oNa-Kh-eFc" secondAttribute="leading" id="mpr-Q9-KKW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ryx-B6-j6g" secondAttribute="trailing" constant="-20" id="ooA-vv-3wa"/>
                             <constraint firstItem="Ryx-B6-j6g" firstAttribute="top" secondItem="LGT-VM-iei" secondAttribute="topMargin" id="qgG-Hd-y1w"/>
-                            <constraint firstItem="01s-qs-kwF" firstAttribute="top" secondItem="I2O-qU-M9Q" secondAttribute="bottom" constant="18" id="tFo-TP-d4u"/>
+                            <constraint firstItem="01s-qs-kwF" firstAttribute="top" secondItem="I2O-qU-M9Q" secondAttribute="bottom" constant="45" id="tFo-TP-d4u"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oNa-Kh-eFc" secondAttribute="trailing" id="uWn-SS-sNU"/>
                         </constraints>
                     </view>
@@ -435,7 +419,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mainTable" destination="HbQ-r7-MBl" id="27Y-dD-Fwy"/>
-                        <segue destination="mI5-a2-wKs" kind="push" identifier="disclaimerSegue" id="dQQ-sa-LvF"/>
+                        <segue destination="mI5-a2-wKs" kind="push" identifier="disclaimerSegue" customClass="LeftSegue" id="dQQ-sa-LvF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezV-Pj-rP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -457,7 +441,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-hN-KmD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPP-Rz-g0N">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPP-Rz-g0N">
                                 <rect key="frame" x="20" y="104" width="280" height="249"/>
                                 <string key="text">The real-time data provided by FLOWS is gathered from the United States Geologic Survey (USGS). Provisional data may be inaccurate due to instrument malfunctions, internet connectivity issues, or physical changes beyond the control of this application and its developers.
 </string>
@@ -507,7 +491,6 @@
     <resources>
         <image name="AddIcon.png" width="20" height="20"/>
         <image name="BackIcon.png" width="16" height="14"/>
-        <image name="addStation.png" width="200" height="41"/>
         <image name="background.png" width="414" height="736"/>
         <image name="close.png" width="20" height="20"/>
     </resources>

@@ -582,7 +582,7 @@
     UIColor *textColor = nil;
     
     text = @"Add a Station";
-    font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:15.0f];
+    font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0f];
     textColor = [UIColor colorWithHex:(state == UIControlStateNormal) ? @"ffffff" : @"acacac"];
     //textColor = [UIColor colorWithHex:@"ffffff"];
     NSMutableDictionary *attributes = [NSMutableDictionary new];

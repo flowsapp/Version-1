@@ -197,11 +197,11 @@
         
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         
-        NSArray *toRecipients = [NSArray arrayWithObjects:@"email here", nil];
+        NSArray *toRecipients = [NSArray arrayWithObjects:@"garrett@flowsapp.com", nil];
         [mailer setToRecipients:toRecipients];
-        [mailer setSubject:@"subject here"];
-        NSString *emailBody = @"body here";
-        [mailer setMessageBody:emailBody isHTML:YES];
+        [mailer setSubject:@"Flows App Feedback"];
+        //NSString *emailBody = @"body here";
+        //[mailer setMessageBody:emailBody isHTML:YES];
         mailer.mailComposeDelegate = self;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -256,7 +256,16 @@
 
 
 - (IBAction)cancelClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    //transition.subtype = kCATransitionFromRight;
+    transition.subtype = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 #pragma mark - segue

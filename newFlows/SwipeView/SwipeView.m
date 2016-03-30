@@ -330,7 +330,6 @@
 //- (CustomSwipeview *)currentItemView
 {
     return [self itemViewAtIndex:_currentItemIndex];
-    NSLog(@"in swipe %@", [self itemViewAtIndex:_currentItemIndex]);
 }
 
 - (NSInteger)indexOfItemView:(CustomSwipeview *)view

@@ -162,6 +162,7 @@
 		42C8A9911C8A354E006BF832 /* KFOWMWindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C8A9801C8A354E006BF832 /* KFOWMWindModel.m */; };
 		42D5FEF41C18C4B4000E8D0B /* FLminMaxFlows.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5FEF31C18C4B4000E8D0B /* FLminMaxFlows.m */; };
 		42D5FEFF1C19405E000E8D0B /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5FEFE1C19405E000E8D0B /* SwipeViewController.m */; };
+		42D84E941CAB55FF00EC8EEA /* LeftSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D84E931CAB55FF00EC8EEA /* LeftSegue.m */; };
 		42EB71A11C38B94100D6215E /* AddIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42EB71571C38B94100D6215E /* AddIcon.png */; };
 		42EB71A21C38B94100D6215E /* AddIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42EB71581C38B94100D6215E /* AddIcon@2x.png */; };
 		42EB71A31C38B94100D6215E /* AddIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42EB71591C38B94100D6215E /* AddIcon@3x.png */; };
@@ -486,6 +487,8 @@
 		42D5FEF31C18C4B4000E8D0B /* FLminMaxFlows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLminMaxFlows.m; sourceTree = "<group>"; };
 		42D5FEFD1C19405E000E8D0B /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
 		42D5FEFE1C19405E000E8D0B /* SwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeViewController.m; sourceTree = "<group>"; };
+		42D84E921CAB55FF00EC8EEA /* LeftSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSegue.h; sourceTree = "<group>"; };
+		42D84E931CAB55FF00EC8EEA /* LeftSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSegue.m; sourceTree = "<group>"; };
 		42EB71571C38B94100D6215E /* AddIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddIcon.png; sourceTree = "<group>"; };
 		42EB71581C38B94100D6215E /* AddIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddIcon@2x.png"; sourceTree = "<group>"; };
 		42EB71591C38B94100D6215E /* AddIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddIcon@3x.png"; sourceTree = "<group>"; };
@@ -860,6 +863,8 @@
 				4295AA561C9CB7CA006C729C /* NewAboutViewController.m */,
 				42A610E01CA3910C00B931AD /* DisclaimerViewController.h */,
 				42A610E11CA3910C00B931AD /* DisclaimerViewController.m */,
+				42D84E921CAB55FF00EC8EEA /* LeftSegue.h */,
+				42D84E931CAB55FF00EC8EEA /* LeftSegue.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1457,6 +1462,7 @@
 				42A35B0E1BB5C3BD00470D6D /* MainTableViewCell.m in Sources */,
 				42A610DF1CA3865500B931AD /* InfoViewController.m in Sources */,
 				42990CE71C58161800521B93 /* DGActivityIndicatorBallSpinFadeLoader.m in Sources */,
+				42D84E941CAB55FF00EC8EEA /* LeftSegue.m in Sources */,
 				42C8A98F1C8A354E006BF832 /* KFOWMWeatherModel.m in Sources */,
 				423ED4A01BB5BC58007772C8 /* AppDelegate.m in Sources */,
 				42990CEF1C58161800521B93 /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */,

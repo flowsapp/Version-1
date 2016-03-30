@@ -56,7 +56,15 @@
 */
 - (IBAction)exitClicked:(id)sender {
     //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    //transition.subtype = kCATransitionFromRight;
+    transition.subtype = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end
