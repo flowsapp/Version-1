@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>abbr</key>
+		<string> AB. </string>
+		<key>replace</key>
+		<string>ABOVE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> AB </string>
+		<key>replace</key>
+		<string>ABOVE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> NR </string>
+		<key>replace</key>
+		<string> NEAR </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> NR </string>
+		<key>replace</key>
+		<string> NEAR </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> BL </string>
+		<key>replace</key>
+		<string> BELOW </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> BLW </string>
+		<key>replace</key>
+		<string> BELOW </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> ABV. </string>
+		<key>replace</key>
+		<string> ABOVE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> ABV </string>
+		<key>replace</key>
+		<string> ABOVE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> A. </string>
+		<key>replace</key>
+		<string> AT </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> A </string>
+		<key>replace</key>
+		<string> AT </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> W. </string>
+		<key>replace</key>
+		<string> WEST </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> W </string>
+		<key>replace</key>
+		<string> WEST </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> E. </string>
+		<key>replace</key>
+		<string> EAST </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> E </string>
+		<key>replace</key>
+		<string> EAST </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> S. </string>
+		<key>replace</key>
+		<string> SOUTH </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> S </string>
+		<key>replace</key>
+		<string> SOUTH </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> N. </string>
+		<key>replace</key>
+		<string> NORTH </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> N </string>
+		<key>replace</key>
+		<string> NORTH </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> @ </string>
+		<key>replace</key>
+		<string> AT </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> MET. </string>
+		<key>replace</key>
+		<string> METROPOLITAN </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> MET </string>
+		<key>replace</key>
+		<string> METROPOLITAN </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> PK. </string>
+		<key>replace</key>
+		<string> PARK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> PK </string>
+		<key>replace</key>
+		<string> PARK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> LN. </string>
+		<key>replace</key>
+		<string> LANE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> LN </string>
+		<key>replace</key>
+		<string> LANE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> SPGS. </string>
+		<key>replace</key>
+		<string> SPRINGS </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> SPGS </string>
+		<key>replace</key>
+		<string> SPRINGS </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string>LV </string>
+		<key>replace</key>
+		<string>LAS VEGAS </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> TRIB. </string>
+		<key>replace</key>
+		<string> TRIBUTARY </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> TRIB </string>
+		<key>replace</key>
+		<string> TRIBUTARY </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> STN. </string>
+		<key>replace</key>
+		<string> STATION </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> STN </string>
+		<key>replace</key>
+		<string> STATION </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> FT. </string>
+		<key>replace</key>
+		<string> FEET </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> FT </string>
+		<key>replace</key>
+		<string> FEET </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> ALT. </string>
+		<key>replace</key>
+		<string> ALTITUTE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> ALT </string>
+		<key>replace</key>
+		<string> ALTITUTE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> STR. </string>
+		<key>replace</key>
+		<string> STREAM </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> STR </string>
+		<key>replace</key>
+		<string> STREAM </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> LK. </string>
+		<key>replace</key>
+		<string> LAKE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> LK </string>
+		<key>replace</key>
+		<string> LAKE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> HTS. </string>
+		<key>replace</key>
+		<string> HEIGHTS </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> HTS </string>
+		<key>replace</key>
+		<string> HEIGHTS </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RD. </string>
+		<key>replace</key>
+		<string> ROAD </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RD </string>
+		<key>replace</key>
+		<string> ROAD </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> DR. </string>
+		<key>replace</key>
+		<string> DRIVE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> DR </string>
+		<key>replace</key>
+		<string> DRIVE </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> PT. </string>
+		<key>replace</key>
+		<string> POINT </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> PT </string>
+		<key>replace</key>
+		<string> POINT </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> TN. </string>
+		<key>replace</key>
+		<string> TOWN </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> TN </string>
+		<key>replace</key>
+		<string> TOWN </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> STA. </string>
+		<key>replace</key>
+		<string> STATION </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> STA </string>
+		<key>replace</key>
+		<string> STATION </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RVR. </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RVR </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RIV. </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RIV </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RV. </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RV </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> R. </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> R </string>
+		<key>replace</key>
+		<string> RIVER </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RES., </string>
+		<key>replace</key>
+		<string> RESERVOIR </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RES. </string>
+		<key>replace</key>
+		<string> RESERVOIR </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> RES </string>
+		<key>replace</key>
+		<string> RESERVOIR </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> FK. </string>
+		<key>replace</key>
+		<string> FORK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> FK </string>
+		<key>replace</key>
+		<string> FORK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> CH. </string>
+		<key>replace</key>
+		<string> CHANNEL </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> CH </string>
+		<key>replace</key>
+		<string> CHANNEL </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> C </string>
+		<key>replace</key>
+		<string> CREEK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> C. </string>
+		<key>replace</key>
+		<string> CREEK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> CR </string>
+		<key>replace</key>
+		<string> CREEK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> CR. </string>
+		<key>replace</key>
+		<string> CREEK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> CRK </string>
+		<key>replace</key>
+		<string> CREEK </string>
+	</dict>
+	<dict>
+		<key>abbr</key>
+		<string> CRK. </string>
+		<key>replace</key>
+		<string> CREEK </string>
+	</dict>
+</array>
+</plist>

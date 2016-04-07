@@ -1,0 +1,86 @@
+#
+#
+# US Geological Survey
+# retrieved: 2015-09-30 19:06:41 EDT
+# URL: http://nwis.waterdata.usgs.gov/nwis/current
+#
+# The Site File stores location and general information about groundwater,
+# surface water, and meteorological sites
+# for sites in USA.
+#
+# The following selected fields are included in this output:
+#
+#  agency_cd       -- Agency
+#  site_no         -- Site identification number
+#  station_nm      -- Site name
+#
+#
+# query started 2015-09-30 19:06:41 EDT
+#
+# there are 62 sites matching the search criteria.
+#
+#
+agency_cd	site_no	station_nm
+5s	15s	50s
+USGS	01010000	St. John River at Ninemile Bridge, Maine
+USGS	01010070	Big Black River near Depot Mtn, Maine
+USGS	01010500	St. John River at Dickey, Maine
+USGS	01011000	Allagash River near Allagash, Maine
+USGS	01013500	Fish River near Fort Kent, Maine
+USGS	01014000	St. John River below Fish R, nr Fort Kent, Maine
+USGS	01015800	Aroostook River near Masardis, Maine
+USGS	01017000	Aroostook River at Washburn, Maine
+USGS	01017060	Hardwood Brook below Glidden Brk nr Caribou, Maine
+USGS	01017290	Little Madawaska River at Caribou, Maine
+USGS	01017550	Williams Brook at Phair, Maine
+USGS	01017960	Meduxnekeag R above S Br Medux. R nr Houlton, ME
+USGS	01018000	Meduxnekeag River near Houlton, Maine
+USGS	01018009	Pearce Brook at Route 1 at Houlton, Maine
+USGS	01018035	Meduxnekeag River at Lowery Rd. nr Houlton, Maine
+USGS	01018500	St. Croix River at Vanceboro, Maine
+USGS	01019000	Grand Lake Stream at Grand Lake Stream, Maine
+USGS	01021000	St. Croix River at Baring, Maine
+USGS	01021470	Libby Brook near Northfield, Maine
+USGS	01021480	Old Stream near Wesley, Maine
+USGS	01022294	East Br Bear Brook near Beddington, Maine
+USGS	01022500	Narraguagus River at Cherryfield, Maine
+USGS	01022840	Otter Creek near Bar Harbor, Maine
+USGS	01027200	North Branch Penobscot River nr Pittston Farm, ME
+USGS	01029200	Seboeis River near Shin Pond, Maine
+USGS	01029500	East Branch Penobscot River at Grindstone, Maine
+USGS	01030350	Wytopitlock Stream near Wytopitlock Maine
+USGS	01030500	Mattawamkeag River near Mattawamkeag, Maine
+USGS	01031300	Piscataquis River at Blanchard, Maine
+USGS	01031450	Kingsbury Stream at Abbot Village, Maine
+USGS	01031500	Piscataquis River near Dover-Foxcroft, Maine
+USGS	01031510	Black Stream near Dover-Foxcroft, Maine
+USGS	01034000	Piscataquis River at Medford, Maine
+USGS	01034500	Penobscot River at West Enfield, Maine
+USGS	01037000	Kenduskeag Stream near Bangor, Maine
+USGS	01037380	Ducktrap River near Lincolnville, Maine
+USGS	01038000	Sheepscot River at North Whitefield, Maine
+USGS	01042500	Kennebec River at The Forks, Maine
+USGS	01043500	Dead River near Dead River, Maine
+USGS	01044550	Spencer Stream near Grand Falls, Maine
+USGS	01046000	Austin Stream at Bingham, Maine
+USGS	01046500	Kennebec River at Bingham, Maine
+USGS	01047000	Carrabassett River near North Anson, Maine
+USGS	01047150	Kennebec River near Madison, Maine
+USGS	01047200	Sandy River near Madrid, Maine
+USGS	01048000	Sandy River near Mercer, Maine
+USGS	01048220	East Branch Wesserunsett Stream near Athens, Maine
+USGS	01049265	Kennebec River at North Sidney, Maine
+USGS	01049500	Cobbosseecontee Stream at Gardiner, Maine
+USGS	01054200	Wild River at Gilead, Maine
+USGS	01054300	Ellis River at South Andover, Maine
+USGS	01054500	Androscoggin River at Rumford, Maine
+USGS	01055000	Swift River near Roxbury, Maine
+USGS	01055500	Nezinscot River at Turner Center, Maine
+USGS	01057000	Little Androscoggin River near South Paris, Maine
+USGS	01059000	Androscoggin River near Auburn, Maine
+USGS	01063310	Stony Brook at East Sebago, Maine
+USGS	01066000	Saco River at Cornish, Maine
+USGS	01067950	Kennebunk River near Kennebunk, Maine
+USGS	01068910	Mousam River at Route 4 near Sanford, Maine
+USGS	01069500	Mousam River near West Kennebunk, Maine
+USGS	01069700	Branch Brook near Kennebunk, Maine
