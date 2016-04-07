@@ -115,8 +115,7 @@
     resultArray = [NSMutableArray new];
     minMaxArray = [NSMutableArray new];
     
-    UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeaderLogo"]];
-    self.navigationItem.titleView = img;
+    
     
     //UIImageView* infoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"addIcon"]];
     //UIBarButtonItem *item = [[UIBarButtonItem alloc]
@@ -134,6 +133,9 @@
     
     //self.navigationItem.rightBarButtonItem = rightItem;
     self.navigationItem.leftBarButtonItem = leftItem;
+    
+    UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeaderLogo"]];
+    self.navigationItem.titleView = img;
     
     defaults = [NSUserDefaults standardUserDefaults];
     
@@ -185,8 +187,22 @@
     // A little trick for removing the cell separators
     _mainTable.tableFooterView = [UIView new];
     
-    
+    //[UIView beginAnimations:@"fadeResult" context:NULL];
+    //[UIView setAnimationDuration:0.1];
     //self.navigationController.navigationBar.alpha = 0.0f;
+    //[UIView commitAnimations];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
+    [UIView transitionWithView: self.navigationController.view
+                      duration: 0.3
+                       options: UIViewAnimationOptionTransitionCrossDissolve
+                    animations: ^{
+                        
+                        [self.navigationController setNavigationBarHidden: NO animated: NO];
+                    }
+                    completion: nil ];
+    
     
 }
 
@@ -197,12 +213,18 @@
 //    if ([defaults boolForKey:@"selectedStationUpdated"]) {
 //        [self runLiveUpdate];
 //    }
-    self.navigationController.navigationBar.alpha = 1.0f;
+    
     
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    
     [super viewDidAppear:animated];
+//    [UIView beginAnimations:@"fadeResult" context:NULL];
+//    [UIView setAnimationDuration:0.1];
+//    self.navigationController.navigationBar.alpha = 1.0f;
+//    [UIView commitAnimations];
+    
     
     if ([defaults boolForKey:@"selectedStationUpdated"]) {
         [self runLiveUpdate];
@@ -214,7 +236,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.alpha = 0.0f;
+    //self.navigationController.navigationBar.alpha = 0.0f;
 }
 
 - (void)didReceiveMemoryWarning {

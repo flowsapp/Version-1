@@ -34,10 +34,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+//                                                  forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    self.navigationController.navigationBar.translucent = YES;
     
     [self.mainTable setSeparatorColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
     
@@ -52,7 +52,9 @@
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = label;
     
-    NSDictionary *barButtonAppearanceDict = @{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0], NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
+    self.navigationController.navigationBar.alpha = 1.0f;
+    
+    NSDictionary *barButtonAppearanceDict = @{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0], NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
     
     
@@ -83,7 +85,7 @@
     [self createAlphabetArray];
     
     [_mainTable setBackgroundColor:[UIColor clearColor]];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     indexBar = [[GDIIndexBar alloc] initWithTableView:_mainTable];
     //[[GDIIndexBar appearance] setTextColor:[UIColor blackColor]];
@@ -110,13 +112,12 @@
     NSLog(@"back clicked");
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBar.alpha = 1.0f;
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //self.navigationController.navigationBar.alpha = 1.0f;
     
 //    [UIView beginAnimations:@"fadeResult" context:NULL];
-//    [UIView setAnimationDuration:0.1];
+//    [UIView setAnimationDuration:0.3];
 //    self.navigationController.navigationBar.alpha = 1.0f;
 //    [UIView commitAnimations];
     

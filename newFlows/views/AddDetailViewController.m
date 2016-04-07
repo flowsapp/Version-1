@@ -93,7 +93,7 @@
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = label;
     
-    NSDictionary *barButtonAppearanceDict = @{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Thin" size:18.0], NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
+    NSDictionary *barButtonAppearanceDict = @{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0], NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
     
     [self createAlphabetArray];
