@@ -90,17 +90,27 @@
                                     <outlet property="emptyDataSetSource" destination="BYZ-38-t0r" id="LWz-99-DdR"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnR-TU-ioy" customClass="JTMaterialSpinner">
+                                <rect key="frame" x="275" y="243" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PCw-ba-Vt7"/>
+                                    <constraint firstAttribute="width" constant="50" id="jfa-3L-TrF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lTh-5a-Fjj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0oB-RA-61F"/>
                             <constraint firstItem="lTh-5a-Fjj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="1EG-P7-o3M"/>
+                            <constraint firstItem="qnR-TU-ioy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5bt-vV-H5e"/>
                             <constraint firstItem="5Dy-Kq-d4g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="Crq-QR-3lh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lTh-5a-Fjj" secondAttribute="bottom" id="GNK-zk-ViB"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Dy-Kq-d4g" secondAttribute="bottom" id="Oba-9Q-0cS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Dy-Kq-d4g" secondAttribute="trailing" constant="-24" id="SdT-N1-wbd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lTh-5a-Fjj" secondAttribute="trailing" constant="-24" id="UdI-Ij-gZL"/>
                             <constraint firstItem="5Dy-Kq-d4g" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="spI-Q8-XNJ"/>
+                            <constraint firstItem="qnR-TU-ioy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w79-Gc-CjG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rCc-Sv-S0k">
@@ -116,6 +126,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mainTable" destination="lTh-5a-Fjj" id="4RH-cj-qrY"/>
+                        <outlet property="spinnerView" destination="qnR-TU-ioy" id="Pny-Zz-0aT"/>
                         <segue destination="f2g-Ah-QNA" kind="presentation" identifier="swipeSegue" modalTransitionStyle="crossDissolve" id="Tmn-Wq-OQl"/>
                         <segue destination="jZz-gT-UX5" kind="show" identifier="addStationSegue" id="6zC-cj-3ON"/>
                         <segue destination="yFY-AM-URM" kind="show" identifier="aboutSegue" customClass="LeftSegue" id="8i5-0I-94l"/>
