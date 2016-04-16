@@ -10,13 +10,13 @@
 #import "MainTableViewCell.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Reachability.h"
-#import "DGActivityIndicatorView.h"
+
 #import "FLminMaxFlows.h"
 #import "SwipeViewController.h"
 #import "UIView+Facade.h"
 #import <QuartzCore/QuartzCore.h>
 //#import "ODRefreshControl.h"
-
+#import <JTMaterialSpinner/JTMaterialSpinner.h>
 
 #import <PromiseKit/PromiseKit.h>
 
@@ -37,12 +37,14 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet JTMaterialSpinner *spinnerView;
+
 @property (strong, nonatomic) NSString *updateString;
 
 @end
 
 @implementation MainViewController{
-    DGActivityIndicatorView *activityIndicatorView;
+    
     NSMutableArray *selectedStationArray;
     NSUserDefaults *defaults;
     NSNumber *stationNumber;
@@ -67,7 +69,15 @@
 //    [self.view addSubview:activityIndicatorView];
     // Do any additional setup after loading the view.
     
-    //activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeDoubleBounce tintColor:[UIColor whiteColor] size:100.0f];
+    // Customize the line width
+    _spinnerView.circleLayer.lineWidth = 4.0;
+    
+    // Change the color of the line
+    _spinnerView.circleLayer.strokeColor = [UIColor whiteColor].CGColor;
+    //[_spinnerView beginRefreshing];
+    
+#pragma mark - TODO refresh control
+    /*
     activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeTripleRings tintColor:[UIColor whiteColor] size:100];
     
     
@@ -76,7 +86,7 @@
     activityIndicatorView.center = self.view.center;
     
     [self.view addSubview:activityIndicatorView];
-    
+    */
     [self.mainTable setSeparatorColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -90,6 +100,8 @@
     [_mainTable addSubview:_refreshControl]; //assumes tableView is @property
     
     __weak typeof(self) wself = self;
+    
+    
     
 //    _refreshView = [LGRefreshView refreshViewWithScrollView:_mainTable
 //                                             refreshHandler:^(LGRefreshView *refreshView)
@@ -108,7 +120,7 @@
 //                            }).then(^(NSMutableArray *responseArray){
 //                                
 //                                [_mainTable reloadData];
-//                                
+//
 //                                
 //                            });
 //                            
@@ -252,15 +264,43 @@
 
 -(void)refresh {
     
+    
+    dispatch_promise(^{
+        return [self urlStringfromStations:selectedStationArray];
+    }).then(^(NSString *md5){
+        return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
+    }).then(^(NSString *returnData){
+        
+        return [self currentDataPull:returnData];
+    }).then(^(NSMutableArray *responseArray){
+        
+        [_refreshControl endRefreshing];
+        [_mainTable reloadData];
+        
+    });
+    
+    
 }
+
+
+//- (void)loadSomething
+//{
+//    [_spinnerView beginRefreshing];
+//    [MyService loadSomeData:^(){
+//        [_spinnerView endRefreshing];
+//    }];
+//}
+
 
 - (void)runLiveUpdate{
     
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     if (selectedStationArray.count > 0) {
         [_mainTable reloadEmptyDataSet];
-        [activityIndicatorView startAnimating];
         
+#pragma mark - TODO refresh
+        //[activityIndicatorView startAnimating];
+        [_spinnerView beginRefreshing];
         
         dispatch_promise(^{
             return [self urlStringfromStations:selectedStationArray];
@@ -323,7 +363,9 @@
                     [_mainTable scrollToRowAtIndexPath:indexPath
                                       atScrollPosition:UITableViewScrollPositionBottom
                                               animated:YES];
-                    [activityIndicatorView stopAnimating];
+#pragma mark - TODO refresh
+                    //[activityIndicatorView stopAnimating];
+                    [_spinnerView endRefreshing];
                     
                 });
                 
@@ -343,7 +385,9 @@
                 }).then(^(NSString *responseString){
                     
                     [_mainTable reloadData];
-                    [activityIndicatorView stopAnimating];
+#pragma mark - TODO refresh
+                    //[activityIndicatorView stopAnimating];
+                    [_spinnerView endRefreshing];
                     
                 });
                 
@@ -804,6 +848,7 @@
     [self performSegueWithIdentifier:@"addStationSegue" sender:self];
     
     //[activityIndicatorView startAnimating];
+    [_spinnerView beginRefreshing];
 }
 
 
@@ -894,9 +939,9 @@
 {
     
     
-    
-    [activityIndicatorView startAnimating];
-    
+#pragma mark - TODO refresh
+    //[activityIndicatorView startAnimating];
+    [_spinnerView beginRefreshing];
     
     
     if (!hasTappedRow) {
@@ -925,7 +970,9 @@
             if ([lastWeatherPullDate compare:targetDate] == NSOrderedDescending || pullNewWeather) {
                 [self testWeatherWithArray:selectedStationArray];
             }else{
-                [activityIndicatorView stopAnimating];
+#pragma mark - TODO refresh
+                //[activityIndicatorView stopAnimating];
+                [_spinnerView endRefreshing];
                 hasTappedRow = NO;
                 [self performSegueWithIdentifier:@"swipeSegue" sender:self];
             }
@@ -1109,7 +1156,9 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         // Do whatever you need to do when all requests are finished
         [defaults setObject:weatherDataArray forKey:@"weatherArray"];
-        [activityIndicatorView stopAnimating];
+#pragma mark - TODO refresh
+        //[activityIndicatorView stopAnimating];
+        [_spinnerView endRefreshing];
         hasTappedRow = NO;
         [defaults setObject:[NSDate date] forKey:@"updatedWeatherDate"];
         [defaults setObject:[NSNumber numberWithBool:NO] forKey:@"pullNewWeather"];
