@@ -1,13 +1,10 @@
 PODS:
   - AFNetworking (1.3.4)
-  - DACircularProgress (2.3.1)
   - DZNEmptyDataSet (1.7.1)
   - Facade (1.1.0)
   - GDIIndexBar (0.3.5)
   - iRate (1.11.4)
   - JSONModel (0.9.3)
-  - LGRefreshView (1.0.5):
-    - DACircularProgress (~> 2.3.0)
   - OMGHTTPURLRQ (2.1.3):
     - OMGHTTPURLRQ/RQ (= 2.1.3)
   - OMGHTTPURLRQ/FormURLEncode (2.1.3)
@@ -58,19 +55,16 @@ DEPENDENCIES:
   - Facade
   - GDIIndexBar
   - JSONModel (~> 0.9.1)
-  - LGRefreshView
   - PromiseKit (~> 1.5)
   - SARate
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
-  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   Facade: 509c4a0e5fa8517d5e0e1e47251b520775904a9a
   GDIIndexBar: 38a250ad02cea73fcb50a1cdad815b726a13a39e
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
   JSONModel: d9d4d64fb24abd81a02c8d4ecb7a922effa728fd
-  LGRefreshView: 34746afadbd23de8d1449cab15f3d89269645d43
   OMGHTTPURLRQ: c4268dea4295b585d711055dbcd87bfa82badd5f
   PromiseKit: 6be651503d4af22830b5313be993c5a0ef77bf77
   SARate: fdefa7a5d455041956b7a187103fd6e2bad85241

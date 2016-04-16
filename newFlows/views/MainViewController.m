@@ -16,7 +16,7 @@
 #import "UIView+Facade.h"
 #import <QuartzCore/QuartzCore.h>
 //#import "ODRefreshControl.h"
-#import "LGRefreshView.h"
+
 
 #import <PromiseKit/PromiseKit.h>
 
@@ -36,7 +36,7 @@
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
-@property (strong, nonatomic) LGRefreshView *refreshView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSString *updateString;
 
 @end
@@ -84,32 +84,37 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [_mainTable addSubview:_refreshControl]; //assumes tableView is @property
+    
     __weak typeof(self) wself = self;
     
-    _refreshView = [LGRefreshView refreshViewWithScrollView:_mainTable
-                                             refreshHandler:^(LGRefreshView *refreshView)
-                    {
-                        if (wself)
-                        {
-                            __strong typeof(wself) self = wself;
-                            
-                            dispatch_promise(^{
-                                return [self urlStringfromStations:selectedStationArray];
-                            }).then(^(NSString *md5){
-                                return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
-                            }).then(^(NSString *returnData){
-                                
-                                return [self currentDataPull:returnData];
-                            }).then(^(NSMutableArray *responseArray){
-                                
-                                [_mainTable reloadData];
-                                
-                                
-                            });
-                            
-                        }
-                    }];
-    _refreshView.tintColor = [UIColor whiteColor];
+//    _refreshView = [LGRefreshView refreshViewWithScrollView:_mainTable
+//                                             refreshHandler:^(LGRefreshView *refreshView)
+//                    {
+//                        if (wself)
+//                        {
+//                            __strong typeof(wself) self = wself;
+//                            
+//                            dispatch_promise(^{
+//                                return [self urlStringfromStations:selectedStationArray];
+//                            }).then(^(NSString *md5){
+//                                return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
+//                            }).then(^(NSString *returnData){
+//                                
+//                                return [self currentDataPull:returnData];
+//                            }).then(^(NSMutableArray *responseArray){
+//                                
+//                                [_mainTable reloadData];
+//                                
+//                                
+//                            });
+//                            
+//                        }
+//                    }];
+//    _refreshView.tintColor = [UIColor whiteColor];
     //_refreshView.backgroundColor = grayColor;
     
     resultArray = [NSMutableArray new];
@@ -242,6 +247,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)refresh {
+    
 }
 
 - (void)runLiveUpdate{
@@ -429,7 +439,7 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     //dateFormatter.dateFormat = @"yyyy.MM.dd HH:mm:ss";
     dateFormatter.dateFormat = @"hh:mm a";
-    [_refreshView endRefreshing];
+#pragma mark - TODO end refresh    //[_refreshView endRefreshing];
     //[_mainTable beginUpdates];
     _updateString = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
     
