@@ -293,14 +293,14 @@
 
 
 - (void)runLiveUpdate{
-    
+    [_spinnerView beginRefreshing];
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     if (selectedStationArray.count > 0) {
         [_mainTable reloadEmptyDataSet];
         
 #pragma mark - TODO refresh
         //[activityIndicatorView startAnimating];
-        [_spinnerView beginRefreshing];
+        
         
         dispatch_promise(^{
             return [self urlStringfromStations:selectedStationArray];
@@ -321,7 +321,7 @@
             [dateComponents setYear:1];
             NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:todaysDate options:0];
             
-            if ([savedDate compare:targetDate] == NSOrderedDescending || selectedStationUpdated) {
+            //if ([savedDate compare:targetDate] == NSOrderedDescending || selectedStationUpdated) {
                 
                 
                 //web pull
@@ -370,28 +370,28 @@
                 });
                 
                 
-            }else{
-                
-                
-                //local pull
-                
-                dispatch_promise(^{
-                    
-                    
-                    NSString* flowData = [defaults objectForKey:@"minMaxData"];
-                    return [self fetchedFlowData:flowData];
-                    
-                    
-                }).then(^(NSString *responseString){
-                    
-                    [_mainTable reloadData];
-#pragma mark - TODO refresh
-                    //[activityIndicatorView stopAnimating];
-                    [_spinnerView endRefreshing];
-                    
-                });
-                
-            }
+//            }else{
+//                
+//                
+//                //local pull
+//                
+//                dispatch_promise(^{
+//                    
+//                    
+//                    NSString* flowData = [defaults objectForKey:@"minMaxData"];
+//                    return [self fetchedFlowData:flowData];
+//                    
+//                    
+//                }).then(^(NSString *responseString){
+//                    
+//                    [_mainTable reloadData];
+//#pragma mark - TODO refresh
+//                    //[activityIndicatorView stopAnimating];
+//                    [_spinnerView endRefreshing];
+//                    
+//                });
+//                
+//            }
             
             
         });
