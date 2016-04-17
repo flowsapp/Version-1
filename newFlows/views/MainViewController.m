@@ -321,7 +321,7 @@
             [dateComponents setYear:1];
             NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:todaysDate options:0];
             
-            //if ([savedDate compare:targetDate] == NSOrderedDescending || selectedStationUpdated) {
+            if ([savedDate compare:targetDate] == NSOrderedDescending || selectedStationUpdated) {
                 
                 
                 //web pull
@@ -370,28 +370,28 @@
                 });
                 
                 
-//            }else{
-//                
-//                
-//                //local pull
-//                
-//                dispatch_promise(^{
-//                    
-//                    
-//                    NSString* flowData = [defaults objectForKey:@"minMaxData"];
-//                    return [self fetchedFlowData:flowData];
-//                    
-//                    
-//                }).then(^(NSString *responseString){
-//                    
-//                    [_mainTable reloadData];
-//#pragma mark - TODO refresh
-//                    //[activityIndicatorView stopAnimating];
-//                    [_spinnerView endRefreshing];
-//                    
-//                });
-//                
-//            }
+            }else{
+                
+                
+                //local pull
+                
+                dispatch_promise(^{
+                    
+                    
+                    NSString* flowData = [defaults objectForKey:@"minMaxData"];
+                    return [self fetchedFlowData:flowData];
+                    
+                    
+                }).then(^(NSString *responseString){
+                    
+                    [_mainTable reloadData];
+#pragma mark - TODO refresh
+                    //[activityIndicatorView stopAnimating];
+                    [_spinnerView endRefreshing];
+                    
+                });
+                
+            }
             
             
         });
