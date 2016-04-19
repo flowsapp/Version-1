@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -83,10 +83,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02d.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ijm-CU-Uea">
-                                            <rect key="frame" x="63" y="37" width="75" height="75"/>
+                                            <rect key="frame" x="68" y="42" width="65" height="65"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="Ggf-mk-kgL"/>
-                                                <constraint firstAttribute="height" constant="75" id="zSY-S1-rLb"/>
+                                                <constraint firstAttribute="width" constant="65" id="Ggf-mk-kgL"/>
+                                                <constraint firstAttribute="height" constant="65" id="zSY-S1-rLb"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -133,10 +133,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03d.png" translatesAutoresizingMaskIntoConstraints="NO" id="4qA-wI-WQm">
-                                            <rect key="frame" x="63" y="37" width="75" height="75"/>
+                                            <rect key="frame" x="68" y="42" width="65" height="65"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="75" id="Zl4-QW-fxM"/>
-                                                <constraint firstAttribute="width" constant="75" id="jac-8Z-YWF"/>
+                                                <constraint firstAttribute="height" constant="65" id="Zl4-QW-fxM"/>
+                                                <constraint firstAttribute="width" constant="65" id="jac-8Z-YWF"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -189,10 +189,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="04d.png" translatesAutoresizingMaskIntoConstraints="NO" id="S32-v8-AA9">
-                                            <rect key="frame" x="63" y="37" width="75" height="75"/>
+                                            <rect key="frame" x="68" y="42" width="65" height="65"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="75" id="FbK-f2-gta"/>
-                                                <constraint firstAttribute="width" constant="75" id="RuR-Qf-S9K"/>
+                                                <constraint firstAttribute="height" constant="65" id="FbK-f2-gta"/>
+                                                <constraint firstAttribute="width" constant="65" id="RuR-Qf-S9K"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>

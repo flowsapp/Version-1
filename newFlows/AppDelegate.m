@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "SARate.h"
+//#import "SARate.h"
 
 
 @interface AppDelegate ()

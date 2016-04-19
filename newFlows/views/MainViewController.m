@@ -70,11 +70,11 @@
     // Do any additional setup after loading the view.
     
     // Customize the line width
-    _spinnerView.circleLayer.lineWidth = 4.0;
+    _spinnerView.circleLayer.lineWidth = 2.0;
     
     // Change the color of the line
     _spinnerView.circleLayer.strokeColor = [UIColor whiteColor].CGColor;
-    //[_spinnerView beginRefreshing];
+    [_spinnerView beginRefreshing];
     
 #pragma mark - TODO refresh control
     /*
@@ -293,7 +293,7 @@
 
 
 - (void)runLiveUpdate{
-    
+    //[_spinnerView beginRefreshing];
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     if (selectedStationArray.count > 0) {
         [_mainTable reloadEmptyDataSet];
@@ -622,7 +622,7 @@
     paragraphStyle.tailIndent = -20.0;
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Thin" size:26.0f],
-                                 NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"],
+                                 NSForegroundColorAttributeName: [UIColor colorWithHex:@"FFFFFF"],
                                  NSParagraphStyleAttributeName: paragraphStyle};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
@@ -893,7 +893,7 @@
                 
                 for (NSDictionary *meanDict in minMaxArray) {
                     if ([meanDict[@"siteNumber"] isEqualToString:cellDict[@"stationNumber"]]) {
-                        if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"]) {
+                        if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"]) {
                             cell.resultLabel.text = @"Ice";
                             [cell.resultLabel setTextColor:[UIColor whiteColor]];
                         }else{

@@ -274,6 +274,8 @@
 
 - (NSMutableDictionary*)locationName:(NSString*)siteName{
     
+    NSLog(@"%@", siteName);
+    
     NSMutableDictionary *returnDict = [NSMutableDictionary new];
     
     
@@ -299,7 +301,7 @@
     NSString *nameHolder;
     NSString *locationHolder;
     
-    NSArray *criteraArray = [[NSArray alloc] initWithObjects:@" AT ", @" BELOW ", @" ABOVE ", @" NEAR ", nil];
+    NSArray *criteraArray = [[NSArray alloc] initWithObjects:@" AT ", @" BELOW ", @" ABOVE ", @" NEAR ", @" TO ", nil];
     
     //NSLog(@"sitename: %@", siteName);
     
@@ -351,6 +353,15 @@
                     }
                 }
                     break;
+                case 4:
+                {
+                    r = [siteName rangeOfString:@" TO " options:NSCaseInsensitiveSearch range:r];
+                    if (r.location < shortestBreak || shortestBreak == 0) {
+                        selectedBreak = i;
+                        shortestBreak = (int)r.location;
+                    }
+                }
+                    break;
                     
                 default:
                     break;
@@ -369,6 +380,9 @@
                     break;
                 case 3:
                     selectedString = @"NEAR";
+                    break;
+                case 4:
+                    selectedString = @"TO";
                     break;
                 default:
                     break;
@@ -432,6 +446,11 @@
                 NSLog(@"%i", selectedBreak);
             }
         }
+    }
+    
+    if (!returnDict[@"nameHolder"]) {
+        [returnDict setObject:@"SOMETHING WENT WRONG HERE" forKey:@"nameHolder"];
+        [returnDict setObject:[NSString stringWithFormat:@"%@", siteName] forKey:@"locationHolder"];
     }
     
     return returnDict;

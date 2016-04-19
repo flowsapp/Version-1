@@ -10,7 +10,7 @@
 //#import "GDIIndexBar.h"
 //#import "AddDetailViewController.h"
 #import "UIColor+Hexadecimal.h"
-#import "iRate.h"
+//#import "iRate.h"
 #import <MessageUI/MessageUI.h>
 
 @interface InfoViewController () <MFMailComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource >
@@ -184,8 +184,8 @@
 }
 
 - (IBAction)ratingClicked:(id)sender {
-    [iRate sharedInstance].ratedThisVersion = YES;
-    [[iRate sharedInstance] openRatingsPageInAppStore];
+    //[iRate sharedInstance].ratedThisVersion = YES;
+    //[[iRate sharedInstance] openRatingsPageInAppStore];
     
     //[[iRate sharedInstance] promptForRating];
 }

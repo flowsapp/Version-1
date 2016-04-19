@@ -7,7 +7,7 @@
 //
 
 #import "customNavBar.h"
-#define kAppNavBarHeight 42.0
+#define kAppNavBarHeight 44.0
 
 @implementation customNavBar
 
@@ -63,7 +63,7 @@
     // There's no official way to reposition the back button's arrow under iOS 7. It doesn't shift with the title.
     // We have to reposition it here instead.
     
-    /*
+    
     for (UIView *view in self.subviews) {
         
         // The arrow is a class of type _UINavigationBarBackIndicatorView. We're not calling any private methods, so I think
@@ -85,7 +85,7 @@
             view.frame = frame;
         }
     }
-     */
+     
     
     UIView *bottomSeperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-0.5f, self.bounds.size.width, 0.5f)];
     [bottomSeperatorView setBackgroundColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
