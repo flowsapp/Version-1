@@ -33,13 +33,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5A-G9-cJh">
-                                                    <rect key="frame" x="83" y="67" width="240" height="0.0"/>
+                                                    <rect key="frame" x="83" y="67" width="235" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="55"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kce-6h-xEE">
-                                                    <rect key="frame" x="20" y="38" width="61" height="52"/>
+                                                    <rect key="frame" x="25" y="38" width="61" height="52"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-h8-dut">
                                                             <rect key="frame" x="0.0" y="0.0" width="61" height="30"/>
@@ -70,9 +70,9 @@
                                             <constraints>
                                                 <constraint firstItem="kce-6h-xEE" firstAttribute="centerY" secondItem="eBX-1G-GQI" secondAttribute="centerY" constant="-3" id="2rO-t6-bD1"/>
                                                 <constraint firstItem="x5A-G9-cJh" firstAttribute="centerY" secondItem="eBX-1G-GQI" secondAttribute="centerY" id="6ul-PG-xke"/>
-                                                <constraint firstItem="kce-6h-xEE" firstAttribute="leading" secondItem="eBX-1G-GQI" secondAttribute="leadingMargin" constant="12" id="9zR-cc-kbd"/>
+                                                <constraint firstItem="kce-6h-xEE" firstAttribute="leading" secondItem="eBX-1G-GQI" secondAttribute="leadingMargin" constant="17" id="9zR-cc-kbd"/>
                                                 <constraint firstItem="x5A-G9-cJh" firstAttribute="leading" secondItem="kce-6h-xEE" secondAttribute="trailing" constant="10" id="HXq-k2-vhq"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="x5A-G9-cJh" secondAttribute="trailing" constant="5" id="ti0-R6-7CG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="x5A-G9-cJh" secondAttribute="trailing" constant="10" id="ti0-R6-7CG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -128,7 +128,7 @@
                         <outlet property="mainTable" destination="lTh-5a-Fjj" id="4RH-cj-qrY"/>
                         <outlet property="spinnerView" destination="qnR-TU-ioy" id="Pny-Zz-0aT"/>
                         <segue destination="f2g-Ah-QNA" kind="presentation" identifier="swipeSegue" modalTransitionStyle="crossDissolve" id="Tmn-Wq-OQl"/>
-                        <segue destination="jZz-gT-UX5" kind="show" identifier="addStationSegue" id="6zC-cj-3ON"/>
+                        <segue destination="jZz-gT-UX5" kind="show" identifier="addStationSegue" customClass="LeftSegue" id="6zC-cj-3ON"/>
                         <segue destination="yFY-AM-URM" kind="show" identifier="aboutSegue" customClass="LeftSegue" id="8i5-0I-94l"/>
                     </connections>
                 </viewController>
@@ -222,7 +222,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oiB-UO-RXQ">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="IU9-ti-VdZ">
+                        <barButtonItem key="rightBarButtonItem" image="close.png" id="IU9-ti-VdZ">
                             <color key="tintColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelClicked:" destination="jZz-gT-UX5" id="6BX-Fg-9iE"/>
@@ -231,7 +231,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mainTable" destination="dpq-7K-a6q" id="iut-lR-nQG"/>
-                        <segue destination="une-uv-sbA" kind="show" identifier="stationDetailView" id="d7E-5l-y6w"/>
+                        <segue destination="une-uv-sbA" kind="show" identifier="stationDetailView" customClass="LeftSegue" id="d7E-5l-y6w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YeU-UR-nux" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,7 +313,7 @@
                                 <action selector="backClicked:" destination="une-uv-sbA" id="sEa-oG-x0c"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="S0U-iU-Jvv">
+                        <barButtonItem key="rightBarButtonItem" image="close.png" id="S0U-iU-Jvv">
                             <color key="tintColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelClicked:" destination="une-uv-sbA" id="QzM-WQ-i9e"/>

@@ -7,7 +7,7 @@
 //
 
 #import "customNavBar.h"
-#define kAppNavBarHeight 44.0
+#define kAppNavBarHeight 66.0
 
 @implementation customNavBar
 
@@ -37,14 +37,14 @@
         
         // Update the appearance of this bar to shift the icons back up to their normal position
         
-        CGFloat offset = 44 - kAppNavBarHeight;
+        CGFloat offset = 54 - kAppNavBarHeight;
         
-//        [[customNavBar appearance] setTitleVerticalPositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
-//        [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
-//        [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonBackgroundVerticalPositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
-//        [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, offset) forBarMetrics:UIBarMetricsDefault];
+        [[customNavBar appearance] setTitleVerticalPositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundVerticalPositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonBackgroundVerticalPositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, offset) forBarMetrics:UIBarMetricsDefault];
         
-        appearanceInitialised = YES;
+        
     }
 }
 
@@ -68,24 +68,27 @@
         
         // The arrow is a class of type _UINavigationBarBackIndicatorView. We're not calling any private methods, so I think
         // this is fine for the AppStore...
+        //NSLog(@"%@", self.subviews);
+        //[view setBackgroundColor:[UIColor greenColor]];
         
-        if ([NSStringFromClass([view class]) isEqualToString:@"_UINavigationBarBackIndicatorView"]) {
-            CGRect frame = view.frame;
-            
-            if (yPosForArrow < 0) {
-                
-                // On the first layout we work out what the actual position should be by applying our offset to the default position.
-                
-                yPosForArrow = frame.origin.y + (44 - kAppNavBarHeight);
-            }
-            
-            // Update the frame.
-            
-            frame.origin.y = yPosForArrow;
-            view.frame = frame;
-        }
+//        if ([NSStringFromClass([view class]) isEqualToString:@"_UINavigationBarBackIndicatorView"]) {
+//            CGRect frame = view.frame;
+//            
+//            if (yPosForArrow < 0) {
+//                
+//                // On the first layout we work out what the actual position should be by applying our offset to the default position.
+//                
+//                yPosForArrow = frame.origin.y + (44 - kAppNavBarHeight);
+//            }
+//            
+//            // Update the frame.
+//            
+//            frame.origin.y = yPosForArrow;
+//            view.frame = frame;
+//        }
     }
-     
+    
+    
     
     UIView *bottomSeperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-0.5f, self.bounds.size.width, 0.5f)];
     [bottomSeperatorView setBackgroundColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];

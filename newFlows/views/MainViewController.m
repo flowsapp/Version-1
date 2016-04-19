@@ -74,7 +74,7 @@
     
     // Change the color of the line
     _spinnerView.circleLayer.strokeColor = [UIColor whiteColor].CGColor;
-    [_spinnerView beginRefreshing];
+    
     
 #pragma mark - TODO refresh control
     /*
