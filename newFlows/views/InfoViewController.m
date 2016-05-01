@@ -62,7 +62,7 @@
 - (IBAction)backClicked:(id)sender{
     
     //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
     NSLog(@"back clicked");
 }
 

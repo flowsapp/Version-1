@@ -8,6 +8,8 @@
 
 #import "DisclaimerViewController.h"
 #import "UIColor+Hexadecimal.h"
+#import "pushAnimator.h"
+#import "popAnimator.h"
 
 @interface DisclaimerViewController ()
 
@@ -33,6 +35,7 @@
     
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = label;
+    self.navigationController.delegate = self;
     
     NSDictionary *barButtonAppearanceDict = @{NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
     //[[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
@@ -54,6 +57,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[pushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[popAnimator alloc] init];
+    
+    return nil;
+}
+
 - (IBAction)exitClicked:(id)sender {
     //[self dismissViewControllerAnimated:YES completion:nil];
     CATransition *transition = [CATransition animation];

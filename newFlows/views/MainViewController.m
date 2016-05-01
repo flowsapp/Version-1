@@ -30,6 +30,9 @@
 #import "KFOWMCityModel.h"
 #import "UIColor+Hexadecimal.h"
 
+#import "pushAnimator.h"
+#import "popAnimator.h"
+
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 
@@ -75,7 +78,7 @@
     // Change the color of the line
     _spinnerView.circleLayer.strokeColor = [UIColor whiteColor].CGColor;
     
-    
+    self.navigationController.delegate = self;
 #pragma mark - TODO refresh control
     /*
     activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeTripleRings tintColor:[UIColor whiteColor] size:100];
@@ -251,6 +254,8 @@
     
 }
 
+
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     //self.navigationController.navigationBar.alpha = 0.0f;
@@ -259,6 +264,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[pushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[popAnimator alloc] init];
+    
+    return nil;
 }
 
 
@@ -320,6 +339,8 @@
             NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
             [dateComponents setYear:1];
             NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:todaysDate options:0];
+            
+            
             
             if ([savedDate compare:targetDate] == NSOrderedDescending || selectedStationUpdated) {
                 
@@ -404,7 +425,6 @@
     
     NSString *tempHolderString = [NSString new];
     for (int i = 0;i < selectedStationArray.count; i++) {
-        //NSDictionary *tempDict = selectedStationArray[i];
         NSMutableDictionary *tempDict = selectedStationArray[i];
         NSString *tempString = tempDict[@"stationNumber"];
         if (i < selectedStationArray.count-1) {
@@ -893,20 +913,17 @@
                 
                 for (NSDictionary *meanDict in minMaxArray) {
                     if ([meanDict[@"siteNumber"] isEqualToString:cellDict[@"stationNumber"]]) {
-                        if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"]) {
+                        if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
                             cell.resultLabel.text = @"Ice";
                             [cell.resultLabel setTextColor:[UIColor whiteColor]];
                         }else{
                             if ([resultDict[@"siteValue"] doubleValue] < [meanDict[@"25Value"] doubleValue]) {
                                 //red
                                 [cell.resultLabel setTextColor:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0]];
-                                
                             }else if ([resultDict[@"siteValue"] doubleValue] > [meanDict[@"75Value"] doubleValue]) {
                                 //blue
                                 [cell.resultLabel setTextColor:[UIColor colorWithRed:0.15 green:0.58 blue:1.00 alpha:1.0]];
-                                
                             }else{
-                                
                                 //green
                                 [cell.resultLabel setTextColor:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0]];
                                 
@@ -1261,6 +1278,7 @@
             if ([stationDict[@"stationNumber"] isEqualToString:tempStationNumber]) {
                 [stationDict setObject:[NSNumber numberWithDouble:longTotal] forKey:@"longTotal"];
                 [stationDict setObject:[NSNumber numberWithDouble:latTotal] forKey:@"latTotal"];
+#pragma mark - TODO test for nil weatherInfo station data
                 NSDictionary *weatherInfo = [self closestLocationToLocation:[[CLLocation alloc] initWithLatitude:[[NSNumber numberWithDouble:latTotal] doubleValue] longitude:[[NSNumber numberWithDouble:longTotal] doubleValue]]];
                 [stationDict setObject:weatherInfo[@"_id"] forKey:@"weatherStationId"];
                 [selectedStationArray replaceObjectAtIndex:i withObject:stationDict];

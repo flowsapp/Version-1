@@ -95,4 +95,8 @@
     [self addSubview:bottomSeperatorView];
 }
 
+- (UINavigationItem *)popNavigationItemAnimated:(BOOL)animated {
+    return [super popNavigationItemAnimated:NO];
+}
+
 @end

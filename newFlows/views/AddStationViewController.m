@@ -10,8 +10,10 @@
 #import "GDIIndexBar.h"
 #import "AddDetailViewController.h"
 #import "UIColor+Hexadecimal.h"
+#import "pushAnimator.h"
+#import "popAnimator.h"
 
-@interface AddStationViewController () <UITableViewDataSource, UITableViewDelegate, GDIIndexBarDelegate>
+@interface AddStationViewController () <UITableViewDataSource, UITableViewDelegate, GDIIndexBarDelegate, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
 
@@ -38,6 +40,8 @@
 //                                                  forBarMetrics:UIBarMetricsDefault];
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
 //    self.navigationController.navigationBar.translucent = YES;
+    
+    
     
     [self.mainTable setSeparatorColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
     
@@ -100,29 +104,37 @@
     [self.view addSubview:indexBar];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.navigationController.delegate = self;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[pushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[popAnimator alloc] init];
+    
+    return nil;
+}
+
 - (IBAction)backClicked:(id)sender{
     
     //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
     NSLog(@"back clicked");
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    //self.navigationController.navigationBar.alpha = 1.0f;
-    
-//    [UIView beginAnimations:@"fadeResult" context:NULL];
-//    [UIView setAnimationDuration:0.3];
-//    self.navigationController.navigationBar.alpha = 1.0f;
-//    [UIView commitAnimations];
-    
-    
-}
 
 #pragma mark - TableView Datasource
 
@@ -245,7 +257,7 @@
 
 
 - (IBAction)cancelClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 #pragma mark - segue

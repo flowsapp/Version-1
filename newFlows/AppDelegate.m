@@ -22,6 +22,19 @@
     // Override point for customization after application launch.
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    /*
+    // Locate the receipt
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    
+    // Test whether the receipt is present at the above path
+    if(![[NSFileManager defaultManager] fileExistsAtPath:[receiptURL path]])
+    {
+        // Validation fails
+        exit(173);
+    }
+    */
+    // Proceed with further receipt validation steps
         
     return YES;
 }

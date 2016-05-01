@@ -9,8 +9,10 @@
 #import "AddDetailViewController.h"
 #import "GDIIndexBar.h"
 #import "UIColor+Hexadecimal.h"
+#import "pushAnimator.h"
+#import "popAnimator.h"
 
-@interface AddDetailViewController () <UITableViewDelegate, UITableViewDataSource, GDIIndexBarDelegate>
+@interface AddDetailViewController () <UITableViewDelegate, UITableViewDataSource, GDIIndexBarDelegate, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
 
@@ -36,6 +38,7 @@
     
     //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //[self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
     
     NSURL *dataPath = [[NSBundle mainBundle] URLForResource:incomingValue withExtension:@""];
     NSString *stringPath = [dataPath absoluteString];
@@ -117,9 +120,28 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.navigationController.delegate = self;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[pushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[popAnimator alloc] init];
+    
+    return nil;
 }
 
 #pragma mark - Create Alphabet Array
@@ -530,11 +552,11 @@
 }
 
 - (IBAction)cancelClicked:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (IBAction)backClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
@@ -544,7 +566,7 @@
 {
     // Make sure your segue name in storyboard is the same as this line
     
-    
+    NSLog(@"inSegue");
     //MapDetailViewController *vc = [segue destinationViewController];
     //[vc setIncomingData:dataToPass];
     

@@ -329,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="2638.125" y="752.11267605633793"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Navigation View Controller-->
         <scene sceneID="KD3-4f-t4Z">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tH3-Zs-6Ld" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tH3-Zs-6Ld" customClass="CustomNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dZN-R1-NZK" customClass="customNavBar">

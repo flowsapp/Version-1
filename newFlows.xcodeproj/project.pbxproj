@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421884781CD12A960039BCCB /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421884771CD12A960039BCCB /* CustomNavigationViewController.m */; };
+		4218847A1CD5189E0039BCCB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421884791CD5189E0039BCCB /* StoreKit.framework */; };
+		421884801CD6803A0039BCCB /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4218847E1CD6803A0039BCCB /* MKStoreKit.m */; };
+		421884811CD6803A0039BCCB /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4218847F1CD6803A0039BCCB /* MKStoreKitConfigs.plist */; };
+		4228A9221CC934B1003B7DA7 /* pushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228A9211CC934B1003B7DA7 /* pushAnimator.m */; };
+		4228A9251CC934C2003B7DA7 /* popAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228A9241CC934C2003B7DA7 /* popAnimator.m */; };
 		423ED49D1BB5BC58007772C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 423ED49C1BB5BC58007772C8 /* main.m */; };
 		423ED4A01BB5BC58007772C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 423ED49F1BB5BC58007772C8 /* AppDelegate.m */; };
 		423ED4A61BB5BC58007772C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 423ED4A41BB5BC58007772C8 /* Main.storyboard */; };
@@ -223,6 +229,16 @@
 
 /* Begin PBXFileReference section */
 		291C5424C569B273DF758A4C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		421884761CD12A960039BCCB /* CustomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationViewController.h; sourceTree = "<group>"; };
+		421884771CD12A960039BCCB /* CustomNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationViewController.m; sourceTree = "<group>"; };
+		421884791CD5189E0039BCCB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4218847D1CD6803A0039BCCB /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
+		4218847E1CD6803A0039BCCB /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
+		4218847F1CD6803A0039BCCB /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		4228A9201CC934B1003B7DA7 /* pushAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushAnimator.h; sourceTree = "<group>"; };
+		4228A9211CC934B1003B7DA7 /* pushAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pushAnimator.m; sourceTree = "<group>"; };
+		4228A9231CC934C2003B7DA7 /* popAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popAnimator.h; sourceTree = "<group>"; };
+		4228A9241CC934C2003B7DA7 /* popAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popAnimator.m; sourceTree = "<group>"; };
 		423ED4981BB5BC58007772C8 /* newFlows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newFlows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		423ED49C1BB5BC58007772C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		423ED49E1BB5BC58007772C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -466,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42A610E61CA392D100B931AD /* MessageUI.framework in Frameworks */,
+				4218847A1CD5189E0039BCCB /* StoreKit.framework in Frameworks */,
 				42A610E41CA392C800B931AD /* QuartzCore.framework in Frameworks */,
 				42BEDAC51C87834200113431 /* MobileCoreServices.framework in Frameworks */,
 				42A34C4C1BBDBEC6004F7FB7 /* CoreLocation.framework in Frameworks */,
@@ -491,6 +508,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4218847B1CD6803A0039BCCB /* storeKit */ = {
+			isa = PBXGroup;
+			children = (
+				4218847C1CD6803A0039BCCB /* MKStoreKit */,
+				4218847F1CD6803A0039BCCB /* MKStoreKitConfigs.plist */,
+			);
+			path = storeKit;
+			sourceTree = "<group>";
+		};
+		4218847C1CD6803A0039BCCB /* MKStoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				4218847D1CD6803A0039BCCB /* MKStoreKit.h */,
+				4218847E1CD6803A0039BCCB /* MKStoreKit.m */,
+			);
+			path = MKStoreKit;
+			sourceTree = "<group>";
+		};
+		4228A91F1CC93492003B7DA7 /* viewAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				4228A9201CC934B1003B7DA7 /* pushAnimator.h */,
+				4228A9211CC934B1003B7DA7 /* pushAnimator.m */,
+				4228A9231CC934C2003B7DA7 /* popAnimator.h */,
+				4228A9241CC934C2003B7DA7 /* popAnimator.m */,
+			);
+			path = viewAnimations;
+			sourceTree = "<group>";
+		};
 		423ED48F1BB5BC58007772C8 = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +562,7 @@
 		423ED49A1BB5BC58007772C8 /* newFlows */ = {
 			isa = PBXGroup;
 			children = (
+				4218847B1CD6803A0039BCCB /* storeKit */,
 				4253B9771C970FF8008AF6BA /* helperClasses */,
 				42C8A95B1C8A354E006BF832 /* OpenWeatherAPI */,
 				42BEDAC01C8535A900113431 /* SwipeView */,
@@ -647,6 +694,7 @@
 		42A35AFE1BB5C27000470D6D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				4228A91F1CC93492003B7DA7 /* viewAnimations */,
 				42A610DE1CA3865500B931AD /* InfoViewController.h */,
 				42A610DD1CA3865500B931AD /* InfoViewController.m */,
 				42BEDABA1C85250B00113431 /* customSwipe */,
@@ -664,6 +712,8 @@
 				42A610E11CA3910C00B931AD /* DisclaimerViewController.m */,
 				42D84E921CAB55FF00EC8EEA /* LeftSegue.h */,
 				42D84E931CAB55FF00EC8EEA /* LeftSegue.m */,
+				421884761CD12A960039BCCB /* CustomNavigationViewController.h */,
+				421884771CD12A960039BCCB /* CustomNavigationViewController.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -898,6 +948,7 @@
 		5BB70FA1789B59A40B7B72A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				421884791CD5189E0039BCCB /* StoreKit.framework */,
 				42A610E51CA392D100B931AD /* MessageUI.framework */,
 				42A610E31CA392C800B931AD /* QuartzCore.framework */,
 				42BEDAC41C87834200113431 /* MobileCoreServices.framework */,
@@ -992,6 +1043,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -1059,6 +1113,7 @@
 				42EB71DE1C38B94100D6215E /* 13d.png in Resources */,
 				42EB71A31C38B94100D6215E /* AddIcon@3x.png in Resources */,
 				42EB71E61C38B94100D6215E /* 50d@3x.png in Resources */,
+				421884811CD6803A0039BCCB /* MKStoreKitConfigs.plist in Resources */,
 				42A34C261BBD8CAD004F7FB7 /* la in Resources */,
 				42EB71B61C38B94100D6215E /* 01d@3x.png in Resources */,
 				42EB71C41C38B94100D6215E /* 03n@2x .png in Resources */,
@@ -1265,6 +1320,8 @@
 				42C8A9861C8A354E006BF832 /* KFOWMDailyForecastListModel.m in Sources */,
 				42C8A9901C8A354E006BF832 /* KFOWMWeatherResponseModel.m in Sources */,
 				42C8A9811C8A354E006BF832 /* JSONValueTransformer+Timestamp.m in Sources */,
+				421884801CD6803A0039BCCB /* MKStoreKit.m in Sources */,
+				4228A9221CC934B1003B7DA7 /* pushAnimator.m in Sources */,
 				42C8A98C1C8A354E006BF832 /* KFOWMRainModel.m in Sources */,
 				42C8A9871C8A354E006BF832 /* KFOWMDailyForecastResponseModel.m in Sources */,
 				42C8A9891C8A354E006BF832 /* KFOWMForecastResponseModel.m in Sources */,
@@ -1274,6 +1331,7 @@
 				42C8A9831C8A354E006BF832 /* KFOWMCityModel.m in Sources */,
 				42C8A98B1C8A354E006BF832 /* KFOWMMainWeatherModel.m in Sources */,
 				42C8A98E1C8A354E006BF832 /* KFOWMSystemModel.m in Sources */,
+				4228A9251CC934C2003B7DA7 /* popAnimator.m in Sources */,
 				42C8A9911C8A354E006BF832 /* KFOWMWindModel.m in Sources */,
 				42C8A9881C8A354E006BF832 /* KFOWMForecastListModel.m in Sources */,
 				42D5FEF41C18C4B4000E8D0B /* FLminMaxFlows.m in Sources */,
@@ -1286,6 +1344,7 @@
 				423ED49D1BB5BC58007772C8 /* main.m in Sources */,
 				42C8A9851C8A354E006BF832 /* KFOWMCoordinateModel.m in Sources */,
 				42A35B041BB5C29C00470D6D /* AddStationViewController.m in Sources */,
+				421884781CD12A960039BCCB /* CustomNavigationViewController.m in Sources */,
 				42C8A9841C8A354E006BF832 /* KFOWMCloudModel.m in Sources */,
 				42D5FEFF1C19405E000E8D0B /* SwipeViewController.m in Sources */,
 				42A610E21CA3910C00B931AD /* DisclaimerViewController.m in Sources */,

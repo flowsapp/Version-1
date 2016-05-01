@@ -8,6 +8,8 @@
 
 #import "NewAboutViewController.h"
 #import "UIColor+Hexadecimal.h"
+#import "pushAnimator.h"
+#import "popAnimator.h"
 
 @interface NewAboutViewController ()
 
@@ -23,7 +25,7 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     
-    
+    self.navigationController.delegate = self;
     
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
@@ -54,6 +56,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController*)fromVC
+                                                 toViewController:(UIViewController*)toVC
+{
+    if (operation == UINavigationControllerOperationPush)
+        return [[pushAnimator alloc] init];
+    
+    if (operation == UINavigationControllerOperationPop)
+        return [[popAnimator alloc] init];
+    
+    return nil;
+}
+
 
 /*
 #pragma mark - Navigation
