@@ -34,6 +34,9 @@
 #import "popAnimator.h"
 
 
+#import "MKStoreKit.h"
+
+
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
@@ -955,51 +958,51 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-#pragma mark - TODO refresh
-    //[activityIndicatorView startAnimating];
-    [_spinnerView beginRefreshing];
-    
-    
-    if (!hasTappedRow) {
-        hasTappedRow = YES;
-        
-        
-        //[NSThread sleepForTimeInterval:2.0];
-        [defaults setObject:detailData forKey:@"detailData"];
-        [defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
-        [defaults setObject:resultArray forKey:@"resultArray"];
-        [defaults setObject:minMaxArray forKey:@"minMaxArray"];
-        [defaults setInteger:indexPath.row forKey:@"selectedIndex"];
-
-        
-        BOOL pullNewWeather = [defaults boolForKey:@"pullNewWeather"];
-        
-        NSDate *lastWeatherPullDate = [defaults objectForKey:@"updatedWeatherDate"];
-        
-        NSDate *todaysDate = [NSDate date];
-        
-        NSCalendar *gregorian = [NSCalendar currentCalendar];
-        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-        [dateComponents setHour:3];
-        NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:todaysDate options:0];
-        if (lastWeatherPullDate) {
-            if ([lastWeatherPullDate compare:targetDate] == NSOrderedDescending || pullNewWeather) {
-                [self testWeatherWithArray:selectedStationArray];
-            }else{
-#pragma mark - TODO refresh
-                //[activityIndicatorView stopAnimating];
-                [_spinnerView endRefreshing];
-                hasTappedRow = NO;
-                [self performSegueWithIdentifier:@"swipeSegue" sender:self];
-            }
-        }else{
-            [self testWeatherWithArray:selectedStationArray];
-        }
-        
-        //[self testWeatherWithArray:selectedStationArray];
-        
-    }
+    [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:@"com.flowsapp.extendedStaions"];
+//#pragma mark - TODO refresh
+//    //[activityIndicatorView startAnimating];
+//    [_spinnerView beginRefreshing];
+//    
+//    
+//    if (!hasTappedRow) {
+//        hasTappedRow = YES;
+//        
+//        
+//        //[NSThread sleepForTimeInterval:2.0];
+//        [defaults setObject:detailData forKey:@"detailData"];
+//        [defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
+//        [defaults setObject:resultArray forKey:@"resultArray"];
+//        [defaults setObject:minMaxArray forKey:@"minMaxArray"];
+//        [defaults setInteger:indexPath.row forKey:@"selectedIndex"];
+//
+//        
+//        BOOL pullNewWeather = [defaults boolForKey:@"pullNewWeather"];
+//        
+//        NSDate *lastWeatherPullDate = [defaults objectForKey:@"updatedWeatherDate"];
+//        
+//        NSDate *todaysDate = [NSDate date];
+//        
+//        NSCalendar *gregorian = [NSCalendar currentCalendar];
+//        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+//        [dateComponents setHour:3];
+//        NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:todaysDate options:0];
+//        if (lastWeatherPullDate) {
+//            if ([lastWeatherPullDate compare:targetDate] == NSOrderedDescending || pullNewWeather) {
+//                [self testWeatherWithArray:selectedStationArray];
+//            }else{
+//#pragma mark - TODO refresh
+//                //[activityIndicatorView stopAnimating];
+//                [_spinnerView endRefreshing];
+//                hasTappedRow = NO;
+//                [self performSegueWithIdentifier:@"swipeSegue" sender:self];
+//            }
+//        }else{
+//            [self testWeatherWithArray:selectedStationArray];
+//        }
+//        
+//        //[self testWeatherWithArray:selectedStationArray];
+//        
+//    }
     
     
 }
