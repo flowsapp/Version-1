@@ -69,7 +69,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.alpha = 1.0f;
+    //self.navigationController.navigationBar.alpha = 1.0f;
     
 //    [UIView beginAnimations:@"fadeResult" context:NULL];
 //    [UIView setAnimationDuration:0.1];

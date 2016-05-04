@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tH3-Zs-6Ld">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tH3-Zs-6Ld">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Purchase View Controller-->
+        <scene sceneID="pZ6-v1-V54">
+            <objects>
+                <viewController id="alc-e0-XdI" customClass="PurchaseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KM1-Kq-Y1G"/>
+                        <viewControllerLayoutGuide type="bottom" id="ewR-yc-JBa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Bt-2y-o8F">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="4oI-dI-ZBB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ewR-yc-JBa" firstAttribute="top" secondItem="4oI-dI-ZBB" secondAttribute="bottom" id="958-ja-0wV"/>
+                            <constraint firstItem="4oI-dI-ZBB" firstAttribute="top" secondItem="KM1-Kq-Y1G" secondAttribute="bottom" id="9cE-LH-HsP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4oI-dI-ZBB" secondAttribute="trailing" constant="-20" id="M9Y-Bc-akw"/>
+                            <constraint firstItem="4oI-dI-ZBB" firstAttribute="leading" secondItem="3Bt-2y-o8F" secondAttribute="leadingMargin" constant="-20" id="njx-HV-31w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xj1-Vu-309">
+                        <barButtonItem key="leftBarButtonItem" image="close.png" id="7iA-Di-9w8">
+                            <color key="tintColor" red="0.061945337820000002" green="0.66666666669999997" blue="0.044785979279999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5RW-l5-acg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906" y="-405"/>
+        </scene>
         <!--Empty Data Set Delegate-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -130,6 +164,7 @@
                         <segue destination="f2g-Ah-QNA" kind="presentation" identifier="swipeSegue" modalTransitionStyle="crossDissolve" id="Tmn-Wq-OQl"/>
                         <segue destination="jZz-gT-UX5" kind="show" identifier="addStationSegue" customClass="LeftSegue" id="6zC-cj-3ON"/>
                         <segue destination="yFY-AM-URM" kind="show" identifier="aboutSegue" customClass="LeftSegue" id="8i5-0I-94l"/>
+                        <segue destination="euB-QQ-kRH" kind="show" identifier="purchaseSegue" customClass="LeftSegue" id="eq8-Ga-k92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -498,10 +533,86 @@
             </objects>
             <point key="canvasLocation" x="2638.125" y="53.873239436619713"/>
         </scene>
+        <!--Purchase View Controller-->
+        <scene sceneID="eiu-M7-STh">
+            <objects>
+                <viewController id="euB-QQ-kRH" customClass="PurchaseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="emF-hM-D59"/>
+                        <viewControllerLayoutGuide type="bottom" id="hm8-Tg-L5z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ygN-Lf-mZw">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="bo0-eL-Og3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$1.99 gets you access to 10 stations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5J-0B-Svm">
+                                <rect key="frame" x="166" y="185" width="251" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="B9C-e3-6HP"/>
+                                    <constraint firstAttribute="height" constant="72" id="vtW-3B-jPG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="B9C-e3-6HP"/>
+                                        <exclude reference="vtW-3B-jPG"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Se8-bm-TC6">
+                                <rect key="frame" x="200" y="362" width="200" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Myu-1F-clj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Upgrade" backgroundImage="addStation.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="purchaseClicked:" destination="euB-QQ-kRH" eventType="touchUpInside" id="2if-kj-KMa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="bo0-eL-Og3" firstAttribute="leading" secondItem="ygN-Lf-mZw" secondAttribute="leadingMargin" constant="-20" id="8Nl-zL-GJ1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bo0-eL-Og3" secondAttribute="trailing" constant="-20" id="8OF-Ux-7Kb"/>
+                            <constraint firstItem="Se8-bm-TC6" firstAttribute="centerX" secondItem="bo0-eL-Og3" secondAttribute="centerX" id="NG8-Ra-ie0"/>
+                            <constraint firstItem="Se8-bm-TC6" firstAttribute="top" secondItem="v5J-0B-Svm" secondAttribute="bottom" constant="105" id="Sx2-Hm-W72"/>
+                            <constraint firstItem="hm8-Tg-L5z" firstAttribute="top" secondItem="bo0-eL-Og3" secondAttribute="bottom" id="TUo-VL-4Tj"/>
+                            <constraint firstItem="bo0-eL-Og3" firstAttribute="top" secondItem="ygN-Lf-mZw" secondAttribute="topMargin" id="aFN-tp-zbT"/>
+                            <constraint firstItem="v5J-0B-Svm" firstAttribute="top" secondItem="emF-hM-D59" secondAttribute="bottom" constant="45" id="b3l-wM-08a"/>
+                            <constraint firstItem="bo0-eL-Og3" firstAttribute="top" secondItem="v5J-0B-Svm" secondAttribute="bottom" constant="-257" id="i3q-cA-pBy"/>
+                            <constraint firstItem="v5J-0B-Svm" firstAttribute="centerX" secondItem="bo0-eL-Og3" secondAttribute="centerX" constant="-8.5" id="vwN-Py-y0t"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="b3l-wM-08a"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="nEe-5p-oyE">
+                        <barButtonItem key="leftBarButtonItem" image="close.png" id="MYH-J1-aP3">
+                            <color key="tintColor" red="0.67450980390000004" green="0.67450980390000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelClicked:" destination="euB-QQ-kRH" id="JMx-DX-Abq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1c-6I-VQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1588" y="-623"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AddIcon.png" width="20" height="20"/>
         <image name="BackIcon.png" width="16" height="14"/>
+        <image name="addStation.png" width="200" height="41"/>
         <image name="background.png" width="414" height="736"/>
         <image name="close.png" width="20" height="20"/>
     </resources>

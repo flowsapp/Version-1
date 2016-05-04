@@ -11,6 +11,7 @@
 		4218847A1CD5189E0039BCCB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421884791CD5189E0039BCCB /* StoreKit.framework */; };
 		421884801CD6803A0039BCCB /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4218847E1CD6803A0039BCCB /* MKStoreKit.m */; };
 		421884811CD6803A0039BCCB /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4218847F1CD6803A0039BCCB /* MKStoreKitConfigs.plist */; };
+		421884841CD859E70039BCCB /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421884831CD859E70039BCCB /* PurchaseViewController.m */; };
 		4228A9221CC934B1003B7DA7 /* pushAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228A9211CC934B1003B7DA7 /* pushAnimator.m */; };
 		4228A9251CC934C2003B7DA7 /* popAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4228A9241CC934C2003B7DA7 /* popAnimator.m */; };
 		423ED49D1BB5BC58007772C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 423ED49C1BB5BC58007772C8 /* main.m */; };
@@ -235,6 +236,8 @@
 		4218847D1CD6803A0039BCCB /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
 		4218847E1CD6803A0039BCCB /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
 		4218847F1CD6803A0039BCCB /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		421884821CD859E70039BCCB /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
+		421884831CD859E70039BCCB /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
 		4228A9201CC934B1003B7DA7 /* pushAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushAnimator.h; sourceTree = "<group>"; };
 		4228A9211CC934B1003B7DA7 /* pushAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pushAnimator.m; sourceTree = "<group>"; };
 		4228A9231CC934C2003B7DA7 /* popAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popAnimator.h; sourceTree = "<group>"; };
@@ -714,6 +717,8 @@
 				42D84E931CAB55FF00EC8EEA /* LeftSegue.m */,
 				421884761CD12A960039BCCB /* CustomNavigationViewController.h */,
 				421884771CD12A960039BCCB /* CustomNavigationViewController.m */,
+				421884821CD859E70039BCCB /* PurchaseViewController.h */,
+				421884831CD859E70039BCCB /* PurchaseViewController.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1327,6 +1332,7 @@
 				42C8A9891C8A354E006BF832 /* KFOWMForecastResponseModel.m in Sources */,
 				42BEDAC31C8535A900113431 /* SwipeView.m in Sources */,
 				42C8A98A1C8A354E006BF832 /* KFOWMForecastTemperatureModel.m in Sources */,
+				421884841CD859E70039BCCB /* PurchaseViewController.m in Sources */,
 				42A35B151BB5D7FF00470D6D /* Reachability.m in Sources */,
 				42C8A9831C8A354E006BF832 /* KFOWMCityModel.m in Sources */,
 				42C8A98B1C8A354E006BF832 /* KFOWMMainWeatherModel.m in Sources */,

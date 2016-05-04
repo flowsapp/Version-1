@@ -44,13 +44,14 @@
                                                   usingBlock:^(NSNotification *note) {
                                                       
                                                       NSLog(@"Purchased/Subscribed to product with id: %@", [note object]);
+                                                      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"upgradePurchased"];
                                                   }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoredPurchasesNotification
                                                       object:nil
                                                        queue:[[NSOperationQueue alloc] init]
                                                   usingBlock:^(NSNotification *note) {
-                                                      
+                                                      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"upgradePurchased"];
                                                       NSLog(@"Restored Purchases");
                                                   }];
     
