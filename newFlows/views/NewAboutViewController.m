@@ -11,7 +11,7 @@
 #import "pushAnimator.h"
 #import "popAnimator.h"
 
-@interface NewAboutViewController ()
+@interface NewAboutViewController () <UINavigationControllerDelegate>
 
 @end
 

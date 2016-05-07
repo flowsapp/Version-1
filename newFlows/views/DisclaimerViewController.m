@@ -12,7 +12,7 @@
 #import "popAnimator.h"
 #import "MKStoreKit.h"
 
-@interface DisclaimerViewController ()
+@interface DisclaimerViewController () <UINavigationControllerDelegate>
 
 @end
 
@@ -38,7 +38,7 @@
     self.navigationItem.titleView = label;
     self.navigationController.delegate = self;
     
-    NSDictionary *barButtonAppearanceDict = @{NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
+    //NSDictionary *barButtonAppearanceDict = @{NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
     //[[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
     [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithHex:@"ACACAC"]];
     

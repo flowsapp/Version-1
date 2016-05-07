@@ -42,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet JTMaterialSpinner *spinnerView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 @property (strong, nonatomic) NSString *updateString;
 
@@ -103,7 +104,7 @@
     [_refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [_mainTable addSubview:_refreshControl]; //assumes tableView is @property
     
-    __weak typeof(self) wself = self;
+    //__weak typeof(self) wself = self;
     
     
     
@@ -198,20 +199,13 @@
     
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     
-    if (selectedStationArray.count == 0) {
-        _mainTable.emptyDataSetSource = self;
-        _mainTable.emptyDataSetDelegate = self;
-    }
-    
-    
+//    if (selectedStationArray.count == 0) {
+//        _mainTable.emptyDataSetSource = self;
+//        _mainTable.emptyDataSetDelegate = self;
+//    }
     
     // A little trick for removing the cell separators
     _mainTable.tableFooterView = [UIView new];
-    
-    //[UIView beginAnimations:@"fadeResult" context:NULL];
-    //[UIView setAnimationDuration:0.1];
-    //self.navigationController.navigationBar.alpha = 0.0f;
-    //[UIView commitAnimations];
     
     self.navigationController.navigationBarHidden = YES;
     
@@ -252,6 +246,10 @@
         [self performSegueWithIdentifier:@"addStationSegue" sender:self];
     }else if ([defaults boolForKey:@"selectedStationUpdated"]) {
         [self runLiveUpdate];
+    }
+    
+    if (selectedStationArray.count == 10) {
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
     }
 }
 
@@ -316,16 +314,35 @@
     //[_spinnerView beginRefreshing];
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     if (selectedStationArray.count > 0) {
-        [_mainTable reloadEmptyDataSet];
+        
+        
+        //[_mainTable reloadEmptyDataSet];
         
 #pragma mark - TODO refresh
         //[activityIndicatorView startAnimating];
         [_spinnerView beginRefreshing];
         
         dispatch_promise(^{
+            
             return [self urlStringfromStations:selectedStationArray];
+            
         }).then(^(NSString *md5){
+            
+            //example from USGS
+            /*
+            http://waterservices.usgs.gov/nwis/iv/
+            ?format=rdb
+            &sites=06006000,06012500,06016000,06017000,06018500
+            &period=P1D
+            &modifiedSince=PT30M
+            &parameterCd=00060
+            */
+            
             return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
+            //return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&modifiedSince=PT30M&sites=%@&parameterCd=00060", md5]];
+            
+            
+            
         }).then(^(NSString *returnData){
             
             return [self currentDataPull:returnData];
@@ -671,20 +688,6 @@
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
-//- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-//{
-//    NSString *text = @"Lets go ahead and choose a couple of sites to monitor!! Once you have chosen sites you can monitor stream flows in real time";
-//    
-//    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-//    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-//    paragraph.alignment = NSTextAlignmentCenter;
-//    
-//    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-//                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-//                                 NSParagraphStyleAttributeName: paragraph};
-//    
-//    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-//}
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
 //- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
@@ -721,11 +724,9 @@
     //if (state == UIControlStateHighlighted) imageName = [imageName stringByAppendingString:@"button_highlight.png"];
     //if (state == UIControlStateNormal) imageName = @"button_normal.png";
     
-    UIEdgeInsets capInsets = UIEdgeInsetsMake(25.0, 25.0, 25.0, 25.0);
-    UIEdgeInsets rectInsets = UIEdgeInsetsMake(0.0, 10, 0.0, 10);
-    //UIEdgeInsets capInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-    //UIEdgeInsets rectInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
-    
+    //UIEdgeInsets capInsets = UIEdgeInsetsMake(25.0, 25.0, 25.0, 25.0);
+    //UIEdgeInsets rectInsets = UIEdgeInsetsMake(0.0, 10, 0.0, 10);
+
     //return [UIImage imageNamed:imageName];
     //return [[[UIImage imageNamed:imageName] resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch] imageWithAlignmentRectInsets:rectInsets];
     return [[[UIImage imageNamed:imageName] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, -self.view.bounds.size.width/4, 0, -self.view.bounds.size.width/4)];
@@ -757,17 +758,6 @@
 {
     return YES;
 }
-
-//- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView
-//{
-//    return YES;
-//}
-//
-//- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView
-//{
-//    return YES;
-//}
-
 
 
 #pragma mark - UITableviewDelegate
@@ -807,15 +797,7 @@
         header.textLabel.textColor = [UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0];
         header.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11.0f];
         header.textLabel.textAlignment = NSTextAlignmentCenter;
-        
-        //header.textLabel.text = [header.textLabel.text capitalizedString];
-        
-        
     }
-    
-    
-    
-
     
 }
 
@@ -862,6 +844,9 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
         
+        if (selectedStationArray.count == 10) {
+            [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        }
         
         [selectedStationArray removeObjectAtIndex:indexPath.row];
         
@@ -878,6 +863,8 @@
             
             //[_mainTable reloadData];
         }
+        
+        
     }
 }
 
@@ -988,7 +975,8 @@
         
         //[NSThread sleepForTimeInterval:2.0];
         [defaults setObject:detailData forKey:@"detailData"];
-        [defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
+#pragma mark - todo Check setting here.
+        //[defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
         [defaults setObject:resultArray forKey:@"resultArray"];
         [defaults setObject:minMaxArray forKey:@"minMaxArray"];
         [defaults setInteger:indexPath.row forKey:@"selectedIndex"];
@@ -1017,8 +1005,6 @@
         }else{
             [self testWeatherWithArray:selectedStationArray];
         }
-        
-        //[self testWeatherWithArray:selectedStationArray];
         
     }
 }
@@ -1293,6 +1279,7 @@
         
         [testlocationArray addObject:tempLocationDictionary];
         
+        NSLog(@"%@", tempLocationDictionary);
         //for (NSMutableDictionary *stationDict in selectedStationArray) {
         for (int i=0; i<selectedStationArray.count; i++) {
             NSMutableDictionary *stationDict = [selectedStationArray[i] mutableCopy];
@@ -1303,6 +1290,7 @@
                 NSDictionary *weatherInfo = [self closestLocationToLocation:[[CLLocation alloc] initWithLatitude:[[NSNumber numberWithDouble:latTotal] doubleValue] longitude:[[NSNumber numberWithDouble:longTotal] doubleValue]]];
                 [stationDict setObject:weatherInfo[@"_id"] forKey:@"weatherStationId"];
                 [selectedStationArray replaceObjectAtIndex:i withObject:stationDict];
+                [defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
             }
             
         }

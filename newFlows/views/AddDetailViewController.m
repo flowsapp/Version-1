@@ -101,7 +101,6 @@
     
     [self createAlphabetArray];
     
-    NSLog(@"test");
     if (alphabetsArray.count > 10) {
         indexBar = [[GDIIndexBar alloc] initWithTableView:_mainTable];
         [[GDIIndexBar appearance] setTextColor:[UIColor colorWithHex:@"ACACAC"]];
@@ -158,7 +157,6 @@
         }
     }
     //alphabetsArray = tempFirstLetterArray;
-    NSLog(@"break");
 }
 
 
@@ -202,7 +200,6 @@
     
     
     if ([siteName length] && isnumber([siteName characterAtIndex:0])) {
-        NSLog(@"num here");
         //cell.textLabel.text = siteName;
         NSAttributedString *cellString = [[NSAttributedString alloc] initWithString:siteName attributes:attributes];
         [cell.textLabel setAttributedText:cellString];
@@ -296,7 +293,6 @@
 
 - (NSMutableDictionary*)locationName:(NSString*)siteName{
     
-    NSLog(@"%@", siteName);
     
     NSMutableDictionary *returnDict = [NSMutableDictionary new];
     
@@ -325,7 +321,6 @@
     
     NSArray *criteraArray = [[NSArray alloc] initWithObjects:@" AT ", @" BELOW ", @" ABOVE ", @" NEAR ", @" TO ", nil];
     
-    //NSLog(@"sitename: %@", siteName);
     
     int shortestBreak = 0;
     int selectedBreak = 100;
@@ -409,7 +404,7 @@
                 default:
                     break;
             }
-            //NSLog(@"sitename: %@", siteName);
+            
             titleArray = [siteName componentsSeparatedByString:[NSString stringWithFormat:@" %@ ", selectedString]];
             
             if (titleArray.count > 2) {
@@ -464,8 +459,7 @@
                 stationCounter++;
                 //NSLog(@"%i", stationCounter);
             }else{
-                NSLog(@"%@", siteName);
-                NSLog(@"%i", selectedBreak);
+#pragma mark - TODO clean up here
             }
         }
     }
@@ -502,17 +496,14 @@
         selectedStationArray = [NSMutableArray new];
     }
     
-    NSLog(@"station clicked");
-    if (selectedStationArray.count < 15) {
+    
         //add station
-        NSMutableDictionary *holderDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:cellDict[@"siteName"], @"stationTitle", cellDict[@"siteNumber"], @"stationNumber", location, @"cleanedTitle", nil];
-        [selectedStationArray addObject:holderDict];
-        [defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
-        [defaults setObject:[NSNumber numberWithBool:YES] forKey:@"selectedStationUpdated"];
-        [defaults synchronize];
-    }else{
-        //in app purchase
-    }
+    NSMutableDictionary *holderDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:cellDict[@"siteName"], @"stationTitle", cellDict[@"siteNumber"], @"stationNumber", location, @"cleanedTitle", nil];
+    [selectedStationArray addObject:holderDict];
+    [defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
+    [defaults setObject:[NSNumber numberWithBool:YES] forKey:@"selectedStationUpdated"];
+    
+    
     
     //[defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
     
