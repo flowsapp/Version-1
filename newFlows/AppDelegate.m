@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 //#import "SARate.h"
-#import "MKStoreKit.h"
 
 
 @interface AppDelegate ()
@@ -23,48 +22,6 @@
     // Override point for customization after application launch.
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    
-    [[MKStoreKit sharedKit] startProductRequest];
-    
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductsAvailableNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      
-                                                      NSLog(@"Products available: %@", [[MKStoreKit sharedKit] availableProducts]);
-                                                  }];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductPurchasedNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      
-                                                      NSLog(@"Purchased/Subscribed to product with id: %@", [note object]);
-                                                      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"upgradePurchased"];
-                                                  }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoredPurchasesNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"upgradePurchased"];
-                                                      NSLog(@"Restored Purchases");
-                                                  }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoringPurchasesFailedNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      
-                                                      NSLog(@"Failed restoring purchases with error: %@", [note object]);
-                                                  }];
-    
-    
-    
     
     
     /*

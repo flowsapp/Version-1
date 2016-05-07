@@ -13,7 +13,7 @@
 
 #import "FLminMaxFlows.h"
 #import "SwipeViewController.h"
-#import "UIView+Facade.h"
+//#import "UIView+Facade.h"
 #import <QuartzCore/QuartzCore.h>
 //#import "ODRefreshControl.h"
 #import <JTMaterialSpinner/JTMaterialSpinner.h>
@@ -231,6 +231,8 @@
     
     [super viewWillAppear:YES];
     
+    
+    
 //    if ([defaults boolForKey:@"selectedStationUpdated"]) {
 //        [self runLiveUpdate];
 //    }
@@ -245,14 +247,12 @@
 //    [UIView setAnimationDuration:0.1];
 //    self.navigationController.navigationBar.alpha = 1.0f;
 //    [UIView commitAnimations];
-    
-    
-    if ([defaults boolForKey:@"selectedStationUpdated"]) {
+    if ([defaults boolForKey:@"segueToRivers"]) {
+        [defaults setBool:[NSNumber numberWithBool:NO] forKey:@"segueToRivers"];
+        [self performSegueWithIdentifier:@"addStationSegue" sender:self];
+    }else if ([defaults boolForKey:@"selectedStationUpdated"]) {
         [self runLiveUpdate];
     }
-    
-    
-    
 }
 
 
@@ -456,7 +456,7 @@
         [self performSegueWithIdentifier:@"addStationSegue" sender:self];
     }else if(selectedStationArray.count <=9 && [defaults boolForKey:@"upgradePurchased"]){
         [self performSegueWithIdentifier:@"addStationSegue" sender:self];
-    }else if (selectedStationArray.count == 3 && ![defaults boolForKey:@"upgradePurchased"]){
+    }else if (selectedStationArray.count ==3 && ![defaults boolForKey:@"upgradePurchased"]){
         [self performSegueWithIdentifier:@"purchaseSegue" sender:self];
     }else{
         //ten station max
