@@ -102,6 +102,14 @@
     indexBar.delegate = self;
     [indexBar setTextOffset:UIOffsetMake(5.0, 0.0)];
     [self.view addSubview:indexBar];
+    
+    
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"segueToRivers"]) {
+        //[[NSUserDefaults standardUserDefaults] setBool:@NO forKey:@"segueToRivers"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"segueToRivers"];
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{

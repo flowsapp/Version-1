@@ -33,11 +33,12 @@
 #import "pushAnimator.h"
 #import "popAnimator.h"
 
+#import "NSDate+HumanizedTime.h"
 
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -70,10 +71,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    activityIndicatorView = [[DGActivityIndicatorView alloc] init];
-//    [self.view addSubview:activityIndicatorView];
-    // Do any additional setup after loading the view.
-    
     // Customize the line width
     _spinnerView.circleLayer.lineWidth = 2.0;
     
@@ -82,16 +79,7 @@
     
     self.navigationController.delegate = self;
 #pragma mark - TODO refresh control
-    /*
-    activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeTripleRings tintColor:[UIColor whiteColor] size:100];
     
-    
-    //activityIndicatorView.frame = CGRectMake(self.view.bounds.size.width/2-self.view.bounds.size.width/15, self.view.bounds.size.height/2-50, 100, 100);
-    
-    activityIndicatorView.center = self.view.center;
-    
-    [self.view addSubview:activityIndicatorView];
-    */
     [self.mainTable setSeparatorColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -101,52 +89,11 @@
     
     
     _refreshControl = [[UIRefreshControl alloc] init];
-    [_refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [_refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     [_mainTable addSubview:_refreshControl]; //assumes tableView is @property
-    
-    //__weak typeof(self) wself = self;
-    
-    
-    
-//    _refreshView = [LGRefreshView refreshViewWithScrollView:_mainTable
-//                                             refreshHandler:^(LGRefreshView *refreshView)
-//                    {
-//                        if (wself)
-//                        {
-//                            __strong typeof(wself) self = wself;
-//                            
-//                            dispatch_promise(^{
-//                                return [self urlStringfromStations:selectedStationArray];
-//                            }).then(^(NSString *md5){
-//                                return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
-//                            }).then(^(NSString *returnData){
-//                                
-//                                return [self currentDataPull:returnData];
-//                            }).then(^(NSMutableArray *responseArray){
-//                                
-//                                [_mainTable reloadData];
-//
-//                                
-//                            });
-//                            
-//                        }
-//                    }];
-//    _refreshView.tintColor = [UIColor whiteColor];
-    //_refreshView.backgroundColor = grayColor;
     
     resultArray = [NSMutableArray new];
     minMaxArray = [NSMutableArray new];
-    
-    
-    
-    //UIImageView* infoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"addIcon"]];
-    //UIBarButtonItem *item = [[UIBarButtonItem alloc]
-    //                         initWithCustomView:infoImage];
-    
-//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIcon"]
-//                                                             style:UIBarButtonItemStylePlain
-//                                                            target:self action:@selector(rightButtonPressed:)];
-    //[rightItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
     
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"infoicon"]
                                                                   style:UIBarButtonItemStylePlain
@@ -174,9 +121,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"REACHABLE!");
-            //if (chosenObjectArray.count > 0) {
-            //    [self currentStationData];
-            //}
+          
         });
     };
     
@@ -194,15 +139,16 @@
     };
     
     //TODO redundent pulls
-    [self runLiveUpdate];
     
     
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     
-//    if (selectedStationArray.count == 0) {
-//        _mainTable.emptyDataSetSource = self;
-//        _mainTable.emptyDataSetDelegate = self;
-//    }
+    if (selectedStationArray.count>0) {
+        [_spinnerView beginRefreshing];
+        [self runLiveUpdate];
+    }
+    
+
     
     // A little trick for removing the cell separators
     _mainTable.tableFooterView = [UIView new];
@@ -225,28 +171,28 @@
     
     [super viewWillAppear:YES];
     
-    
-    
-//    if ([defaults boolForKey:@"selectedStationUpdated"]) {
-//        [self runLiveUpdate];
-//    }
-    
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-//    [UIView beginAnimations:@"fadeResult" context:NULL];
-//    [UIView setAnimationDuration:0.1];
-//    self.navigationController.navigationBar.alpha = 1.0f;
-//    [UIView commitAnimations];
+    selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
+    BOOL segueBool = [defaults boolForKey:@"segueToRivers"];
     if ([defaults boolForKey:@"segueToRivers"]) {
-        [defaults setBool:[NSNumber numberWithBool:NO] forKey:@"segueToRivers"];
+        
+        //[defaults setBool:[NSNumber numberWithBool:NO] forKey:@"segueToRivers"];
         [self performSegueWithIdentifier:@"addStationSegue" sender:self];
     }else if ([defaults boolForKey:@"selectedStationUpdated"]) {
+        if (selectedStationArray.count==1) {
+            [_mainTable reloadEmptyDataSet];
+        }
+        [_spinnerView forceBeginRefreshing];
         [self runLiveUpdate];
     }
+    
+//    if ([[NSDate date] compare:[defaults objectForKey:@""]]) {
+//        //pull data
+//    }
     
     if (selectedStationArray.count == 10) {
         [self.navigationItem.rightBarButtonItem setEnabled:NO];
@@ -279,73 +225,25 @@
     return nil;
 }
 
-
--(void)refresh {
-    
-    
-    dispatch_promise(^{
-        return [self urlStringfromStations:selectedStationArray];
-    }).then(^(NSString *md5){
-        return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
-    }).then(^(NSString *returnData){
-        
-        return [self currentDataPull:returnData];
-    }).then(^(NSMutableArray *responseArray){
-        
-        [_refreshControl endRefreshing];
-        [_mainTable reloadData];
-        
-    });
-    
-    
-}
-
-
-//- (void)loadSomething
-//{
-//    [_spinnerView beginRefreshing];
-//    [MyService loadSomeData:^(){
-//        [_spinnerView endRefreshing];
-//    }];
-//}
-
-
 - (void)runLiveUpdate{
-    //[_spinnerView beginRefreshing];
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     if (selectedStationArray.count > 0) {
         
-        
-        //[_mainTable reloadEmptyDataSet];
-        
 #pragma mark - TODO refresh
         //[activityIndicatorView startAnimating];
-        [_spinnerView beginRefreshing];
+        
         
         dispatch_promise(^{
             
             return [self urlStringfromStations:selectedStationArray];
             
         }).then(^(NSString *md5){
-            
-            //example from USGS
-            /*
-            http://waterservices.usgs.gov/nwis/iv/
-            ?format=rdb
-            &sites=06006000,06012500,06016000,06017000,06018500
-            &period=P1D
-            &modifiedSince=PT30M
-            &parameterCd=00060
-            */
-            
+            [defaults setObject:[NSDate date] forKey:@"lastUSGSupdateDate"];
             return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
-            //return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&modifiedSince=PT30M&sites=%@&parameterCd=00060", md5]];
-            
-            
-            
         }).then(^(NSString *returnData){
             
-            return [self currentDataPull:returnData];
+            //return [self currentDataPull:returnData];
+            return [self currentDataPull:returnData isFirstPull:YES];
             
         }).then(^(NSMutableArray *returnArray){
             BOOL selectedStationUpdated = [defaults boolForKey:@"selectedStationUpdated"];
@@ -458,9 +356,6 @@
     return tempHolderString;
 }
 
-- (void)runMemUpdate{
-    
-}
 
 - (IBAction)addClicked:(id)sender {
     
@@ -486,44 +381,23 @@
     }
     
     
-    //[self performSegueWithIdentifier:@"aboutSegue" sender:self];
 }
 
 - (void)leftButtonPressed:(id)sender{
     [self performSegueWithIdentifier:@"aboutSegue" sender:self];
-    //[self performSegueWithIdentifier:@"addStationSegue" sender:self];
 }
 
-//- (IBAction)addStationSegue:(id)sender {
-//    //[self performSegueWithIdentifier:@"addStationSegue" sender:self];
-//}
-//
-//
-//
-//- (void)leftButtonPressed:(id)sender{
-//
-//    
-//}
 
 #pragma mark - pull data
 
-//- (void)currentDataPull:(NSData *)responseData{
-//- (void)currentDataPull:(NSString *)responseHolder{
-- (NSMutableArray*)currentDataPull:(NSString *)responseHolder{
-    
-    [resultArray removeAllObjects];
-    
-    //NSString *responseHolder = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+- (NSMutableArray*)currentDataPull:(NSString *)responseHolder isFirstPull:(BOOL)firstPull{
     
     NSArray *components = [responseHolder componentsSeparatedByString:@"\n"];
-    
-    //NSLog(@"%@", components);
-    
-    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     
     NSMutableArray *workingDataArray = [[NSMutableArray alloc] initWithArray:components];
     
     for (int i=0; i<workingDataArray.count; i++) {
+        
         NSString *matchCriteria = @"USGS";
         
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"self BEGINSWITH %@", matchCriteria];
@@ -533,33 +407,41 @@
             NSArray *tempHolderArray = [[workingDataArray objectAtIndex:i] componentsSeparatedByString:@"\t"];
             //NSLog(@"object: %@", tempHolderArray);
             NSDictionary *tempHolder = [[NSDictionary alloc] initWithObjectsAndKeys:[tempHolderArray objectAtIndex:1], @"siteNumber", [tempHolderArray objectAtIndex:4], @"siteValue", [tempHolderArray objectAtIndex:3], @"timeZone", [tempHolderArray objectAtIndex:2], @"timeStamp", nil];
-            [tempArray addObject:tempHolder];
-            [resultArray addObject:tempHolder];
+            
+            if (firstPull) {
+                [resultArray addObject:tempHolder];
+            }else{
+                for (int i=0; i<resultArray.count; i++) {
+                    NSDictionary *dictionaryToReplace = resultArray[i];
+                    if ([tempHolder[@"siteNumber"] isEqualToString:dictionaryToReplace[@"siteNumber"]]) {
+                        [resultArray replaceObjectAtIndex:i withObject:tempHolder];
+                    }
+                }
+            }
+            //
+            
+            
+            
         }
         
     }
     
     NSDate *date = [NSDate date];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    //dateFormatter.dateFormat = @"yyyy.MM.dd HH:mm:ss";
     dateFormatter.dateFormat = @"hh:mm a";
-#pragma mark - TODO end refresh    //[_refreshView endRefreshing];
-    //[_mainTable beginUpdates];
+
+    
     _updateString = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
     
-    //[_mainTable reloadData];
+    
     
     return resultArray;
     
 }
 
-//- (void)detailDataPull:(NSData *)responseData{
 - (NSMutableArray*)detailDataPull:(NSString *)responseHolder{
     
     [defaults setObject:responseHolder forKey:@"gpsData"];
-    
-    //NSString *responseHolder = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    
     NSArray *components = [responseHolder componentsSeparatedByString:@"\n"];
     NSMutableArray *returnArray = [NSMutableArray arrayWithArray:components];
     detailData = responseHolder;
@@ -572,36 +454,20 @@
 
 #pragma mark - min max data pull
 
-//- (void)fetchedFlowData:(NSData *)responseData{
 - (NSMutableArray*)fetchedFlowData:(NSString *)responseHolder{
     
     [defaults setObject:responseHolder forKey:@"minMaxData"];
     NSDate *todaysDate = [NSDate date];
     [defaults setObject:todaysDate forKey:@"updatedDate"];
-    
-    //NSString *responseHolder = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    //NSLog(@"responseHolder %@", responseHolder);
-    
-    
     NSArray *components = [responseHolder componentsSeparatedByString:@"\n"];
-    
     NSMutableArray *workingDataArray = [[NSMutableArray alloc] initWithArray:components];
     NSMutableArray *cleanedHolderArray = [[NSMutableArray alloc] init];
     NSMutableArray *objectHolderArray = [[NSMutableArray alloc] init];
-    
-    
-    
-    //NSLog(@"components %lu", (unsigned long)components.count);
-    
     for (int i=0; i<workingDataArray.count; i++) {
         NSString *matchCriteria = @"USGS";
         
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"self BEGINSWITH %@", matchCriteria];
-        
-        //NSLog(@"object: %@", [workingDataArray objectAtIndex:i]);
-        
         BOOL filePathMatches = [pred evaluateWithObject:[workingDataArray objectAtIndex:i]];
-        //if (![[tableNameArray objectAtIndex:i] isEqualToString:@"YAMPA RIVER BELOW SODA CREEK AT STEAMBOAT SPGS, CO"]) {
         if (filePathMatches) {
             
             NSArray *tempHolderArray = [[workingDataArray objectAtIndex:i] componentsSeparatedByString:@"\t"];
@@ -622,25 +488,16 @@
             flowHolder = nil;
             
             [cleanedHolderArray addObject:tempHolderArray];
-            //NSLog(@"cleanedHolderArray %lu", (unsigned long)cleanedHolderArray.count);
             
         }
     }
     
     NSDate *currentDate = [NSDate date];
     NSCalendar* calendar = [NSCalendar currentCalendar];
-    //NSDateComponents* dateComp = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
     NSDateComponents* dateComp = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:currentDate]; // Get necessary date components
     
     NSInteger month = [dateComp month]; //gives you month
     NSInteger day = [dateComp day]; //gives you day
-    //NSInteger year = [dateComp year]; // gives you year
-    
-    
-    
-    //NSMutableArray *meanArray = [NSMutableArray new];
-    //NSMutableArray *twentyFiveArray = [NSMutableArray new];
-    //NSMutableArray *seventyFiveArray = [NSMutableArray new];
     
     [minMaxArray removeAllObjects];
     
@@ -651,9 +508,7 @@
                 
                 NSDictionary *holderDict = [[NSDictionary alloc] initWithObjectsAndKeys:temp.meanVa, @"meanValue", temp.p25Va, @"25Value", temp.p75Va, @"75Value", temp.siteNum, @"siteNumber", nil];
                 [minMaxArray addObject:holderDict];
-                //[meanArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:temp.meanVa, @"value", temp.siteNum, @"siteNum", nil]];
-                //[twentyFiveArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:temp.p25Va, @"value", temp.siteNum, @"siteNum", nil]];
-                //[seventyFiveArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:temp.p75Va, @"value", temp.siteNum, @"siteNum", nil]];
+                
             }
         }
         
@@ -667,11 +522,7 @@
 
 #pragma mark - EmptyDataset
 
-//- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-//{
-//    return [UIImage imageNamed:@"HeaderLogo"];
-//}
-//- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
     NSString *text = @"Keep a pulse on the rivers you care about";
@@ -690,14 +541,7 @@
 
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-//- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
-    /*
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f],
-                                 NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
-    return [[NSAttributedString alloc] initWithString:@"Add a Station" attributes:attributes];
-     */
     
     NSString *text = nil;
     UIFont *font = nil;
@@ -719,25 +563,9 @@
 //- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
 
 - (UIImage *)buttonBackgroundImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
-    //return [UIImage imageNamed:@"addStation.png"];
     NSString *imageName = @"addStation.png";
-    //if (state == UIControlStateHighlighted) imageName = [imageName stringByAppendingString:@"button_highlight.png"];
-    //if (state == UIControlStateNormal) imageName = @"button_normal.png";
-    
-    //UIEdgeInsets capInsets = UIEdgeInsetsMake(25.0, 25.0, 25.0, 25.0);
-    //UIEdgeInsets rectInsets = UIEdgeInsetsMake(0.0, 10, 0.0, 10);
-
-    //return [UIImage imageNamed:imageName];
-    //return [[[UIImage imageNamed:imageName] resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch] imageWithAlignmentRectInsets:rectInsets];
-    return [[[UIImage imageNamed:imageName] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, -self.view.bounds.size.width/4, 0, -self.view.bounds.size.width/4)];
+        return [[[UIImage imageNamed:imageName] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch] imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, -self.view.bounds.size.width/4, 0, -self.view.bounds.size.width/4)];
 }
-
-//- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-//{
-//    
-//    return [UIColor colorWithHex:@"aaaaaa"];
-//    
-//}
 
 
 
@@ -756,7 +584,12 @@
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
 {
-    return YES;
+    if (selectedStationArray.count>0) {
+        return NO;
+    }else{
+        return YES;
+    }
+    
 }
 
 
@@ -779,11 +612,8 @@
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     header = (UITableViewHeaderFooterView *)view;
     if ([view isKindOfClass:[UITableViewHeaderFooterView class]] && selectedStationArray.count != 0) {
-        ((UITableViewHeaderFooterView *)view).backgroundView.backgroundColor = [UIColor colorWithRed:0.09 green:0.09 blue:0.09 alpha:1.0]; //[UIColor colorWithRed:0.09 green:0.09 blue:0.09 alpha:1.0]
-        //((UITableViewHeaderFooterView *)view).alpha = 0.2;
-        //header.alpha = 0;
-//        UIView *topHeaderSeperator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.bounds.size.width, 0.5f)];
-//        [topHeaderSeperator setBackgroundColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
+        ((UITableViewHeaderFooterView *)view).backgroundView.backgroundColor = [UIColor colorWithRed:0.09 green:0.09 blue:0.09 alpha:1.0];
+        
         
         UIView *bottomSeperatorView = [[UIView alloc] initWithFrame:CGRectMake(0, view.bounds.size.height-0.5f, view.bounds.size.width, 0.5f)];
         [bottomSeperatorView setBackgroundColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
@@ -802,8 +632,6 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    //I have a static list of section titles in SECTION_ARRAY for reference.
-    //Obviously your own section title code handles things differently to me.
     
     if (selectedStationArray.count > 0) {
         if (_updateString.length == 0) {
@@ -814,13 +642,7 @@
     }else{
         return @"";
     }
-    
-    
-    
 }
-
-
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -860,8 +682,6 @@
             [_mainTable reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
             [_mainTable reloadEmptyDataSet];
             [_mainTable endUpdates];
-            
-            //[_mainTable reloadData];
         }
         
         
@@ -876,8 +696,6 @@
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
 {
     [self performSegueWithIdentifier:@"addStationSegue" sender:self];
-    
-    //[activityIndicatorView startAnimating];
     [_spinnerView beginRefreshing];
 }
 
@@ -964,19 +782,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#pragma mark - TODO refresh
-    //[activityIndicatorView startAnimating];
     [_spinnerView beginRefreshing];
-    
-    
     if (!hasTappedRow) {
         hasTappedRow = YES;
         
-        
-        //[NSThread sleepForTimeInterval:2.0];
         [defaults setObject:detailData forKey:@"detailData"];
-#pragma mark - todo Check setting here.
-        //[defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
         [defaults setObject:resultArray forKey:@"resultArray"];
         [defaults setObject:minMaxArray forKey:@"minMaxArray"];
         [defaults setInteger:indexPath.row forKey:@"selectedIndex"];
@@ -996,8 +806,6 @@
             if ([lastWeatherPullDate compare:targetDate] == NSOrderedDescending || pullNewWeather) {
                 [self testWeatherWithArray:selectedStationArray];
             }else{
-#pragma mark - TODO refresh
-                //[activityIndicatorView stopAnimating];
                 [_spinnerView endRefreshing];
                 hasTappedRow = NO;
                 [self performSegueWithIdentifier:@"swipeSegue" sender:self];
@@ -1086,9 +894,6 @@
              {
                  
                  KFOWMDailyForecastResponseModel *responseModel = (KFOWMDailyForecastResponseModel *)responseData;
-                 //NSLog(@"received weather: %@, temperature: %@ K, %@%%rH, %@ mbar", responseModel.cityName, responseModel.mainWeather.temperature, responseModel.mainWeather.humidity, responseModel.mainWeather.pressure);
-                 //for (KFOWMDailyForecastListModel *listModel in responseModel.list) {
-                 
                  
                  NSMutableArray *intermediateArray = [NSMutableArray new];
                  NSLog(@"response:%@", responseData);
@@ -1111,43 +916,14 @@
                      [df setDateFormat:@"EEEE"];
                      
                      NSString *dateString = [df stringFromDate:testDate];
-                     
-                     
-                     //NSLog(@"%@", locationDictionary);
-                     
-                     
-                     
-                     //                             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-                     //                             [formatter setMaximumFractionDigits:0];
-                     //KFOWMWeatherModel *weatherModel = listModel.weather;
                      NSArray *weatherHolder = listModel.weather;
                      KFOWMWeatherModel *weatherModel = weatherHolder[0];
                      NSString *iconString = weatherModel.icon;
-                     
-                     //                 NSDictionary *weatherDict = [[NSDictionary alloc] initWithObjectsAndKeys:lowNum, @"lowNum", highNum, @"highNum", dateString, @"dateString", iconString, @"iconString", locationDictionary[@"stationNumber"], @"stationNumber", nil];
-                     //
-                      //                [intermediateArray addObject:weatherDict];
-                     
-//                     NSMutableDictionary *intermediateDictionary = incomingLocations[i];
-                     
-//                     CLLocationCoordinate2D stationLocation;
-//                     stationLocation.longitude = (CLLocationDegrees) [intermediateDictionary[@"longTotal"] doubleValue];
-//                     stationLocation.latitude = (CLLocationDegrees) [intermediateDictionary[@"latTotal"] doubleValue];
-                     
-                     
-                     NSLog(@"test");
+                    
                      
                      NSDictionary *weatherDict = [[NSDictionary alloc] initWithObjectsAndKeys:lowNum, @"lowNum", highNum, @"highNum", dateString, @"dateString", iconString, @"iconString", responseModel.city.cityId, @"cityId", nil];
                      
                      [intermediateArray addObject:weatherDict];
-                     
-                     //[results addObject:listModel];
-                     
-                     //                            for (KFOWMWeatherModel *weatherModel in listModel.weather) {
-                     
-                     //                            }
-                     //KFOWMWeatherModel *weatherModel = listModel.weather;
-                     
                      
                  }
                  
@@ -1162,11 +938,6 @@
                  [weatherDataArray addObject:intermediateArray];
                  dispatch_group_leave(group);
              }
-             
-             
-             
-             NSLog(@"end one");
-             //fulfill(weatherDataArray);
              
          }];
 
@@ -1195,10 +966,7 @@
 }
 
 
-//-(NSMutableArray*)pullGeoLocationForTest{
 -(void)pullGeoLocationForTest{
-    
-    //NSMutableArray *weatherArray = [[NSMutableArray alloc] initWithCapacity:selectedStationArray.count];
     
     NSArray *components = [detailData componentsSeparatedByString:@"\n"];
     
@@ -1218,8 +986,6 @@
         
     }
     
-    //locationArray = [NSMutableArray new];
-    //NSMutableArray *locationArray = [NSMutableArray new];
     testlocationArray = [NSMutableArray new];
     
     for (int i=0; i<stationArray.count; i++) {
@@ -1297,12 +1063,9 @@
         
     }
     
-    
-    
-    NSLog(@"test");
-    //return testlocationArray;
-    
 }
+
+
 
 
 - (IBAction)unwindToHome:(UIStoryboardSegue *)unwindSegue
@@ -1316,8 +1079,8 @@
 {
     // Make sure your segue name in storyboard is the same as this line
     
-    if ([segue.identifier isEqualToString:@"swipeSegue"]) {
-
+    if ([segue.identifier isEqualToString:@"addStationSegue"]) {
+        
 }
     
 

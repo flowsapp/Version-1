@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 //#import "SARate.h"
+#import <PromiseKit/PromiseKit.h>
 
 
 @interface AppDelegate ()
@@ -91,5 +92,52 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+/*
+-(void)refreshData{
+    
+    
+    dispatch_promise(^{
+        return [self urlStringfromStations:selectedStationArray];
+    }).then(^(NSString *md5){
+        
+        //example from USGS
+ 
+         //http://waterservices.usgs.gov/nwis/iv/
+         //?format=rdb
+         //&sites=06006000,06012500,06016000,06017000,06018500
+         //&period=P1D
+         //&modifiedSince=PT30M
+         //&parameterCd=00060
+ 
+        
+        NSDate *lastUSGSupdateDate = [defaults objectForKey:@"lastUSGSupdateDate"];
+        NSDate *currentDate = [NSDate date];
+        NSTimeInterval secondsSinceUpdateInterval = [lastUSGSupdateDate timeIntervalSinceNow];
+        int minutesSinceUpdateInterval = secondsSinceUpdateInterval*-1/60;
+        if (minutesSinceUpdateInterval<30) {
+            minutesSinceUpdateInterval = 30;
+        }
+        [defaults setObject:[NSDate date] forKey:@"lastUSGSupdateDate"];
+        return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&modifiedSince=PT%iM&sites=%@&parameterCd=00060", minutesSinceUpdateInterval, md5]];
+        
+        //return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&sites=%@&parameterCd=00060", md5]];
+        
+    }).then(^(NSString *returnData){
+        
+        //return [self currentDataPull:returnData];
+        return [self currentDataPull:returnData isFirstPull:NO];
+        
+    }).then(^(NSMutableArray *responseArray){
+        
+        [_refreshControl endRefreshing];
+        [_mainTable reloadData];
+        
+    });
+    
+    
+}
+*/
+
 
 @end

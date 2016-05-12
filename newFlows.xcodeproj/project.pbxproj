@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4214C3E51CDEF0220016B473 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4214C3DF1CDEF0220016B473 /* Localizable.strings */; };
+		4214C3E61CDEF0220016B473 /* Localizable_full.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4214C3E11CDEF0220016B473 /* Localizable_full.strings */; };
+		4214C3E71CDEF0220016B473 /* NSDate+HumanizedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 4214C3E41CDEF0220016B473 /* NSDate+HumanizedTime.m */; };
 		421884781CD12A960039BCCB /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421884771CD12A960039BCCB /* CustomNavigationViewController.m */; };
 		4218847A1CD5189E0039BCCB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421884791CD5189E0039BCCB /* StoreKit.framework */; };
 		421884801CD6803A0039BCCB /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4218847E1CD6803A0039BCCB /* MKStoreKit.m */; };
@@ -230,6 +233,10 @@
 
 /* Begin PBXFileReference section */
 		291C5424C569B273DF758A4C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4214C3E01CDEF0220016B473 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4214C3E21CDEF0220016B473 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable_full.strings; sourceTree = "<group>"; };
+		4214C3E31CDEF0220016B473 /* NSDate+HumanizedTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HumanizedTime.h"; sourceTree = "<group>"; };
+		4214C3E41CDEF0220016B473 /* NSDate+HumanizedTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HumanizedTime.m"; sourceTree = "<group>"; };
 		421884761CD12A960039BCCB /* CustomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationViewController.h; sourceTree = "<group>"; };
 		421884771CD12A960039BCCB /* CustomNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationViewController.m; sourceTree = "<group>"; };
 		421884791CD5189E0039BCCB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -511,6 +518,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4214C3DA1CDEEFCA0016B473 /* TimeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				4214C3DE1CDEF0220016B473 /* SEHumanizedTime */,
+			);
+			path = TimeHelper;
+			sourceTree = "<group>";
+		};
+		4214C3DE1CDEF0220016B473 /* SEHumanizedTime */ = {
+			isa = PBXGroup;
+			children = (
+				4214C3DF1CDEF0220016B473 /* Localizable.strings */,
+				4214C3E11CDEF0220016B473 /* Localizable_full.strings */,
+				4214C3E31CDEF0220016B473 /* NSDate+HumanizedTime.h */,
+				4214C3E41CDEF0220016B473 /* NSDate+HumanizedTime.m */,
+			);
+			path = SEHumanizedTime;
+			sourceTree = "<group>";
+		};
 		4218847B1CD6803A0039BCCB /* storeKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +591,7 @@
 		423ED49A1BB5BC58007772C8 /* newFlows */ = {
 			isa = PBXGroup;
 			children = (
+				4214C3DA1CDEEFCA0016B473 /* TimeHelper */,
 				4218847B1CD6803A0039BCCB /* storeKit */,
 				4253B9771C970FF8008AF6BA /* helperClasses */,
 				42C8A95B1C8A354E006BF832 /* OpenWeatherAPI */,
@@ -1123,6 +1150,7 @@
 				42EB71B61C38B94100D6215E /* 01d@3x.png in Resources */,
 				42EB71C41C38B94100D6215E /* 03n@2x .png in Resources */,
 				42A34C371BBD8CAD004F7FB7 /* pa in Resources */,
+				4214C3E61CDEF0220016B473 /* Localizable_full.strings in Resources */,
 				4253B96D1C96669A008AF6BA /* addStation@2x.png in Resources */,
 				4272F6ED1C1CC8140062161F /* states.plist in Resources */,
 				42A34C3C1BBD8CAD004F7FB7 /* tn in Resources */,
@@ -1231,6 +1259,7 @@
 				423ED4A61BB5BC58007772C8 /* Main.storyboard in Resources */,
 				42EB71A41C38B94100D6215E /* background.png in Resources */,
 				42EB71B31C38B94100D6215E /* infoicon@3x.png in Resources */,
+				4214C3E51CDEF0220016B473 /* Localizable.strings in Resources */,
 				42EB71E81C38B94100D6215E /* 50n@2x.png in Resources */,
 				42EB71C81C38B94100D6215E /* 04d@3x.png in Resources */,
 				42EB71A71C38B94100D6215E /* BackIcon.png in Resources */,
@@ -1332,6 +1361,7 @@
 				42C8A9891C8A354E006BF832 /* KFOWMForecastResponseModel.m in Sources */,
 				42BEDAC31C8535A900113431 /* SwipeView.m in Sources */,
 				42C8A98A1C8A354E006BF832 /* KFOWMForecastTemperatureModel.m in Sources */,
+				4214C3E71CDEF0220016B473 /* NSDate+HumanizedTime.m in Sources */,
 				421884841CD859E70039BCCB /* PurchaseViewController.m in Sources */,
 				42A35B151BB5D7FF00470D6D /* Reachability.m in Sources */,
 				42C8A9831C8A354E006BF832 /* KFOWMCityModel.m in Sources */,
@@ -1391,6 +1421,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4214C3DF1CDEF0220016B473 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4214C3E01CDEF0220016B473 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4214C3E11CDEF0220016B473 /* Localizable_full.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4214C3E21CDEF0220016B473 /* en */,
+			);
+			name = Localizable_full.strings;
+			sourceTree = "<group>";
+		};
 		423ED4A41BB5BC58007772C8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

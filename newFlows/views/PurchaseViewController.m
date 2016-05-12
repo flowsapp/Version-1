@@ -42,19 +42,8 @@
                                                        queue:[[NSOperationQueue alloc] init]
                                                   usingBlock:^(NSNotification *note) {
                                                       
-                                                      NSLog(@"Purchased/Subscribed to product with id: %@", [note object]);
-                                                      [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"upgradePurchased"];
-                                                      [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"segueToRivers"];
                                                       
-                                                      CATransition *transition = [CATransition animation];
-                                                      transition.duration = 0.5;
-                                                      transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-                                                      transition.type = kCATransitionPush;
-                                                      //transition.subtype = kCATransitionFromRight;
-                                                      transition.subtype = kCATransitionFade;
-                                                      [self.navigationController.view.layer addAnimation:transition forKey:nil];
-                                                      //[self.navigationController popViewControllerAnimated:YES];
-                                                      [self.navigationController popViewControllerAnimated:NO];
+                                                      [self performSelectorOnMainThread:@selector(purchaseUpgradewithNote:) withObject:note waitUntilDone:YES];
                                                       
                                                       
                                                   }];
@@ -105,8 +94,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)purchaseClicked:(id)sender {
-    [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:@"com.flowsapp.extendedStaions"];
+- (void)purchaseUpgradewithNote:(NSNotification*)incomingNote{
+    NSLog(@"Purchased/Subscribed to product with id: %@", [incomingNote object]);
+    [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"upgradePurchased"];
+    [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"segueToRivers"];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    //transition.subtype = kCATransitionFromRight;
+    transition.subtype = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
+
 }
 
 
@@ -254,10 +256,7 @@
 
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
 {
-    [self performSegueWithIdentifier:@"addStationSegue" sender:self];
-    
-    //[activityIndicatorView startAnimating];
-    //[_spinnerView beginRefreshing];
+    [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:@"com.flowsapp.flowspro"];
 }
 
 
