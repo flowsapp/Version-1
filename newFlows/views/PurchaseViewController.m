@@ -53,8 +53,9 @@
                                                        queue:[[NSOperationQueue alloc] init]
                                                   usingBlock:^(NSNotification *note) {
                                                       
-                                                      //this should never get hit here
+                                                      
                                                       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"upgradePurchased"];
+                                                      
                                                       NSLog(@"Restored Purchases");
                                                       
                                                   }];

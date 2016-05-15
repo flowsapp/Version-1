@@ -465,8 +465,11 @@
     }
     
     if (!returnDict[@"nameHolder"]) {
-        [returnDict setObject:@"SOMETHING WENT WRONG HERE" forKey:@"nameHolder"];
-        [returnDict setObject:[NSString stringWithFormat:@"%@", siteName] forKey:@"locationHolder"];
+        //[returnDict setObject:@"SOMETHING WENT WRONG HERE" forKey:@"nameHolder"];
+        //[returnDict setObject:[NSString stringWithFormat:@"%@", siteName] forKey:@"locationHolder"];
+        NSString *tempName = [[NSString stringWithFormat:@"%@", siteName] capitalizedString];
+        [returnDict setObject:tempName forKey:@"nameHolder"];
+        [returnDict setObject:@"" forKey:@"locationHolder"];
     }
     
     return returnDict;

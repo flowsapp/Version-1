@@ -200,7 +200,10 @@
 //    }
     
     if (selectedStationArray.count == 10) {
-        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+        [self.navigationItem.rightBarButtonItem setImage:nil];
+        //[self.navigationItem setRightBarButtonItem:nil animated:NO];
+    }else if (selectedStationArray.count < 10){
+        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
     }
 }
 
@@ -413,10 +416,11 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     if (selectedStationArray.count > 0) {
-        if (_updateString.length == 0) {
+        NSString *updateString = [defaults objectForKey:@"updateString"];
+        if (updateString.length == 0) {
             return @"Last updated at: N/A";
         }else{
-            return [NSString stringWithFormat:@"Last updated: %@", _updateString];
+            return [NSString stringWithFormat:@"Last updated: %@", updateString];
         }
     }else{
         return @"";
@@ -446,8 +450,12 @@
         //add code here for when you hit delete
         
         if (selectedStationArray.count == 10) {
-            [self.navigationItem.rightBarButtonItem setEnabled:YES];
-        }
+            //[self.navigationItem.rightBarButtonItem setImage:nil];
+            [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
+            //[self.navigationItem setRightBarButtonItem:nil animated:NO];
+        }//else if(selectedStationArray.count < 3){
+        //    [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
+        //}
         
         [selectedStationArray removeObjectAtIndex:indexPath.row];
         

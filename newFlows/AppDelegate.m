@@ -145,7 +145,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:
 }
 
 #pragma mark - data pull
@@ -367,7 +367,8 @@
     NSDate *date = [NSDate date];
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateFormat = @"hh:mm a";
-    
+    NSString *updateString = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
+    [defaults setObject:updateString forKey:@"updateString"];
 #pragma mark - TODO update time string
    // _updateString = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
     
