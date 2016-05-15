@@ -121,10 +121,27 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    if (selectedStationArray.count>0) {
+        
+        NSDate *lastUSGSupdateDate = [defaults objectForKey:@"lastUSGSupdateDate"];
+        //NSDate *currentDate = [NSDate date];
+        NSTimeInterval secondsSinceUpdateInterval = [lastUSGSupdateDate timeIntervalSinceNow];
+        int minutesSinceUpdateInterval = secondsSinceUpdateInterval*-1/60;
+        if (minutesSinceUpdateInterval>30) {
+            //[self refreshDataWithMinutes:minutesSinceUpdateInterval];
+            [defaults setObject:[NSNumber numberWithBool:YES] forKey:@"shouldUpdate"];
+        }else{
+            [defaults setObject:[NSNumber numberWithBool:NO] forKey:@"shouldUpdate"];
+        }
+    }
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -149,16 +166,12 @@
          //&period=P1D
          //&modifiedSince=PT30M
          //&parameterCd=00060
- 
+        
         
         NSDate *lastUSGSupdateDate = [defaults objectForKey:@"lastUSGSupdateDate"];
-        NSDate *currentDate = [NSDate date];
+        //NSDate *currentDate = [NSDate date];
         NSTimeInterval secondsSinceUpdateInterval = [lastUSGSupdateDate timeIntervalSinceNow];
         int minutesSinceUpdateInterval = secondsSinceUpdateInterval*-1/60;
-        if (minutesSinceUpdateInterval<30) {
-            minutesSinceUpdateInterval = 30;
-        }
-        
         [defaults setObject:[NSDate date] forKey:@"lastUSGSupdateDate"];
         return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&modifiedSince=PT%iM&sites=%@&parameterCd=00060", minutesSinceUpdateInterval, md5]];
         
@@ -171,7 +184,8 @@
         
     }).then(^(NSMutableArray *responseArray){
         dispatch_async(dispatch_get_main_queue(),^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNotification" object:self];
+            //[[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshNotification" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshSpinNotification" object:self];
         });
     });
     
@@ -521,11 +535,13 @@
         
         
         
-        NSDictionary *tempLocationDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithDouble:longTotal], @"longTotal", [NSNumber numberWithDouble:latTotal], @"latTotal", tempStationNumber, @"stationNumber", nil];
+        //NSDictionary *tempLocationDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithDouble:longTotal], @"longTotal", [NSNumber numberWithDouble:latTotal], @"latTotal", tempStationNumber, @"stationNumber", nil];
         
-        [testlocationArray addObject:tempLocationDictionary];
+        //[testlocationArray addObject:tempLocationDictionary];
         
-        NSLog(@"%@", tempLocationDictionary);
+        //NSLog(@"%@", tempLocationDictionary);
+        
+        
         //for (NSMutableDictionary *stationDict in selectedStationArray) {
         for (int i=0; i<selectedStationArray.count; i++) {
             NSMutableDictionary *stationDict = [selectedStationArray[i] mutableCopy];

@@ -107,10 +107,7 @@
     
     
     _mainTable.allowsMultipleSelectionDuringEditing = NO;
-    
-    
 
-    
     //TODO redundent pulls
     
     //AppDelegate *appDel=(AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -118,11 +115,13 @@
     
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     
-    if (selectedStationArray.count>0) {
-        [_spinnerView beginRefreshing];
-        [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
-        //[self runLiveUpdate];
-    }
+    //[_spinnerView beginRefreshing];
+    
+//    if (selectedStationArray.count>0) {
+//        [_spinnerView beginRefreshing];
+//        [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
+//        //[self runLiveUpdate];
+//    }
     
 
     
@@ -146,7 +145,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:YES];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveLiveUpdateNotification:)
                                                  name:@"LiveUpdateNotification"
@@ -169,18 +167,32 @@
     
     [super viewDidAppear:animated];
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
-    BOOL segueBool = [defaults boolForKey:@"segueToRivers"];
+    //BOOL segueBool = [defaults boolForKey:@"segueToRivers"];
+    
     if ([defaults boolForKey:@"segueToRivers"]) {
-        
-        //[defaults setBool:[NSNumber numberWithBool:NO] forKey:@"segueToRivers"];
         [self performSegueWithIdentifier:@"addStationSegue" sender:self];
     }else if ([defaults boolForKey:@"selectedStationUpdated"]) {
         if (selectedStationArray.count==1) {
             [_mainTable reloadEmptyDataSet];
         }
         [_spinnerView forceBeginRefreshing];
-        //[self runLiveUpdate];
         [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
+    }else if ([defaults boolForKey:@"shouldUpdate"]){
+        [_spinnerView forceBeginRefreshing];
+        [defaults setObject:[NSNumber numberWithBool:NO] forKey:@"shouldUpdate"];
+        [[[UIApplication sharedApplication] delegate] performSelector:@selector(refreshData)];
+    }else{
+        if (selectedStationArray.count == resultArray.count) {
+            resultArray = [defaults objectForKey:@"resultArray"];
+            minMaxArray = [defaults objectForKey:@"minMaxArray"];
+            [_mainTable reloadData];
+        }else{
+            if (selectedStationArray.count==1) {
+                [_mainTable reloadEmptyDataSet];
+            }
+            [_spinnerView forceBeginRefreshing];
+            [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
+        }
     }
     
 //    if ([[NSDate date] compare:[defaults objectForKey:@""]]) {
@@ -196,8 +208,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    //self.navigationController.navigationBar.alpha = 0.0f;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -566,13 +578,16 @@
         
         NSDate *lastWeatherPullDate = [defaults objectForKey:@"updatedWeatherDate"];
         
-        NSDate *todaysDate = [NSDate date];
+        selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
         
-        NSCalendar *gregorian = [NSCalendar currentCalendar];
-        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-        [dateComponents setHour:3];
-        NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:lastWeatherPullDate options:0];
-        if (lastWeatherPullDate) {
+        if (lastWeatherPullDate == nil) {
+            [self testWeatherWithArray:selectedStationArray];
+        }else{
+            NSDate *todaysDate = [NSDate date];
+            NSCalendar *gregorian = [NSCalendar currentCalendar];
+            NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+            [dateComponents setHour:3];
+            NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:lastWeatherPullDate options:0];
             if ([targetDate compare:todaysDate] == NSOrderedAscending || pullNewWeather) {
                 [self testWeatherWithArray:selectedStationArray];
             }else{
@@ -580,8 +595,6 @@
                 hasTappedRow = NO;
                 [self performSegueWithIdentifier:@"swipeSegue" sender:self];
             }
-        }else{
-            [self testWeatherWithArray:selectedStationArray];
         }
         
     }
