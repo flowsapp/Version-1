@@ -422,6 +422,9 @@
             flowHolder.p25Va = [tempHolderArray objectAtIndex:17];
             flowHolder.p75Va = [tempHolderArray objectAtIndex:19];
             
+            NSLog(@"date:%@/%@ %@ %@", [tempHolderArray objectAtIndex:4], [tempHolderArray objectAtIndex:5], [tempHolderArray objectAtIndex:17], [tempHolderArray objectAtIndex:19]);
+            //NSLog(@"date:%@/%@ mean value:%@", [tempHolderArray objectAtIndex:4], [tempHolderArray objectAtIndex:5], [tempHolderArray objectAtIndex:13]);
+            
             [objectHolderArray addObject:flowHolder];
             
             flowHolder = nil;

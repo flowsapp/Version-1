@@ -1,4 +1,4 @@
-//
+    //
 //  MainViewController.m
 //  newFlows
 //
@@ -522,17 +522,21 @@
     }
     if (resultArray.count > 0 && minMaxArray.count > 0) {
         //NSDictionary *resultDict = resultArray[indexPath.row];
-        for (NSDictionary *resultDict in resultArray) {
+        for (NSDictionary *resultDict in resultArray) { 
             if ([resultDict[@"siteNumber"] isEqualToString:cellDict[@"stationNumber"]]) {
                 cell.resultLabel.text = resultDict[@"siteValue"];
                 
                 for (NSDictionary *meanDict in minMaxArray) {
                     if ([meanDict[@"siteNumber"] isEqualToString:cellDict[@"stationNumber"]]) {
+                        NSLog(@"%f", [meanDict[@"25Value"] doubleValue]);
                         if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
                             cell.resultLabel.text = @"Ice";
                             [cell.resultLabel setTextColor:[UIColor whiteColor]];
                         }else{
-                            if ([resultDict[@"siteValue"] doubleValue] < [meanDict[@"25Value"] doubleValue]) {
+                            if ([meanDict[@"meanValue"] doubleValue] > [meanDict[@"75Value"] doubleValue] || [meanDict[@"meanValue"] doubleValue] < [meanDict[@"25Value"] doubleValue]) {
+                                //green
+                                [cell.resultLabel setTextColor:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0]];
+                            }else if ([resultDict[@"siteValue"] doubleValue] < [meanDict[@"25Value"] doubleValue]) {
                                 //red
                                 [cell.resultLabel setTextColor:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0]];
                             }else if ([resultDict[@"siteValue"] doubleValue] > [meanDict[@"75Value"] doubleValue]) {
