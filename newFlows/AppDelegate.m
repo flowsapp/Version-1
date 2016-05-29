@@ -37,7 +37,7 @@
     
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     
-    resultArray = [NSMutableArray new];
+    //resultArray = [NSMutableArray new];
     minMaxArray = [NSMutableArray new];
     
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
@@ -330,6 +330,10 @@
 
 - (NSMutableArray*)currentDataPull:(NSString *)responseHolder isFirstPull:(BOOL)firstPull{
     
+    resultArray = [[defaults objectForKey:@"resultArray"] mutableCopy];
+    if (resultArray.count == 0) {
+        resultArray = [NSMutableArray new];
+    }
     NSArray *components = [responseHolder componentsSeparatedByString:@"\n"];
     
     NSMutableArray *workingDataArray = [[NSMutableArray alloc] initWithArray:components];
