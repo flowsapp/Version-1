@@ -112,6 +112,9 @@
 		42A610E21CA3910C00B931AD /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A610E11CA3910C00B931AD /* DisclaimerViewController.m */; };
 		42A610E41CA392C800B931AD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A610E31CA392C800B931AD /* QuartzCore.framework */; };
 		42A610E61CA392D100B931AD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A610E51CA392D100B931AD /* MessageUI.framework */; };
+		42BEA03E1CFCD09C0064593D /* AddIconEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 42BEA03B1CFCD09C0064593D /* AddIconEmpty.png */; };
+		42BEA03F1CFCD09C0064593D /* AddIconEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42BEA03C1CFCD09C0064593D /* AddIconEmpty@2x.png */; };
+		42BEA0401CFCD09C0064593D /* AddIconEmpty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42BEA03D1CFCD09C0064593D /* AddIconEmpty@3x.png */; };
 		42BEDAB91C84B1B700113431 /* customNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BEDAB81C84B1B700113431 /* customNavBar.m */; };
 		42BEDABC1C85252A00113431 /* SwipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BEDABB1C85252A00113431 /* SwipeView.xib */; };
 		42BEDABF1C85256300113431 /* CustomSwipeview.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BEDABE1C85256300113431 /* CustomSwipeview.m */; };
@@ -360,6 +363,9 @@
 		42A610E11CA3910C00B931AD /* DisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclaimerViewController.m; sourceTree = "<group>"; };
 		42A610E31CA392C800B931AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42A610E51CA392D100B931AD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		42BEA03B1CFCD09C0064593D /* AddIconEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddIconEmpty.png; sourceTree = "<group>"; };
+		42BEA03C1CFCD09C0064593D /* AddIconEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddIconEmpty@2x.png"; sourceTree = "<group>"; };
+		42BEA03D1CFCD09C0064593D /* AddIconEmpty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddIconEmpty@3x.png"; sourceTree = "<group>"; };
 		42BEDAB71C84B1B700113431 /* customNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customNavBar.h; sourceTree = "<group>"; };
 		42BEDAB81C84B1B700113431 /* customNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customNavBar.m; sourceTree = "<group>"; };
 		42BEDABB1C85252A00113431 /* SwipeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwipeView.xib; sourceTree = "<group>"; };
@@ -879,6 +885,9 @@
 		42EB71561C38B94100D6215E /* systemIcons */ = {
 			isa = PBXGroup;
 			children = (
+				42BEA03B1CFCD09C0064593D /* AddIconEmpty.png */,
+				42BEA03C1CFCD09C0064593D /* AddIconEmpty@2x.png */,
+				42BEA03D1CFCD09C0064593D /* AddIconEmpty@3x.png */,
 				4253B97F1C979ECD008AF6BA /* try.png */,
 				4253B96F1C970F1B008AF6BA /* button_highlight.png */,
 				4253B9701C970F1B008AF6BA /* button_highlight@2x.png */,
@@ -1152,6 +1161,7 @@
 				42A34C371BBD8CAD004F7FB7 /* pa in Resources */,
 				4214C3E61CDEF0220016B473 /* Localizable_full.strings in Resources */,
 				4253B96D1C96669A008AF6BA /* addStation@2x.png in Resources */,
+				42BEA0401CFCD09C0064593D /* AddIconEmpty@3x.png in Resources */,
 				4272F6ED1C1CC8140062161F /* states.plist in Resources */,
 				42A34C3C1BBD8CAD004F7FB7 /* tn in Resources */,
 				4253B9671C937CE3008AF6BA /* BlueMapIcon@2x.png in Resources */,
@@ -1205,6 +1215,7 @@
 				42EB71CE1C38B94100D6215E /* 09d@3x.png in Resources */,
 				42EB71CC1C38B94100D6215E /* 09d.png in Resources */,
 				42EB71DC1C38B94100D6215E /* 11n@2x.png in Resources */,
+				42BEA03F1CFCD09C0064593D /* AddIconEmpty@2x.png in Resources */,
 				42A34C381BBD8CAD004F7FB7 /* pr in Resources */,
 				42A34C2A1BBD8CAD004F7FB7 /* mi in Resources */,
 				42EB71E21C38B94100D6215E /* 13n@2x.png in Resources */,
@@ -1239,6 +1250,7 @@
 				42A34C281BBD8CAD004F7FB7 /* md in Resources */,
 				42EB71D61C38B94100D6215E /* 10n@2x.png in Resources */,
 				42A34C431BBD8CAD004F7FB7 /* wi in Resources */,
+				42BEA03E1CFCD09C0064593D /* AddIconEmpty.png in Resources */,
 				42A34C1A1BBD8CAD004F7FB7 /* dc in Resources */,
 				42EB71D11C38B94100D6215E /* 09n@3x.png in Resources */,
 				42EB71CB1C38B94100D6215E /* 04n@3x.png in Resources */,

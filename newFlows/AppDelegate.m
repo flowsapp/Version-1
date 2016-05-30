@@ -43,6 +43,23 @@
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
     
     
+    //NetworkStatus internetStatus = [reach currentReachabilityStatus];
+    
+//    if(internetStatus==0){
+//        //@"NoAccess";
+//        [defaults setBool:NO forKey:@"reachable"];
+//    }else{
+//        [defaults setBool:YES forKey:@"reachable"];
+//    }
+//    else if(internetStatus==1)
+//    {
+//        //@"ReachableViaWiFi";
+//        
+//    } else if(internetStatus==2)
+//    {
+//        //@"ReachableViaWWAN";
+//    }
+    
     
     // Set the blocks
     reach.reachableBlock = ^(Reachability*reach)
@@ -53,14 +70,16 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"REACHABLE!");
-            
+            [defaults setBool:YES forKey:@"reachable"];
         });
     };
     
     reach.unreachableBlock = ^(Reachability*reach)
     {
-        NSLog(@"UNREACHABLE!");
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"UNREACHABLE!");
+            [defaults setBool:NO forKey:@"reachable"];
             //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Connection"
             //                                                            message:@"You must be connected to the net to use this app"
             //                                                           delegate:nil

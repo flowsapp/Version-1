@@ -117,15 +117,8 @@
                         <barButtonItem key="leftBarButtonItem" title="i" id="dxI-1p-5jR">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="AddIcon.png" id="koL-Xx-BB2">
-                            <color key="tintColor" red="0.61770694813829785" green="0.61770694813829785" blue="0.61770694813829785" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="addClicked:" destination="BYZ-38-t0r" id="5R9-GZ-Ljg"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="koL-Xx-BB2" id="g7F-iG-E4a"/>
                         <outlet property="mainTable" destination="lTh-5a-Fjj" id="4RH-cj-qrY"/>
                         <outlet property="spinnerView" destination="qnR-TU-ioy" id="Pny-Zz-0aT"/>
                         <segue destination="f2g-Ah-QNA" kind="presentation" identifier="swipeSegue" modalTransitionStyle="crossDissolve" id="Tmn-Wq-OQl"/>
@@ -602,7 +595,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddIcon.png" width="20" height="20"/>
         <image name="BackIcon.png" width="16" height="14"/>
         <image name="background.png" width="414" height="736"/>
         <image name="close.png" width="20" height="20"/>

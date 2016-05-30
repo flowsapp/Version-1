@@ -35,6 +35,8 @@
 
 #import "NSDate+HumanizedTime.h"
 
+#import "Reachability.h"
+
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 
@@ -97,7 +99,12 @@
                                                                  target:self action:@selector(leftButtonPressed:)];
     [leftItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
     
-    //self.navigationItem.rightBarButtonItem = rightItem;
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIcon"]
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self action:@selector(addClicked:)];
+    [rightItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
+    
+    self.navigationItem.rightBarButtonItem = rightItem;
     self.navigationItem.leftBarButtonItem = leftItem;
     
     UIImageView* img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HeaderLogo"]];
@@ -169,6 +176,19 @@
     selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
     //BOOL segueBool = [defaults boolForKey:@"segueToRivers"];
     
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
+    
+    
+    NetworkStatus internetStatus = [reach currentReachabilityStatus];
+    
+    if(internetStatus==0){
+        //@"NoAccess";
+        [defaults setBool:NO forKey:@"reachable"];
+    }else{
+        [defaults setBool:YES forKey:@"reachable"];
+    }
+    
+    
     if ([defaults boolForKey:@"segueToRivers"]) {
         [self performSegueWithIdentifier:@"addStationSegue" sender:self];
     }else if ([defaults boolForKey:@"selectedStationUpdated"]) {
@@ -177,10 +197,15 @@
         }
         [_spinnerView forceBeginRefreshing];
         [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
-    }else if ([defaults boolForKey:@"shouldUpdate"]){
+    }else if ([defaults boolForKey:@"shouldUpdate"] && [defaults boolForKey:@"reachable"]){
         [_spinnerView forceBeginRefreshing];
         [defaults setObject:[NSNumber numberWithBool:NO] forKey:@"shouldUpdate"];
         [[[UIApplication sharedApplication] delegate] performSelector:@selector(refreshData)];
+    }else if (![defaults boolForKey:@"reachable"]){
+        //offline message here??
+        resultArray = [defaults objectForKey:@"resultArray"];
+        minMaxArray = [defaults objectForKey:@"minMaxArray"];
+        [_mainTable reloadData];
     }else{
         if (selectedStationArray.count == resultArray.count) {
             resultArray = [defaults objectForKey:@"resultArray"];
@@ -195,16 +220,22 @@
         }
     }
     
+    
+    if (selectedStationArray.count == 10) {
+        //[self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIconEmpty"]];
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+        //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
+    }else if (selectedStationArray.count < 10){
+        //[self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
+    }
+    
 //    if ([[NSDate date] compare:[defaults objectForKey:@""]]) {
 //        //pull data
 //    }
     
-    if (selectedStationArray.count == 10) {
-        [self.navigationItem.rightBarButtonItem setImage:nil];
-        //[self.navigationItem setRightBarButtonItem:nil animated:NO];
-    }else if (selectedStationArray.count < 10){
-        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
-    }
+    
 }
 
 
@@ -285,12 +316,15 @@
         [self performSegueWithIdentifier:@"purchaseSegue" sender:self];
     }else{
         //ten station max
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You are at your maximum stations"
-                                                        message:@"Delete a stations text here?"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        
+        // should never hit
+        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You are at your maximum stations"
+//                                                        message:@"Delete a stations text here?"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil];
+//        [alert show];
     }
     
     
@@ -404,7 +438,12 @@
         [view addSubview:bottomSeperatorView];
         
         if (header.textLabel.text.length > 0) {
-            header.textLabel.text = [NSString stringWithFormat:@"%@%@", [[header.textLabel.text substringToIndex:12] capitalizedString], [[header.textLabel.text substringFromIndex:12] uppercaseString]];
+            if ([defaults boolForKey:@"reachable"]) {
+                header.textLabel.text = [NSString stringWithFormat:@"%@%@", [[header.textLabel.text substringToIndex:12] capitalizedString], [[header.textLabel.text substringFromIndex:12] uppercaseString]];
+            }else{
+                header.textLabel.text = [NSString stringWithFormat:@"%@%@", [[header.textLabel.text substringToIndex:21] capitalizedString], [[header.textLabel.text substringFromIndex:21] uppercaseString]];
+            }
+            
         }
         header.textLabel.textColor = [UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0];
         header.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11.0f];
@@ -419,6 +458,8 @@
         NSString *updateString = [defaults objectForKey:@"updateString"];
         if (updateString.length == 0) {
             return @"Last updated at: N/A";
+        }else if (![defaults boolForKey:@"reachable"]){
+            return [NSString stringWithFormat:@"Offline, Last updated: %@", updateString];
         }else{
             return [NSString stringWithFormat:@"Last updated: %@", updateString];
         }
@@ -450,12 +491,10 @@
         //add code here for when you hit delete
         
         if (selectedStationArray.count == 10) {
-            //[self.navigationItem.rightBarButtonItem setImage:nil];
-            [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
-            //[self.navigationItem setRightBarButtonItem:nil animated:NO];
-        }//else if(selectedStationArray.count < 3){
-        //    [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
-        //}
+            //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
+            [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        }
+
         
         [selectedStationArray removeObjectAtIndex:indexPath.row];
         
