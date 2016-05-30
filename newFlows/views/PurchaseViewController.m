@@ -43,7 +43,7 @@
                                                   usingBlock:^(NSNotification *note) {
                                                       
                                                       
-                                                      [self performSelectorOnMainThread:@selector(purchaseUpgradewithNote:) withObject:note waitUntilDone:YES];
+                                                      [self purchaseUpgradewithNote:note];
                                                       
                                                       
                                                   }];
@@ -54,9 +54,11 @@
                                                   usingBlock:^(NSNotification *note) {
                                                       
                                                       
-                                                      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"upgradePurchased"];
+                                                      //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"upgradePurchased"];
                                                       
                                                       NSLog(@"Restored Purchases");
+                                                      [self purchaseUpgradewithNote:note];
+                                                      
                                                       
                                                   }];
     
@@ -67,7 +69,9 @@
                                                       
                                                       NSLog(@"Failed restoring purchases with error: %@", [note object]);
                                                   }];
-
+    
+    
+    
     
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -96,19 +100,24 @@
 }
 
 - (void)purchaseUpgradewithNote:(NSNotification*)incomingNote{
-    NSLog(@"Purchased/Subscribed to product with id: %@", [incomingNote object]);
-    [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"upgradePurchased"];
-    [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"segueToRivers"];
     
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.5;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionPush;
-    //transition.subtype = kCATransitionFromRight;
-    transition.subtype = kCATransitionFade;
-    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    //[self.navigationController popViewControllerAnimated:YES];
-    [self.navigationController popViewControllerAnimated:NO];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"Purchased/Subscribed to product with id: %@", [incomingNote object]);
+        [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"upgradePurchased"];
+        [[NSUserDefaults standardUserDefaults] setBool:[NSNumber numberWithBool:YES] forKey:@"segueToRivers"];
+        CATransition *transition = [CATransition animation];
+        transition.duration = 0.5;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type = kCATransitionPush;
+        //transition.subtype = kCATransitionFromRight;
+        transition.subtype = kCATransitionFade;
+        [self.navigationController.view.layer addAnimation:transition forKey:nil];
+        //[self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:NO];
+    });
+    
+    
 
 }
 
@@ -258,6 +267,8 @@
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
 {
     [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:@"com.flowsapp.flowspro"];
+    //[[[UIApplication sharedApplication] delegate] performSelector:@selector(fireTestNotification)];
+    
 }
 
 

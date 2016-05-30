@@ -148,6 +148,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:
 }
 
+- (void)fireTestNotification{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"testNotification" object:self];
+}
+
 #pragma mark - data pull
 -(void)refreshData{
     
@@ -331,7 +335,7 @@
 - (NSMutableArray*)currentDataPull:(NSString *)responseHolder isFirstPull:(BOOL)firstPull{
     
     resultArray = [[defaults objectForKey:@"resultArray"] mutableCopy];
-    if (resultArray.count == 0) {
+    if (resultArray.count == 0 || firstPull) {
         resultArray = [NSMutableArray new];
     }
     NSArray *components = [responseHolder componentsSeparatedByString:@"\n"];
@@ -426,8 +430,8 @@
             flowHolder.p25Va = [tempHolderArray objectAtIndex:17];
             flowHolder.p75Va = [tempHolderArray objectAtIndex:19];
             
-            NSLog(@"date:%@/%@ %@ %@", [tempHolderArray objectAtIndex:4], [tempHolderArray objectAtIndex:5], [tempHolderArray objectAtIndex:17], [tempHolderArray objectAtIndex:19]);
-            //NSLog(@"date:%@/%@ mean value:%@", [tempHolderArray objectAtIndex:4], [tempHolderArray objectAtIndex:5], [tempHolderArray objectAtIndex:13]);
+            //NSLog(@"date:%@/%@ %@ %@", [tempHolderArray objectAtIndex:4], [tempHolderArray objectAtIndex:5], [tempHolderArray objectAtIndex:17], [tempHolderArray objectAtIndex:19]);
+            
             
             [objectHolderArray addObject:flowHolder];
             
