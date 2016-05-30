@@ -154,7 +154,15 @@
                                  NSForegroundColorAttributeName: [UIColor colorWithHex:@"FFFFFF"],
                                  NSParagraphStyleAttributeName: paragraphStyle};
     
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
+    [attributedString addAttribute:NSKernAttributeName
+                             value:@(-2.0)
+                             range:NSMakeRange(22, 3)];
+//    [attributedString addAttribute:NSForegroundColorAttributeName
+//                             value:[UIColor greenColor]
+//                             range:NSMakeRange(22, 3)];
+    
+    return attributedString;
 }
 
 //- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
