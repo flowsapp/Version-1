@@ -12,6 +12,7 @@
 #import "Reachability.h"
 #import "FLminMaxFlows.h"
 #import <CoreLocation/CoreLocation.h>
+#import <Instabug/Instabug.h>
 
 
 @interface AppDelegate ()
@@ -42,7 +43,8 @@
     
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
     
-    
+    [Instabug startWithToken:@"39fdc5b385b888f805f119ed6279fa1c" invocationEvent:IBGInvocationEventShake];
+    [Instabug setShakingThresholdForiPhone:1.5 foriPad:0.6];
     //NetworkStatus internetStatus = [reach currentReachabilityStatus];
     
 //    if(internetStatus==0){

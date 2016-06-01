@@ -48,6 +48,14 @@
 		42734B171C7C1C3D0061FAA2 /* icon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B111C7C1C3D0061FAA2 /* icon60@2x.png */; };
 		42734B181C7C1C3D0061FAA2 /* icon60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B121C7C1C3D0061FAA2 /* icon60@3x.png */; };
 		42734B1A1C7C23740061FAA2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B191C7C23740061FAA2 /* Default-568h@2x.png */; };
+		427B344F1CFE96280032C5D5 /* Instabug.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 427B344D1CFE96280032C5D5 /* Instabug.bundle */; };
+		427B34501CFE96280032C5D5 /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B344E1CFE96280032C5D5 /* Instabug.framework */; };
+		427B34521CFE96880032C5D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34511CFE96880032C5D5 /* AVFoundation.framework */; };
+		427B34541CFE96980032C5D5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34531CFE96980032C5D5 /* CoreMotion.framework */; };
+		427B34561CFE96A60032C5D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34551CFE96A60032C5D5 /* CoreGraphics.framework */; };
+		427B34581CFE96B40032C5D5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34571CFE96B40032C5D5 /* CoreTelephony.framework */; };
+		427B345A1CFE96C50032C5D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34591CFE96C50032C5D5 /* SystemConfiguration.framework */; };
+		427B345C1CFE96D10032C5D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B345B1CFE96D10032C5D5 /* UIKit.framework */; };
 		4295AA571C9CB7CA006C729C /* NewAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4295AA561C9CB7CA006C729C /* NewAboutViewController.m */; };
 		42A34C121BBD8CAD004F7FB7 /* ak in Resources */ = {isa = PBXBuildFile; fileRef = 42A34BDE1BBD8CAD004F7FB7 /* ak */; };
 		42A34C131BBD8CAD004F7FB7 /* al in Resources */ = {isa = PBXBuildFile; fileRef = 42A34BDF1BBD8CAD004F7FB7 /* al */; };
@@ -291,6 +299,14 @@
 		42734B111C7C1C3D0061FAA2 /* icon60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon60@2x.png"; sourceTree = "<group>"; };
 		42734B121C7C1C3D0061FAA2 /* icon60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon60@3x.png"; sourceTree = "<group>"; };
 		42734B191C7C23740061FAA2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		427B344D1CFE96280032C5D5 /* Instabug.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Instabug.bundle; sourceTree = "<group>"; };
+		427B344E1CFE96280032C5D5 /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instabug.framework; sourceTree = "<group>"; };
+		427B34511CFE96880032C5D5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		427B34531CFE96980032C5D5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		427B34551CFE96A60032C5D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		427B34571CFE96B40032C5D5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		427B34591CFE96C50032C5D5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		427B345B1CFE96D10032C5D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4295AA551C9CB7CA006C729C /* NewAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAboutViewController.h; sourceTree = "<group>"; };
 		4295AA561C9CB7CA006C729C /* NewAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAboutViewController.m; sourceTree = "<group>"; };
 		42A34BDE1BBD8CAD004F7FB7 /* ak */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ak; sourceTree = "<group>"; };
@@ -497,9 +513,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427B345C1CFE96D10032C5D5 /* UIKit.framework in Frameworks */,
+				427B345A1CFE96C50032C5D5 /* SystemConfiguration.framework in Frameworks */,
+				427B34581CFE96B40032C5D5 /* CoreTelephony.framework in Frameworks */,
+				427B34561CFE96A60032C5D5 /* CoreGraphics.framework in Frameworks */,
+				427B34541CFE96980032C5D5 /* CoreMotion.framework in Frameworks */,
+				427B34521CFE96880032C5D5 /* AVFoundation.framework in Frameworks */,
 				42A610E61CA392D100B931AD /* MessageUI.framework in Frameworks */,
 				4218847A1CD5189E0039BCCB /* StoreKit.framework in Frameworks */,
 				42A610E41CA392C800B931AD /* QuartzCore.framework in Frameworks */,
+				427B34501CFE96280032C5D5 /* Instabug.framework in Frameworks */,
 				42BEDAC51C87834200113431 /* MobileCoreServices.framework in Frameworks */,
 				42A34C4C1BBDBEC6004F7FB7 /* CoreLocation.framework in Frameworks */,
 				42A34C4A1BBDB53C004F7FB7 /* MapKit.framework in Frameworks */,
@@ -597,6 +620,7 @@
 		423ED49A1BB5BC58007772C8 /* newFlows */ = {
 			isa = PBXGroup;
 			children = (
+				427B344C1CFE96280032C5D5 /* Instabug */,
 				4214C3DA1CDEEFCA0016B473 /* TimeHelper */,
 				4218847B1CD6803A0039BCCB /* storeKit */,
 				4253B9771C970FF8008AF6BA /* helperClasses */,
@@ -666,6 +690,15 @@
 				42734B121C7C1C3D0061FAA2 /* icon60@3x.png */,
 			);
 			path = testicons;
+			sourceTree = "<group>";
+		};
+		427B344C1CFE96280032C5D5 /* Instabug */ = {
+			isa = PBXGroup;
+			children = (
+				427B344D1CFE96280032C5D5 /* Instabug.bundle */,
+				427B344E1CFE96280032C5D5 /* Instabug.framework */,
+			);
+			path = Instabug;
 			sourceTree = "<group>";
 		};
 		42A34BDD1BBD8CAD004F7FB7 /* stationData */ = {
@@ -989,6 +1022,12 @@
 		5BB70FA1789B59A40B7B72A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				427B345B1CFE96D10032C5D5 /* UIKit.framework */,
+				427B34591CFE96C50032C5D5 /* SystemConfiguration.framework */,
+				427B34571CFE96B40032C5D5 /* CoreTelephony.framework */,
+				427B34551CFE96A60032C5D5 /* CoreGraphics.framework */,
+				427B34531CFE96980032C5D5 /* CoreMotion.framework */,
+				427B34511CFE96880032C5D5 /* AVFoundation.framework */,
 				421884791CD5189E0039BCCB /* StoreKit.framework */,
 				42A610E51CA392D100B931AD /* MessageUI.framework */,
 				42A610E31CA392C800B931AD /* QuartzCore.framework */,
@@ -1275,6 +1314,7 @@
 				42EB71E81C38B94100D6215E /* 50n@2x.png in Resources */,
 				42EB71C81C38B94100D6215E /* 04d@3x.png in Resources */,
 				42EB71A71C38B94100D6215E /* BackIcon.png in Resources */,
+				427B344F1CFE96280032C5D5 /* Instabug.bundle in Resources */,
 				42EB71BE1C38B94100D6215E /* 02n@2x.png in Resources */,
 				42A34C451BBD8CAD004F7FB7 /* wy in Resources */,
 				42EB71D31C38B94100D6215E /* 10d@2x.png in Resources */,
@@ -1555,6 +1595,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/newFlows/Instabug",
+				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = newFlows/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1572,6 +1616,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/newFlows/Instabug",
+				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = newFlows/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
