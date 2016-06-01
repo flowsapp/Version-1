@@ -1129,6 +1129,9 @@
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					423ED4B01BB5BC58007772C8 = {
