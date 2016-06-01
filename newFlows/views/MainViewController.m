@@ -26,7 +26,7 @@
 #import "KFOWMDailyForecastListModel.h"
 #import "KFOWMWeatherModel.h"
 #import "KFOWMForecastTemperatureModel.h"
-//#import "customNavBar.h"
+#import "customNavBar.h"
 #import "KFOWMCityModel.h"
 #import "UIColor+Hexadecimal.h"
 
@@ -46,6 +46,7 @@
 //@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet JTMaterialSpinner *spinnerView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+//@property (weak, nonatomic) UIBarButtonItem *rightItem;
 
 @property (strong, nonatomic) NSString *updateString;
 
@@ -66,6 +67,8 @@
     UITableViewHeaderFooterView *header;
     UILabel *headerLabel;
     BOOL hasTappedRow;
+    
+    UIBarButtonItem *rightItem;
 }
 
 - (void)viewDidLoad {
@@ -99,7 +102,7 @@
                                                                  target:self action:@selector(leftButtonPressed:)];
     [leftItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIcon"]
+    rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIcon"]
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self action:@selector(addClicked:)];
     [rightItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
@@ -222,12 +225,24 @@
     
     
     if (selectedStationArray.count == 10) {
+        self.navigationItem.rightBarButtonItem = nil;
+        rightItem = nil;
+        rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIconEmpty"]
+                                                     style:UIBarButtonItemStylePlain
+                                                    target:self action:@selector(addClicked:)];
         //[self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIconEmpty"]];
         [self.navigationItem.rightBarButtonItem setEnabled:NO];
+        [self.navigationController.navigationBar setNeedsLayout];
         //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
     }else if (selectedStationArray.count < 10){
+        //self.navigationItem.rightBarButtonItem = nil;
+        //rightItem = nil;
+        rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIcon"]
+                                                     style:UIBarButtonItemStylePlain
+                                                    target:self action:@selector(addClicked:)];
         //[self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIcon"]];
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        [self.navigationController.navigationBar setNeedsLayout];
         //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
     }
     
@@ -492,7 +507,13 @@
         
         if (selectedStationArray.count == 10) {
             //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
+            rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIcon"]
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self action:@selector(addClicked:)];
+            [rightItem setTintColor:[UIColor colorWithRed:0.60 green:0.60 blue:0.60 alpha:1.0]];
+            self.navigationItem.rightBarButtonItem = rightItem;
             [self.navigationItem.rightBarButtonItem setEnabled:YES];
+            [self.navigationController.navigationBar setNeedsLayout];
         }
 
         
