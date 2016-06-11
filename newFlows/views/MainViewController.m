@@ -218,8 +218,11 @@
             if (selectedStationArray.count==1) {
                 [_mainTable reloadEmptyDataSet];
             }
-            [_spinnerView forceBeginRefreshing];
-            [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
+            if (selectedStationArray.count > 0) {
+                [_spinnerView forceBeginRefreshing];
+                [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
+            }
+            
         }
     }
     

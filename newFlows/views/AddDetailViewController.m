@@ -70,6 +70,8 @@
         
         if (filePathMatches) {
             NSArray *tempHolderArray = [[workingDataArray objectAtIndex:i] componentsSeparatedByString:@"\t"];
+            
+            NSLog(@"%@", tempHolderArray);
             NSDictionary *tempInstanceDict = [[NSDictionary alloc] initWithObjectsAndKeys:[tempHolderArray objectAtIndex:1], @"siteNumber", [tempHolderArray objectAtIndex:2], @"siteName", nil];
             [tempForSort addObject:tempInstanceDict];
         }
