@@ -686,7 +686,8 @@
         [v removeFromSuperview];
         
         UIButton *Button = [self.view viewWithTag:1002];
-        [Button setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        //[Button setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        [Button setImage:[UIImage imageNamed:@"New_Close_Icon"] forState:UIControlStateNormal];
         
         CustomSwipeview *view = [_swipeView itemCustomViewAtIndex:pageControl.currentPage];
         
