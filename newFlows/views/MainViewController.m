@@ -700,7 +700,7 @@
         NSLog(@"pause here");
         [NSThread sleepForTimeInterval:0.1];
         
-        [apiClient dailyForecastForCityId:locations[i] numberOfDays:3 withResultBlock:^(BOOL success, id responseData, NSError *error)
+        [apiClient dailyForecastForCityId:locations[i] numberOfDays:3  withResultBlock:^(BOOL success, id responseData, NSError *error)
          
          {
              
