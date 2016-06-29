@@ -12,10 +12,14 @@
 #import "UIColor+Hexadecimal.h"
 //#import "iRate.h"
 #import <MessageUI/MessageUI.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface InfoViewController () <MFMailComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource >
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
+@property (weak, nonatomic) IBOutlet UIView *highView;
+@property (weak, nonatomic) IBOutlet UIView *normalView;
+@property (weak, nonatomic) IBOutlet UIView *lowView;
 
 @end
 
@@ -36,6 +40,14 @@
     self.navigationItem.titleView = img;
     
     [self.mainTable setSeparatorColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
+    
+    
+    _highView.layer.cornerRadius = 10;
+    [_highView setBackgroundColor:[UIColor colorWithRed:0.15 green:0.58 blue:1.00 alpha:1.0]];
+    _normalView.layer.cornerRadius = 10;
+    [_normalView setBackgroundColor:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0]];
+    _lowView.layer.cornerRadius = 10;
+    [_lowView setBackgroundColor:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0]];
     
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
 //    label.backgroundColor = [UIColor clearColor];
