@@ -143,15 +143,19 @@
     //[mapButton anchorTopCenterWithTopPadding:20 width:30 height:30];
     [mapButton addTarget:self action:@selector(mapClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    pageControl = [[UIPageControl alloc] init];
-    [self.view addSubview:pageControl];
-    [pageControl setNumberOfPages:incomingItems.count];
-    //[pageControl setBackgroundColor:[UIColor redColor]];
-    //[pageControl anchorBottomCenterWithBottomPadding:-(self.swipeView.bounds.size.width/3) width:150 height:20];
-    //[pageControl anchorBottomCenterWithBottomPadding:-50 width:150 height:20];
-    [pageControl anchorBottomCenterFillingWidthWithLeftAndRightPadding:50 bottomPadding:10 height:20];
+    if (incomingItems.count > 1) {
+        pageControl = [[UIPageControl alloc] init];
+        [self.view addSubview:pageControl];
+        [pageControl setNumberOfPages:incomingItems.count];
+        //[pageControl setBackgroundColor:[UIColor redColor]];
+        //[pageControl anchorBottomCenterWithBottomPadding:-(self.swipeView.bounds.size.width/3) width:150 height:20];
+        //[pageControl anchorBottomCenterWithBottomPadding:-50 width:150 height:20];
+        [pageControl anchorBottomCenterFillingWidthWithLeftAndRightPadding:50 bottomPadding:10 height:20];
+        
+        [pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    }
     
-    [pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    
     
     
     //TODO TODO TODO load page....
@@ -428,7 +432,9 @@
             //NSMutableArray *tempArray = [holderArray firstObject];
             NSDictionary *tempDict = [holderArray firstObject];
             //NSString *holder = [NSString stringWithFormat:@"%@", tempDict[@"cityId"]];
-            if (stationDict[@"weatherStationId"] == tempDict[@"cityId"]) {
+            NSLog(@"%@ %@", stationDict[@"weatherStationId"], tempDict[@"cityId"]);
+            //if (stationDict[@"weatherStationId"] == tempDict[@"cityId"]) {
+            if ([stationDict[@"weatherStationId"] isEqualToNumber:tempDict[@"cityId"]]) {
                 innerArray = holderArray;
                 //NSLog(@"set holder here: %i ", holderArray);
             }
