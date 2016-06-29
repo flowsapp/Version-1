@@ -13,6 +13,8 @@
 //#import "iRate.h"
 #import <MessageUI/MessageUI.h>
 #import <QuartzCore/QuartzCore.h>
+#import "infoCell.h"
+
 
 @interface InfoViewController () <MFMailComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource >
 
@@ -121,11 +123,11 @@
 {
     
     static NSString *CellIdentifier = @"infoCell";
-    UITableViewCell *cell = [_mainTable dequeueReusableCellWithIdentifier:CellIdentifier];
+    infoCell *cell = [_mainTable dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //cell.textLabel.text = @"title";
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.mainLabel.textAlignment = NSTextAlignmentCenter;
+    //cell.mainLabel.textColor = [UIColor whiteColor];
     
     NSString *titleString;
     
@@ -139,7 +141,7 @@
                                  NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};//[UIColor colorWithHex:@"ACACAC"]};
     NSAttributedString *cellString = [[NSAttributedString alloc] initWithString:titleString attributes:attributes];
     
-    cell.textLabel.attributedText = cellString;
+    cell.mainLabel.attributedText = cellString;
     
     return cell;
     

@@ -123,6 +123,7 @@
 		42A610E21CA3910C00B931AD /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A610E11CA3910C00B931AD /* DisclaimerViewController.m */; };
 		42A610E41CA392C800B931AD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A610E31CA392C800B931AD /* QuartzCore.framework */; };
 		42A610E61CA392D100B931AD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A610E51CA392D100B931AD /* MessageUI.framework */; };
+		42BCB32B1D246856009B809F /* infoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BCB32A1D246856009B809F /* infoCell.m */; };
 		42BEA03E1CFCD09C0064593D /* AddIconEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 42BEA03B1CFCD09C0064593D /* AddIconEmpty.png */; };
 		42BEA03F1CFCD09C0064593D /* AddIconEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42BEA03C1CFCD09C0064593D /* AddIconEmpty@2x.png */; };
 		42BEA0401CFCD09C0064593D /* AddIconEmpty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42BEA03D1CFCD09C0064593D /* AddIconEmpty@3x.png */; };
@@ -384,6 +385,8 @@
 		42A610E11CA3910C00B931AD /* DisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclaimerViewController.m; sourceTree = "<group>"; };
 		42A610E31CA392C800B931AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42A610E51CA392D100B931AD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		42BCB3291D246856009B809F /* infoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = infoCell.h; sourceTree = "<group>"; };
+		42BCB32A1D246856009B809F /* infoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = infoCell.m; sourceTree = "<group>"; };
 		42BEA03B1CFCD09C0064593D /* AddIconEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddIconEmpty.png; sourceTree = "<group>"; };
 		42BEA03C1CFCD09C0064593D /* AddIconEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddIconEmpty@2x.png"; sourceTree = "<group>"; };
 		42BEA03D1CFCD09C0064593D /* AddIconEmpty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddIconEmpty@3x.png"; sourceTree = "<group>"; };
@@ -802,6 +805,8 @@
 				42A35B0D1BB5C3BD00470D6D /* MainTableViewCell.m */,
 				42BEDAB71C84B1B700113431 /* customNavBar.h */,
 				42BEDAB81C84B1B700113431 /* customNavBar.m */,
+				42BCB3291D246856009B809F /* infoCell.h */,
+				42BCB32A1D246856009B809F /* infoCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -1453,6 +1458,7 @@
 				42A610E21CA3910C00B931AD /* DisclaimerViewController.m in Sources */,
 				42A35B201BB654D100470D6D /* AddDetailViewController.m in Sources */,
 				42C8A98D1C8A354E006BF832 /* KFOWMSearchResponseModel.m in Sources */,
+				42BCB32B1D246856009B809F /* infoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
