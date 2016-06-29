@@ -46,6 +46,7 @@ PODS:
     - PromiseKit/When
   - PromiseKit/When (1.6.0):
     - PromiseKit/Promise
+  - SSDynamicText (0.5.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 1.0)
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - JSONModel (~> 0.9.1)
   - JTMaterialSpinner
   - PromiseKit (~> 1.5)
+  - SSDynamicText
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
@@ -65,5 +67,8 @@ SPEC CHECKSUMS:
   JTMaterialSpinner: f9e825c80317023f479b7ecc2856785280d8a8c5
   OMGHTTPURLRQ: c4268dea4295b585d711055dbcd87bfa82badd5f
   PromiseKit: 6be651503d4af22830b5313be993c5a0ef77bf77
+  SSDynamicText: 775f8786d840e6d2b676e62600a42cf9c30cb9d6
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 45d5599ff01417b9d96b7cad645d36d09ca1b74f
+
+COCOAPODS: 1.0.0

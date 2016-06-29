@@ -1,5 +1,7 @@
 platform :ios, '8.0'
 
+target 'newFlows' do
+
 pod 'DZNEmptyDataSet'
 pod 'GDIIndexBar'
 pod 'Facade'
@@ -7,3 +9,6 @@ pod 'JTMaterialSpinner'
 pod 'AFNetworking', '~> 1.0'
 pod 'JSONModel', '~> 0.9.1'
 pod 'PromiseKit', '~> 1.5'
+pod 'SSDynamicText'
+
+end
