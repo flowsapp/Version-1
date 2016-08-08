@@ -427,107 +427,128 @@
     if (weatherCacheArray.count>0) {
         
         NSMutableArray *innerArray;
+        BOOL isWeatherError = NO;
+        
+        
         
         for (NSMutableArray *holderArray in weatherCacheArray) {
-            //NSMutableArray *tempArray = [holderArray firstObject];
             NSDictionary *tempDict = [holderArray firstObject];
-            //NSString *holder = [NSString stringWithFormat:@"%@", tempDict[@"cityId"]];
-            NSLog(@"%@ %@", stationDict[@"weatherStationId"], tempDict[@"cityId"]);
-            //if (stationDict[@"weatherStationId"] == tempDict[@"cityId"]) {
-            if ([stationDict[@"weatherStationId"] isEqualToNumber:tempDict[@"cityId"]]) {
-                innerArray = holderArray;
-                //NSLog(@"set holder here: %i ", holderArray);
+            if (![tempDict[@"error"] isEqualToString:@"error occured"]) {
+            //if (tempDict[@"weatherStationId"]) {
+                NSLog(@"%@ %@", stationDict[@"weatherStationId"], tempDict[@"cityId"]);
+                if ([stationDict[@"weatherStationId"] isEqualToNumber:tempDict[@"cityId"]]) {
+                    innerArray = holderArray;
+                }
             }
+            
+            
         }
         
-//        view.weatherOneResultLabel.alpha = 0.0f;
-//        view.weatherOneDateLabel.alpha = 0.0f;
-//        view.weatherOneImageView.alpha = 0.0f;
-//        
-//        view.weatherTwoResultLabel.alpha = 0.0f;
-//        view.weatherTwoImageView.alpha = 0.0f;
-//        view.weatherTwoDateLabel.alpha = 0.0f;
-//        
-//        view.weatherThreeResultLabel.alpha = 0.0f;
-//        view.weatherThreeImageView.alpha = 0.0f;
-//        view.weatherThreeDateLabel.alpha = 0.0f;
-//        
-//        view.weatherSeperatorOne.alpha = 0.0f;
-//        view.weatherSeperatorThree.alpha = 0.0f;
-        
-        
-        
-        for (int i=0; i<innerArray.count; i++) {
-            NSDictionary *weatherDict = innerArray[i];
-            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-            [formatter setMaximumFractionDigits:0];
-            switch (i) {
-                case 0:
-                {
-                    NSMutableAttributedString *hiAttrString = [NSMutableAttributedString new];
-                    hiAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@° ", [formatter stringFromNumber:weatherDict[@"highNum"]]]];
-                    [hiAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,hiAttrString.length)];
-                    
-                    NSMutableAttributedString *loAttrString = [NSMutableAttributedString new];
-                    loAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°", [formatter stringFromNumber:weatherDict[@"lowNum"]]]];
-                    [loAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0] range:NSMakeRange(0,loAttrString.length)];
-                    
-                    [hiAttrString appendAttributedString:loAttrString];
-                    
-                    //switch to attributed string
-                    //[view.weatherOneResultLabel setText:[NSString stringWithFormat:@"%@° %@°",maxString, minString]];
-                    [view.weatherOneResultLabel setAttributedText:hiAttrString];
-                    [view.weatherOneImageView setImage:[UIImage imageNamed:weatherDict[@"iconString"]]];
-                    [view.weatherOneDateLabel setText:@"Today"];
-                    
+        if (innerArray.count>0) {
+            for (int i=0; i<innerArray.count; i++) {
+                NSDictionary *weatherDict = innerArray[i];
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                [formatter setMaximumFractionDigits:0];
+                switch (i) {
+                    case 0:
+                    {
+                        NSMutableAttributedString *hiAttrString = [NSMutableAttributedString new];
+                        hiAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@° ", [formatter stringFromNumber:weatherDict[@"highNum"]]]];
+                        [hiAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,hiAttrString.length)];
+                        
+                        NSMutableAttributedString *loAttrString = [NSMutableAttributedString new];
+                        loAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°", [formatter stringFromNumber:weatherDict[@"lowNum"]]]];
+                        [loAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0] range:NSMakeRange(0,loAttrString.length)];
+                        
+                        [hiAttrString appendAttributedString:loAttrString];
+                        
+                        //switch to attributed string
+                        //[view.weatherOneResultLabel setText:[NSString stringWithFormat:@"%@° %@°",maxString, minString]];
+                        [view.weatherOneResultLabel setAttributedText:hiAttrString];
+                        [view.weatherOneImageView setImage:[UIImage imageNamed:weatherDict[@"iconString"]]];
+                        [view.weatherOneDateLabel setText:@"Today"];
+                        
+                    }
+                        break;
+                    case 1:
+                    {
+                        //[_fDateTwoLabel setText:dateString];
+                        //[_fDetailTwoLabel setText:weatherDict[@"main"]];
+                        NSMutableAttributedString *hiAttrString = [NSMutableAttributedString new];
+                        hiAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@° ", [formatter stringFromNumber:weatherDict[@"highNum"]]]];
+                        [hiAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,hiAttrString.length)];
+                        
+                        NSMutableAttributedString *loAttrString = [NSMutableAttributedString new];
+                        loAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°", [formatter stringFromNumber:weatherDict[@"lowNum"]]]];
+                        [loAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0] range:NSMakeRange(0,loAttrString.length)];
+                        
+                        [hiAttrString appendAttributedString:loAttrString];
+                        
+                        //switch to attributed string
+                        [view.weatherTwoResultLabel setAttributedText:hiAttrString];
+                        [view.weatherTwoImageView setImage:[UIImage imageNamed:weatherDict[@"iconString"]]];
+                        [view.weatherTwoDateLabel setText:[NSString stringWithFormat:@"%@", weatherDict[@"dateString"]]];
+                    }
+                        break;
+                    case 2:
+                    {
+                        //[_fDateThreeLabel setText:dateString];
+                        //[_fDetailThreeLabel setText:weatherDict[@"main"]];
+                        NSMutableAttributedString *hiAttrString = [NSMutableAttributedString new];
+                        hiAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@° ", [formatter stringFromNumber:weatherDict[@"highNum"]]]];
+                        [hiAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,hiAttrString.length)];
+                        
+                        NSMutableAttributedString *loAttrString = [NSMutableAttributedString new];
+                        loAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°", [formatter stringFromNumber:weatherDict[@"lowNum"]]]];
+                        [loAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0] range:NSMakeRange(0,loAttrString.length)];
+                        
+                        [hiAttrString appendAttributedString:loAttrString];
+                        
+                        //switch to attributed string
+                        [view.weatherThreeResultLabel setAttributedText:hiAttrString];
+                        [view.weatherThreeImageView setImage:[UIImage imageNamed:weatherDict[@"iconString"]]];
+                        [view.weatherThreeDateLabel setText:[NSString stringWithFormat:@"%@", weatherDict[@"dateString"]]];
+                    }
+                        break;
+                        
+                    default:
+                        break;
                 }
-                    break;
-                case 1:
-                {
-                    //[_fDateTwoLabel setText:dateString];
-                    //[_fDetailTwoLabel setText:weatherDict[@"main"]];
-                    NSMutableAttributedString *hiAttrString = [NSMutableAttributedString new];
-                    hiAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@° ", [formatter stringFromNumber:weatherDict[@"highNum"]]]];
-                    [hiAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,hiAttrString.length)];
-                    
-                    NSMutableAttributedString *loAttrString = [NSMutableAttributedString new];
-                    loAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°", [formatter stringFromNumber:weatherDict[@"lowNum"]]]];
-                    [loAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0] range:NSMakeRange(0,loAttrString.length)];
-                    
-                    [hiAttrString appendAttributedString:loAttrString];
-                    
-                    //switch to attributed string
-                    [view.weatherTwoResultLabel setAttributedText:hiAttrString];
-                    [view.weatherTwoImageView setImage:[UIImage imageNamed:weatherDict[@"iconString"]]];
-                    [view.weatherTwoDateLabel setText:[NSString stringWithFormat:@"%@", weatherDict[@"dateString"]]];
-                }
-                    break;
-                case 2:
-                {
-                    //[_fDateThreeLabel setText:dateString];
-                    //[_fDetailThreeLabel setText:weatherDict[@"main"]];
-                    NSMutableAttributedString *hiAttrString = [NSMutableAttributedString new];
-                    hiAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@° ", [formatter stringFromNumber:weatherDict[@"highNum"]]]];
-                    [hiAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,hiAttrString.length)];
-                    
-                    NSMutableAttributedString *loAttrString = [NSMutableAttributedString new];
-                    loAttrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°", [formatter stringFromNumber:weatherDict[@"lowNum"]]]];
-                    [loAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.67 green:0.67 blue:0.67 alpha:1.0] range:NSMakeRange(0,loAttrString.length)];
-                    
-                    [hiAttrString appendAttributedString:loAttrString];
-                    
-                    //switch to attributed string
-                    [view.weatherThreeResultLabel setAttributedText:hiAttrString];
-                    
-                    [view.weatherThreeImageView setImage:[UIImage imageNamed:weatherDict[@"iconString"]]];
-                    [view.weatherThreeDateLabel setText:[NSString stringWithFormat:@"%@", weatherDict[@"dateString"]]];
-                }
-                    break;
-                    
-                default:
-                    break;
             }
+        }else{
+            [view.weatherOneResultLabel setText:@"No Data"];
+            [view.weatherOneImageView setImage:[UIImage imageNamed:@"na"]];
+            [view.weatherOneDateLabel setText:@"No Data"];
+            
+            [view.weatherTwoResultLabel setText:@"No Data"];
+            [view.weatherTwoImageView setImage:[UIImage imageNamed:@"na"]];
+            [view.weatherTwoDateLabel setText:@"No Data"];
+            
+            [view.weatherThreeResultLabel setText:@"No Data"];
+            [view.weatherThreeImageView setImage:[UIImage imageNamed:@"na"]];
+            [view.weatherThreeDateLabel setText:@"No Data"];
         }
+        
+        
+//        if (isWeatherError) {
+//            //handle error
+//            //[view.weatherOneResultLabel setAttributedText:hiAttrString];
+//            [view.weatherOneResultLabel setText:@"No Data"];
+//            [view.weatherOneImageView setImage:[UIImage imageNamed:@"na"]];
+//            [view.weatherOneDateLabel setText:@"No Data"];
+//            
+//            [view.weatherTwoResultLabel setText:@"No Data"];
+//            [view.weatherTwoImageView setImage:[UIImage imageNamed:@"na"]];
+//            [view.weatherTwoDateLabel setText:@"No Data"];
+//            
+//            [view.weatherThreeResultLabel setText:@"No Data"];
+//            [view.weatherThreeImageView setImage:[UIImage imageNamed:@"na"]];
+//            [view.weatherThreeDateLabel setText:@"No Data"];
+//            
+//        }
+        
+        
+        
 
     }
 //

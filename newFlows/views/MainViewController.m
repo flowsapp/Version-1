@@ -593,7 +593,7 @@
                     if ([meanDict[@"siteNumber"] isEqualToString:cellDict[@"stationNumber"]]) {
                         NSLog(@"%f", [meanDict[@"25Value"] doubleValue]);
                         if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
-                            cell.resultLabel.text = @"Ice";
+                            cell.resultLabel.text = @"ICE";
                             [cell.resultLabel setTextColor:[UIColor whiteColor]];
                         }else{
                             if ([meanDict[@"meanValue"] doubleValue] > [meanDict[@"75Value"] doubleValue] || [meanDict[@"meanValue"] doubleValue] < [meanDict[@"25Value"] doubleValue]) {
@@ -728,8 +728,16 @@
                      
                      NSDate *testDate = listModel.dt; //innerDict[@"dt"];
                      NSDateFormatter *df = [[NSDateFormatter alloc] init];
-                     df.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+                     //df.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+                     df.locale = [NSLocale currentLocale];
                      [df setDateFormat:@"EEEE"];
+                     
+                     
+                     NSDate *currentDateWithOffset = [NSDate dateWithTimeIntervalSinceNow:[[NSTimeZone localTimeZone] secondsFromGMT]];
+                     NSTimeZone* destinationTimeZone = [NSTimeZone systemTimeZone];
+                     float timeZoneOffset = [destinationTimeZone secondsFromGMTForDate:testDate] / 3600.0;
+                     NSLog(@"sourceDate=%@ timeZoneOffset=%f", testDate, timeZoneOffset);
+                     
                      
                      NSString *dateString = [df stringFromDate:testDate];
                      NSArray *weatherHolder = listModel.weather;
@@ -747,12 +755,14 @@
                  dispatch_group_leave(group);
                  
              }else{
+                 
                  NSLog(@"could not get weather: %@", error);
                  NSMutableArray *intermediateArray = [NSMutableArray new];
                  NSMutableDictionary *errorDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"error occured", @"error", nil];
                  [intermediateArray addObject:errorDict];
                  [weatherDataArray addObject:intermediateArray];
                  dispatch_group_leave(group);
+                 
              }
              
          }];

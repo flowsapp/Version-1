@@ -48,7 +48,7 @@
     //    [self.navigationController.navigationBar setTitleTextAttributes:
     //     @{NSForegroundColorAttributeName:[UIColor colorWithHex:@"ACACAC"]}];
     
-    [self.navigationItem setHidesBackButton:YES animated:YES];
+    [self.navigationItem setHidesBackButton:YES animated:NO];
     
 }
 

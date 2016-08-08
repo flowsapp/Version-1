@@ -30,17 +30,25 @@
     label.backgroundColor = [UIColor clearColor];
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f];
-    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:22.0f];
+    label.textColor = [UIColor colorWithHex:@"ACACAC"];
     label.text = @"Disclaimer";
     
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = label;
     self.navigationController.delegate = self;
     
-    //NSDictionary *barButtonAppearanceDict = @{NSForegroundColorAttributeName: [UIColor colorWithHex:@"ACACAC"]};
+    
+    
+    
+    //NSDictionary *barButtonAppearanceDict = @{NSForegroundColorAttributeName: [UIColor greenColor]};
     //[[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
-    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithHex:@"ACACAC"]];
+    
+    //[UINavigationBar appearance].tintColor = [UIColor greenColor];
+    //self.navigationController.navigationBar.tintColor = [UIColor greenColor];
+    
+    //[[UIBarButtonItem appearance] setTintColor:[UIColor colorWithHex:@"ACACAC"]];
+    //[[UIBarButtonItem appearance] setTintColor:[UIColor greenColor]];
     
     
     [[MKStoreKit sharedKit] startProductRequest];

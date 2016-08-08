@@ -67,7 +67,14 @@
 //    [self.navigationController.navigationBar setTitleTextAttributes:
 //     @{NSForegroundColorAttributeName:[UIColor colorWithHex:@"ACACAC"]}];
     
-    [self.navigationItem setHidesBackButton:YES animated:YES];
+    
+    
+    [self.navigationItem setHidesBackButton:YES animated:NO];
+    
+    //UIView *backView = [UIView new];
+    //[self.navigationItem.backBarButtonItem setTitle:@" "];
+    //self.navigationBar.tintColor = [UIColor clearColor];
+    
 //    [self.navigationController.navigationItem.backBarButtonItem setBackgroundVerticalPositionAdjustment:-50 forBarMetrics:UIBarMetricsDefault];
     
     _mainTable.tableFooterView = [UIView new];

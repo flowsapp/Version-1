@@ -44,11 +44,11 @@
     [self.mainTable setSeparatorColor:[UIColor colorWithRed:0.20 green:0.20 blue:0.20 alpha:1.0]];
     
     
-    _highView.layer.cornerRadius = 10;
+    _highView.layer.cornerRadius = 5;
     [_highView setBackgroundColor:[UIColor colorWithRed:0.15 green:0.58 blue:1.00 alpha:1.0]];
-    _normalView.layer.cornerRadius = 10;
+    _normalView.layer.cornerRadius = 5;
     [_normalView setBackgroundColor:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0]];
-    _lowView.layer.cornerRadius = 10;
+    _lowView.layer.cornerRadius = 5;
     [_lowView setBackgroundColor:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0]];
     
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
