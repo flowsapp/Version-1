@@ -232,7 +232,7 @@
         rightItem = nil;
         rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"AddIconEmpty"]
                                                      style:UIBarButtonItemStylePlain
-                                                    target:self action:@selector(addClicked:)];
+                                                    target:self action:@selector(addNoneClicked:)];
         //[self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"AddIconEmpty"]];
         [self.navigationItem.rightBarButtonItem setEnabled:NO];
         [self.navigationController.navigationBar setNeedsLayout];
@@ -318,7 +318,9 @@
     [_spinnerView endRefreshing];
     
 }
-
+- (IBAction)addNoneClicked:(id)sender {
+    //should never hit? nil method
+}
 - (IBAction)addClicked:(id)sender {
     
     
@@ -326,24 +328,54 @@
     // test for station array count and hasPurchased bool
     NSLog(@"%@", [NSNumber numberWithBool:[defaults boolForKey:@"upgradePurchased"]]);
     
-    if (selectedStationArray.count <=2) {
-        [self performSegueWithIdentifier:@"addStationSegue" sender:self];
-    }else if(selectedStationArray.count <=9 && [defaults boolForKey:@"upgradePurchased"]){
-        [self performSegueWithIdentifier:@"addStationSegue" sender:self];
-    }else if (selectedStationArray.count ==3 && ![defaults boolForKey:@"upgradePurchased"]){
-        [self performSegueWithIdentifier:@"purchaseSegue" sender:self];
+    
+    
+    if ([defaults boolForKey:@"upgradePurchased"]) {
+        
+        // in-app upgrade
+        if (selectedStationArray.count < 10) {
+            [self performSegueWithIdentifier:@"addStationSegue" sender:self];
+        }else{
+            // at max stations
+        }
+        
+        
     }else{
-        //ten station max
         
-        // should never hit
+        // free version
+        if (selectedStationArray.count < 3) {
+            [self performSegueWithIdentifier:@"addStationSegue" sender:self];
+        }else{
+            [self performSegueWithIdentifier:@"purchaseSegue" sender:self];
+        }
         
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You are at your maximum stations"
-//                                                        message:@"Delete a stations text here?"
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"OK"
-//                                              otherButtonTitles:nil];
-//        [alert show];
     }
+    
+    
+//    if (selectedStationArray.count <=2) {
+//        
+//        [self performSegueWithIdentifier:@"addStationSegue" sender:self];
+//        
+//    }else if (selectedStationArray.count <=9 && [defaults boolForKey:@"upgradePurchased"]){
+//        
+//        [self performSegueWithIdentifier:@"addStationSegue" sender:self];
+//        
+//    }else if (selectedStationArray.count ==3 && ![defaults boolForKey:@"upgradePurchased"]){
+//        
+//        [self performSegueWithIdentifier:@"purchaseSegue" sender:self];
+//        
+//    }else{
+//        //ten station max
+//        
+//        // should never hit
+//        
+////        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You are at your maximum stations"
+////                                                        message:@"Delete a stations text here?"
+////                                                       delegate:self
+////                                              cancelButtonTitle:@"OK"
+////                                              otherButtonTitles:nil];
+////        [alert show];
+//    }
     
     
 }

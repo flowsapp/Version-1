@@ -31,7 +31,7 @@
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:22.0f];
-    label.textColor = [UIColor colorWithHex:@"ACACAC"];
+    label.textColor = [UIColor whiteColor];
     label.text = @"Disclaimer";
     
     [self.navigationItem.titleView sizeToFit];

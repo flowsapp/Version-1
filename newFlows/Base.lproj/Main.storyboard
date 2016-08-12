@@ -565,7 +565,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="IoE-b3-1AY">
                         <barButtonItem key="leftBarButtonItem" image="BackIcon.png" id="gNh-bO-gKC">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="exitClicked:" destination="mI5-a2-wKs" id="vHl-73-QRu"/>
                             </connections>
