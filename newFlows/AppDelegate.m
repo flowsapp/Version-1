@@ -583,8 +583,8 @@
                 [stationDict setObject:[NSNumber numberWithDouble:longTotal] forKey:@"longTotal"];
                 [stationDict setObject:[NSNumber numberWithDouble:latTotal] forKey:@"latTotal"];
 #pragma mark - TODO test for nil weatherInfo station data
-                NSDictionary *weatherInfo = [self closestLocationToLocation:[[CLLocation alloc] initWithLatitude:[[NSNumber numberWithDouble:latTotal] doubleValue] longitude:[[NSNumber numberWithDouble:longTotal] doubleValue]]];
-                [stationDict setObject:weatherInfo[@"_id"] forKey:@"weatherStationId"];
+                //NSDictionary *weatherInfo = [self closestLocationToLocation:[[CLLocation alloc] initWithLatitude:[[NSNumber numberWithDouble:latTotal] doubleValue] longitude:[[NSNumber numberWithDouble:longTotal] doubleValue]]];
+                //=[stationDict setObject:weatherInfo[@"_id"] forKey:@"weatherStationId"];
                 [selectedStationArray replaceObjectAtIndex:i withObject:stationDict];
                 [defaults setObject:selectedStationArray forKey:@"selectedStationArray"];
             }
@@ -595,44 +595,44 @@
     
 }
 
-- (NSDictionary*)closestLocationToLocation:(CLLocation*)currLocation
-{
-    CLLocationDistance minDistance = 99999999999;
-    
-    CLLocation *closestLocation = nil;
-    
-    NSDictionary *chosenDict;
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    //NSError* error = nil; // Declare a variable to hold the error upon return
-    //id obj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error]; // Try to convert your data
-    //NSLog(@"obj: %@ ; error: %@", obj, error);
-    
-    
-    //for (CLLocation *location in arrayOfLocations) {
-    for (NSDictionary *locationDict in json) {
-        
-        NSDictionary *innerDict = locationDict[@"coord"];
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:[innerDict[@"lat"] doubleValue] longitude:[innerDict[@"lon"] doubleValue]];;
-        
-        CLLocationDistance distance = [location distanceFromLocation:currLocation];
-        
-        if (distance <= minDistance
-            || closestLocation == nil) {
-            minDistance = distance;
-            closestLocation = location;
-            chosenDict = locationDict;
-        }
-    }
-    
-    //closestLocation is now the location from your array which is closest to the current location or nil if there are no locations in your array.
-    
-    //return closestLocation;
-    return chosenDict;
-    
-}
+//- (NSDictionary*)closestLocationToLocation:(CLLocation*)currLocation
+//{
+//    CLLocationDistance minDistance = 99999999999;
+//    
+//    CLLocation *closestLocation = nil;
+//    
+//    NSDictionary *chosenDict;
+//    
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"json"];
+//    NSData *data = [NSData dataWithContentsOfFile:filePath];
+//    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+//    //NSError* error = nil; // Declare a variable to hold the error upon return
+//    //id obj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error]; // Try to convert your data
+//    //NSLog(@"obj: %@ ; error: %@", obj, error);
+//    
+//    
+//    //for (CLLocation *location in arrayOfLocations) {
+//    for (NSDictionary *locationDict in json) {
+//        
+//        NSDictionary *innerDict = locationDict[@"coord"];
+//        CLLocation *location = [[CLLocation alloc] initWithLatitude:[innerDict[@"lat"] doubleValue] longitude:[innerDict[@"lon"] doubleValue]];;
+//        
+//        CLLocationDistance distance = [location distanceFromLocation:currLocation];
+//        
+//        if (distance <= minDistance
+//            || closestLocation == nil) {
+//            minDistance = distance;
+//            closestLocation = location;
+//            chosenDict = locationDict;
+//        }
+//    }
+//    
+//    //closestLocation is now the location from your array which is closest to the current location or nil if there are no locations in your array.
+//    
+//    //return closestLocation;
+//    return chosenDict;
+//    
+//}
 
 
 @end
