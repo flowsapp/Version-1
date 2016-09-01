@@ -45,7 +45,7 @@
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTable;
-//@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet JTMaterialSpinner *spinnerView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 //@property (weak, nonatomic) UIBarButtonItem *rightItem;
@@ -96,9 +96,9 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     
-    //_refreshControl = [[UIRefreshControl alloc] init];
-    //[_refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
-    //[_mainTable addSubview:_refreshControl]; //assumes tableView is @property
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(pullToRefresh) forControlEvents:UIControlEventValueChanged];
+    [_mainTable addSubview:_refreshControl]; //assumes tableView is @property
     
     //resultArray = [NSMutableArray new];
     //minMaxArray = [NSMutableArray new];
@@ -177,6 +177,10 @@
                                                object:nil];
 
     
+}
+
+- (void)pullToRefresh{
+    [[[UIApplication sharedApplication] delegate] performSelector:@selector(refreshData)];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -300,6 +304,7 @@
                       atScrollPosition:UITableViewScrollPositionBottom
                               animated:YES];
 #pragma mark - TODO refresh
+    [_refreshControl endRefreshing];
     //[activityIndicatorView stopAnimating];
     [_spinnerView endRefreshing];
     
@@ -309,7 +314,8 @@
     
     resultArray = [defaults objectForKey:@"resultArray"];
     minMaxArray = [defaults objectForKey:@"minMaxArray"];
-    //[_refreshControl endRefreshing];
+    [_refreshControl endRefreshing];
+    [_spinnerView endRefreshing];
     [_mainTable reloadData];
     
 }
@@ -320,6 +326,7 @@
     minMaxArray = [defaults objectForKey:@"minMaxArray"];
     [_mainTable reloadData];
 #pragma mark - TODO refresh
+    [_refreshControl endRefreshing];
     //[activityIndicatorView stopAnimating];
     [_spinnerView endRefreshing];
     
