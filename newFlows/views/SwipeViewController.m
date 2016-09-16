@@ -177,7 +177,7 @@
     }else{
         isLoading = NO;
         isLoadingSecond = NO;
-        [_swipeView scrollToItemAtIndex:incoming duration:0.1f];
+        [_swipeView scrollToItemAtIndex:incoming duration:0.01f];
         //[_swipeView scrollToPage:incoming duration:0.1f];
     }
     
@@ -268,7 +268,7 @@
             //[UIView beginAnimations:@"fadeOutMapView" context:NULL];
             //[UIView setAnimationDuration:1.0];
 //            
-            view.backGroundImage.alpha = 0.9f;
+            view.backGroundImage.alpha = 0.95f;
 //            
 //            view.weatherContainerView.hidden = NO;
 //            view.resultContainerView.hidden = NO;
@@ -797,7 +797,7 @@
         view.mainMap.scrollEnabled = YES;
         view.mainMap.userInteractionEnabled = YES;
         
-        view.backGroundImage.alpha = 0.9f;
+        view.backGroundImage.alpha = 0.95f;
         
         view.weatherContainerView.hidden = NO;
         view.resultContainerView.hidden = NO;
@@ -848,7 +848,6 @@
         view.mainMap.zoomEnabled = NO;
         view.mainMap.scrollEnabled = NO;
         view.mainMap.userInteractionEnabled = NO;
-        //view.backGroundImage.alpha = 0.0f;
         view.backGroundImage.alpha = 0.0f;
         
         view.weatherContainerView.alpha =0.0f;
@@ -862,7 +861,7 @@
         
         [UIView beginAnimations:@"fadeInMapView" context:NULL];
         [UIView setAnimationDuration:1.0];
-        view.backGroundImage.alpha = 0.9f;
+        view.backGroundImage.alpha = 0.95f;
         
         view.weatherContainerView.alpha =1.0f;
         view.resultContainerView.alpha = 1.0f;

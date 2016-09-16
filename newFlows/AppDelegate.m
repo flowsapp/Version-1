@@ -198,6 +198,11 @@
         //NSDate *currentDate = [NSDate date];
         NSTimeInterval secondsSinceUpdateInterval = [lastUSGSupdateDate timeIntervalSinceNow];
         int minutesSinceUpdateInterval = secondsSinceUpdateInterval*-1/60;
+        
+//        if (minutesSinceUpdateInterval>30) {
+//            <#statements#>
+//        }
+        
         [defaults setObject:[NSDate date] forKey:@"lastUSGSupdateDate"];
         return [NSURLConnection GET:[NSString stringWithFormat:@"http://waterservices.usgs.gov/nwis/iv/?format=rdb&modifiedSince=PT%iM&sites=%@&parameterCd=00060", minutesSinceUpdateInterval, md5]];
         

@@ -180,7 +180,17 @@
 }
 
 - (void)pullToRefresh{
-    [[[UIApplication sharedApplication] delegate] performSelector:@selector(refreshData)];
+    
+    NSDate *lastUSGSupdateDate = [defaults objectForKey:@"lastUSGSupdateDate"];
+    //NSDate *currentDate = [NSDate date];
+    NSTimeInterval secondsSinceUpdateInterval = [lastUSGSupdateDate timeIntervalSinceNow];
+    int minutesSinceUpdateInterval = secondsSinceUpdateInterval*-1/60;
+    if (minutesSinceUpdateInterval>30) {
+        [[[UIApplication sharedApplication] delegate] performSelector:@selector(runLiveUpdate)];
+    }else{
+        [_refreshControl endRefreshing];
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -694,33 +704,33 @@
         [defaults setInteger:indexPath.row forKey:@"selectedIndex"];
         
         
-        //BOOL pullNewWeather = [defaults boolForKey:@"pullNewWeather"];
+        BOOL pullNewWeather = [defaults boolForKey:@"pullNewWeather"];
         
-        //NSDate *lastWeatherPullDate = [defaults objectForKey:@"updatedWeatherDate"];
+        NSDate *lastWeatherPullDate = [defaults objectForKey:@"updatedWeatherDate"];
         
         selectedStationArray = [[defaults objectForKey:@"selectedStationArray"] mutableCopy];
         
-        [self pullFromDarkWeather:selectedStationArray];
+        //[self pullFromDarkWeather:selectedStationArray];
         
-//        if (lastWeatherPullDate == nil) {
-//            [self testWeatherWithArray:selectedStationArray];
-//        }else{
-//            NSDate *todaysDate = [NSDate date];
-//            NSCalendar *gregorian = [NSCalendar currentCalendar];
-//            NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-//            [dateComponents setHour:3];
-//            NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:lastWeatherPullDate options:0];
-////            if ([targetDate compare:todaysDate] == NSOrderedAscending || pullNewWeather) {
-////                [self testWeatherWithArray:selectedStationArray];
-////            }else{
-////                [_spinnerView endRefreshing];
-////                hasTappedRow = NO;
-////                [self performSegueWithIdentifier:@"swipeSegue" sender:self];
-////            }
-//            
-//            [self pullFroDarkWeather:selectedStationArray];
-//            
-//        }
+        if (lastWeatherPullDate == nil) {
+            [self pullFromDarkWeather:selectedStationArray];
+        }else{
+            NSDate *todaysDate = [NSDate date];
+            NSCalendar *gregorian = [NSCalendar currentCalendar];
+            NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+            [dateComponents setHour:3];
+            NSDate *targetDate = [gregorian dateByAddingComponents:dateComponents toDate:lastWeatherPullDate options:0];
+            if ([targetDate compare:todaysDate] == NSOrderedAscending || pullNewWeather) {
+                [self pullFromDarkWeather:selectedStationArray];
+            }else{
+                [_spinnerView endRefreshing];
+                hasTappedRow = NO;
+                [self performSegueWithIdentifier:@"swipeSegue" sender:self];
+            }
+            
+            
+            
+        }
         
     }
 }
