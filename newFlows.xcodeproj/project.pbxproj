@@ -81,10 +81,6 @@
 		42734B171C7C1C3D0061FAA2 /* icon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B111C7C1C3D0061FAA2 /* icon60@2x.png */; };
 		42734B181C7C1C3D0061FAA2 /* icon60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B121C7C1C3D0061FAA2 /* icon60@3x.png */; };
 		42734B1A1C7C23740061FAA2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B191C7C23740061FAA2 /* Default-568h@2x.png */; };
-		427B34521CFE96880032C5D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34511CFE96880032C5D5 /* AVFoundation.framework */; };
-		427B34541CFE96980032C5D5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34531CFE96980032C5D5 /* CoreMotion.framework */; };
-		427B34561CFE96A60032C5D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34551CFE96A60032C5D5 /* CoreGraphics.framework */; };
-		427B34581CFE96B40032C5D5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34571CFE96B40032C5D5 /* CoreTelephony.framework */; };
 		427B345A1CFE96C50032C5D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34591CFE96C50032C5D5 /* SystemConfiguration.framework */; };
 		427B345C1CFE96D10032C5D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B345B1CFE96D10032C5D5 /* UIKit.framework */; };
 		4295AA571C9CB7CA006C729C /* NewAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4295AA561C9CB7CA006C729C /* NewAboutViewController.m */; };
@@ -159,7 +155,6 @@
 		42BEDABC1C85252A00113431 /* SwipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BEDABB1C85252A00113431 /* SwipeView.xib */; };
 		42BEDABF1C85256300113431 /* CustomSwipeview.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BEDABE1C85256300113431 /* CustomSwipeview.m */; };
 		42BEDAC31C8535A900113431 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BEDAC21C8535A900113431 /* SwipeView.m */; };
-		42BEDAC51C87834200113431 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42BEDAC41C87834200113431 /* MobileCoreServices.framework */; };
 		42C8A95A1C8A17A9006BF832 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 42C8A9591C8A17A9006BF832 /* city.json */; };
 		42D5FEF41C18C4B4000E8D0B /* FLminMaxFlows.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5FEF31C18C4B4000E8D0B /* FLminMaxFlows.m */; };
 		42D5FEFF1C19405E000E8D0B /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5FEFE1C19405E000E8D0B /* SwipeViewController.m */; };
@@ -481,14 +476,9 @@
 			files = (
 				427B345C1CFE96D10032C5D5 /* UIKit.framework in Frameworks */,
 				427B345A1CFE96C50032C5D5 /* SystemConfiguration.framework in Frameworks */,
-				427B34581CFE96B40032C5D5 /* CoreTelephony.framework in Frameworks */,
-				427B34561CFE96A60032C5D5 /* CoreGraphics.framework in Frameworks */,
-				427B34541CFE96980032C5D5 /* CoreMotion.framework in Frameworks */,
-				427B34521CFE96880032C5D5 /* AVFoundation.framework in Frameworks */,
 				42A610E61CA392D100B931AD /* MessageUI.framework in Frameworks */,
 				4218847A1CD5189E0039BCCB /* StoreKit.framework in Frameworks */,
 				42A610E41CA392C800B931AD /* QuartzCore.framework in Frameworks */,
-				42BEDAC51C87834200113431 /* MobileCoreServices.framework in Frameworks */,
 				42A34C4C1BBDBEC6004F7FB7 /* CoreLocation.framework in Frameworks */,
 				42A34C4A1BBDB53C004F7FB7 /* MapKit.framework in Frameworks */,
 				77893ED3D290D7940455110C /* libPods-newFlows.a in Frameworks */,
