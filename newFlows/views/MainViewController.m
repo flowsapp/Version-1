@@ -648,7 +648,7 @@
                     if ([meanDict[@"siteNumber"] isEqualToString:cellDict[@"stationNumber"]]) {
                         NSLog(@"%f", [meanDict[@"25Value"] doubleValue]);
                         if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
-                            cell.resultLabel.text = @"ICE";
+                            cell.resultLabel.text = @"N/A";
                             [cell.resultLabel setTextColor:[UIColor whiteColor]];
                         }else{
                             if ([meanDict[@"meanValue"] doubleValue] > [meanDict[@"75Value"] doubleValue] || [meanDict[@"meanValue"] doubleValue] < [meanDict[@"25Value"] doubleValue]) {

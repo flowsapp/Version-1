@@ -11,32 +11,14 @@
 
 @interface SSDynamicLabel ()
 
-@property (nonatomic, copy) NSAttributedString *baseAttributedText;
 @property (nonatomic, strong) SSDynamicTextSizeChanger *textSizeChanger;
 
 @end
 
 @implementation SSDynamicLabel
 
-- (SSDynamicTextSizeChanger *)textSizeChanger {
-    if (_textSizeChanger == nil) {
-        _textSizeChanger = [self createTextChanger];
-    }
-    return _textSizeChanger;
-}
-
-- (void)setDefaultFontDescriptor:(UIFontDescriptor *)defaultFontDescriptor {
-    self.textSizeChanger.defaultFontDescriptor = defaultFontDescriptor;
-    [super setDefaultFontDescriptor:defaultFontDescriptor];
-}
-
-- (void)setFont:(UIFont *)font {
-    [super setFont:font];
-    [self setupBaseFontBasedOnCurrentFont];
-}
-
 - (instancetype)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
+    if (self = [super initWithFrame:frame]) {
         [self startObservingTextSizeChanges];
     }
     
@@ -46,7 +28,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    [self setupBaseFontBasedOnCurrentFont];
+    [self setupDefaultFontDescriptorBasedOnFont:self.font];
     [self startObservingTextSizeChanges];
 }
 
@@ -67,7 +49,26 @@
     [self ss_stopObservingTextSizeChanges];
 }
 
+#pragma mark - Accessors
+
+- (void)setDefaultFontDescriptor:(UIFontDescriptor *)defaultFontDescriptor {
+    self.textSizeChanger.defaultFontDescriptor = defaultFontDescriptor;
+    super.defaultFontDescriptor = defaultFontDescriptor;
+}
+
+- (void)setFont:(UIFont *)font {
+    [super setFont:font];
+    [self setupDefaultFontDescriptorBasedOnFont:self.font];
+}
+
 #pragma mark - Private Methods
+
+- (SSDynamicTextSizeChanger *)textSizeChanger {
+    if (_textSizeChanger == nil) {
+        _textSizeChanger = [self createTextChanger];
+    }
+    return _textSizeChanger;
+}
 
 - (SSDynamicTextSizeChanger *)createTextChanger {
     SSDynamicTextSizeChanger *changer = [[SSDynamicTextSizeChanger alloc] init];
@@ -81,23 +82,6 @@
         weakSelf.attributedText = attributedText;
     };
     return changer;
-}
-
-- (void)setupBaseFontBasedOnCurrentFont {
-    NSString *fontName;
-    CGFloat baseSize = 0;
-
-    if (self.font) {
-        fontName = self.font.fontName;
-        baseSize = self.font.pointSize;
-    }
-
-    fontName = (fontName ?: [self ss_defaultFontName]);
-    baseSize = (baseSize ?: [self ss_defaultBaseSize]);
-
-    self.defaultFontDescriptor = (self.font.fontDescriptor ?:
-                                  [UIFontDescriptor fontDescriptorWithName:fontName
-                                                                      size:baseSize]);
 }
 
 - (void)startObservingTextSizeChanges {

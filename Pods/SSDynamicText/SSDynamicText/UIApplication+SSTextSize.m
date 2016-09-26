@@ -10,8 +10,8 @@
 
 @implementation UIApplication (SSTextSize)
 
-- (NSInteger) preferredFontSizeDelta {
-    static NSArray *fontSizes;
+- (NSInteger)preferredFontSizeDelta {
+    static NSArray<NSString *> *fontSizes;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         fontSizes = @[
@@ -30,7 +30,7 @@
         ];
     });
   
-    NSInteger currentSize = (NSInteger)[fontSizes indexOfObject:self.preferredContentSizeCategory];
+    NSUInteger currentSize = [fontSizes indexOfObject:self.preferredContentSizeCategory];
   
     if (currentSize == NSNotFound) {
         return 0;

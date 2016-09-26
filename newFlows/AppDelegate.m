@@ -12,7 +12,7 @@
 #import "Reachability.h"
 #import "FLminMaxFlows.h"
 #import <CoreLocation/CoreLocation.h>
-#import <Instabug/Instabug.h>
+
 
 
 @interface AppDelegate ()
@@ -43,25 +43,9 @@
     
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
     
-    [Instabug startWithToken:@"39fdc5b385b888f805f119ed6279fa1c" invocationEvent:IBGInvocationEventShake];
-    [Instabug setShakingThresholdForiPhone:1.5 foriPad:0.6];
-    //[Instabug setPushNotificationsEnabled: NO];
-    //NetworkStatus internetStatus = [reach currentReachabilityStatus];
+//    [Instabug startWithToken:@"39fdc5b385b888f805f119ed6279fa1c" invocationEvent:IBGInvocationEventShake];
+//    [Instabug setShakingThresholdForiPhone:1.5 foriPad:0.6];
     
-//    if(internetStatus==0){
-//        //@"NoAccess";
-//        [defaults setBool:NO forKey:@"reachable"];
-//    }else{
-//        [defaults setBool:YES forKey:@"reachable"];
-//    }
-//    else if(internetStatus==1)
-//    {
-//        //@"ReachableViaWiFi";
-//        
-//    } else if(internetStatus==2)
-//    {
-//        //@"ReachableViaWWAN";
-//    }
     
     
     // Set the blocks

@@ -81,8 +81,6 @@
 		42734B171C7C1C3D0061FAA2 /* icon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B111C7C1C3D0061FAA2 /* icon60@2x.png */; };
 		42734B181C7C1C3D0061FAA2 /* icon60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B121C7C1C3D0061FAA2 /* icon60@3x.png */; };
 		42734B1A1C7C23740061FAA2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42734B191C7C23740061FAA2 /* Default-568h@2x.png */; };
-		427B344F1CFE96280032C5D5 /* Instabug.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 427B344D1CFE96280032C5D5 /* Instabug.bundle */; };
-		427B34501CFE96280032C5D5 /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B344E1CFE96280032C5D5 /* Instabug.framework */; };
 		427B34521CFE96880032C5D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34511CFE96880032C5D5 /* AVFoundation.framework */; };
 		427B34541CFE96980032C5D5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34531CFE96980032C5D5 /* CoreMotion.framework */; };
 		427B34561CFE96A60032C5D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427B34551CFE96A60032C5D5 /* CoreGraphics.framework */; };
@@ -324,8 +322,6 @@
 		42734B111C7C1C3D0061FAA2 /* icon60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon60@2x.png"; sourceTree = "<group>"; };
 		42734B121C7C1C3D0061FAA2 /* icon60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon60@3x.png"; sourceTree = "<group>"; };
 		42734B191C7C23740061FAA2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		427B344D1CFE96280032C5D5 /* Instabug.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Instabug.bundle; sourceTree = "<group>"; };
-		427B344E1CFE96280032C5D5 /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instabug.framework; sourceTree = "<group>"; };
 		427B34511CFE96880032C5D5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		427B34531CFE96980032C5D5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		427B34551CFE96A60032C5D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -492,7 +488,6 @@
 				42A610E61CA392D100B931AD /* MessageUI.framework in Frameworks */,
 				4218847A1CD5189E0039BCCB /* StoreKit.framework in Frameworks */,
 				42A610E41CA392C800B931AD /* QuartzCore.framework in Frameworks */,
-				427B34501CFE96280032C5D5 /* Instabug.framework in Frameworks */,
 				42BEDAC51C87834200113431 /* MobileCoreServices.framework in Frameworks */,
 				42A34C4C1BBDBEC6004F7FB7 /* CoreLocation.framework in Frameworks */,
 				42A34C4A1BBDB53C004F7FB7 /* MapKit.framework in Frameworks */,
@@ -590,7 +585,6 @@
 		423ED49A1BB5BC58007772C8 /* newFlows */ = {
 			isa = PBXGroup;
 			children = (
-				427B344C1CFE96280032C5D5 /* Instabug */,
 				4214C3DA1CDEEFCA0016B473 /* TimeHelper */,
 				4218847B1CD6803A0039BCCB /* storeKit */,
 				4253B9771C970FF8008AF6BA /* helperClasses */,
@@ -659,15 +653,6 @@
 				42734B121C7C1C3D0061FAA2 /* icon60@3x.png */,
 			);
 			path = testicons;
-			sourceTree = "<group>";
-		};
-		427B344C1CFE96280032C5D5 /* Instabug */ = {
-			isa = PBXGroup;
-			children = (
-				427B344D1CFE96280032C5D5 /* Instabug.bundle */,
-				427B344E1CFE96280032C5D5 /* Instabug.framework */,
-			);
-			path = Instabug;
 			sourceTree = "<group>";
 		};
 		42A34BDD1BBD8CAD004F7FB7 /* stationData */ = {
@@ -970,12 +955,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 423ED4C51BB5BC58007772C8 /* Build configuration list for PBXNativeTarget "newFlows" */;
 			buildPhases = (
-				276AA8B669CCC0D700B93226 /* 📦 Check Pods Manifest.lock */,
+				276AA8B669CCC0D700B93226 /* [CP] Check Pods Manifest.lock */,
 				423ED4941BB5BC58007772C8 /* Sources */,
 				423ED4951BB5BC58007772C8 /* Frameworks */,
 				423ED4961BB5BC58007772C8 /* Resources */,
-				04F42F3C4872DF43DA887BF7 /* 📦 Embed Pods Frameworks */,
-				8D7F0392F95C3CB1397A9EC7 /* 📦 Copy Pods Resources */,
+				04F42F3C4872DF43DA887BF7 /* [CP] Embed Pods Frameworks */,
+				8D7F0392F95C3CB1397A9EC7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1241,7 +1226,6 @@
 				423AEB401D1CBEBB00FFB7E3 /* New_Close_Icon@2x.png in Resources */,
 				42EB71C81C38B94100D6215E /* 04d@3x.png in Resources */,
 				42EB71A71C38B94100D6215E /* BackIcon.png in Resources */,
-				427B344F1CFE96280032C5D5 /* Instabug.bundle in Resources */,
 				42A34C451BBD8CAD004F7FB7 /* wy in Resources */,
 				42296B5D1D5ECF8E004F38B1 /* cloudy.png in Resources */,
 				42296B721D5ECF8E004F38B1 /* wind.png in Resources */,
@@ -1273,14 +1257,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04F42F3C4872DF43DA887BF7 /* 📦 Embed Pods Frameworks */ = {
+		04F42F3C4872DF43DA887BF7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1288,29 +1272,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-newFlows/Pods-newFlows-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		276AA8B669CCC0D700B93226 /* 📦 Check Pods Manifest.lock */ = {
+		276AA8B669CCC0D700B93226 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8D7F0392F95C3CB1397A9EC7 /* 📦 Copy Pods Resources */ = {
+		8D7F0392F95C3CB1397A9EC7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1506,6 +1490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8AWZCL6BQ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/newFlows/Instabug",
@@ -1527,6 +1512,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8AWZCL6BQ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/newFlows/Instabug",

@@ -379,7 +379,7 @@
     for (NSDictionary *meanDict in minMaxArray) {
         if ([meanDict[@"siteNumber"] isEqualToString:resultDict[@"siteNumber"]]) {
             if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
-                view.resultLabel.text = @"Ice";
+                view.resultLabel.text = @"N/A";
 //                string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"regular historical average is %@",meanDict[@"meanValue"]]];
 //                [string addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,7)];
                 [view.resultLabel setTextColor:[UIColor whiteColor]];
