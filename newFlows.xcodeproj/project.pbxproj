@@ -1008,7 +1008,7 @@
 				TargetAttributes = {
 					423ED4971BB5BC58007772C8 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 8AWZCL6BQ5;
+						DevelopmentTeam = T2T3MPSQKU;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1480,7 +1480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8AWZCL6BQ5;
+				DEVELOPMENT_TEAM = T2T3MPSQKU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/newFlows/Instabug",
@@ -1489,7 +1489,7 @@
 				INFOPLIST_FILE = newFlows/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flowsapp.theflows;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flowsweekly.flows;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1502,7 +1502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8AWZCL6BQ5;
+				DEVELOPMENT_TEAM = T2T3MPSQKU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/newFlows/Instabug",
@@ -1511,7 +1511,7 @@
 				INFOPLIST_FILE = newFlows/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flowsapp.theflows;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flowsweekly.flows;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

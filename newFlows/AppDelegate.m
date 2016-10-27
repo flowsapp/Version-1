@@ -460,22 +460,28 @@
     NSInteger month = [dateComp month]; //gives you month
     NSInteger day = [dateComp day]; //gives you day
     
-    [minMaxArray removeAllObjects];
-    
+    //[minMaxArray removeAllObjects];
+    int foundValue = -1;
+    NSString *siteNumberString;
     for (FLminMaxFlows *temp in objectHolderArray) {
-        
+        if (siteNumberString.length==0) {
+            siteNumberString = temp.siteNum;
+        }
         if ([temp.monthNu isEqualToString:[NSString stringWithFormat:@"%li", (long)month]]) {
             if ([temp.dayNu isEqualToString:[NSString stringWithFormat:@"%li", (long)day]]) {
                 
                 NSDictionary *holderDict = [[NSDictionary alloc] initWithObjectsAndKeys:temp.meanVa, @"meanValue", temp.p25Va, @"25Value", temp.p75Va, @"75Value", temp.siteNum, @"siteNumber", nil];
                 [minMaxArray addObject:holderDict];
-                
+                foundValue = 1;
             }
         }
         
         
     }
-    
+    if (foundValue==-1) {
+        NSDictionary *holderDict = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"missingData", siteNumberString, @"siteNumber", nil];
+        [minMaxArray addObject:holderDict];
+    }
     
     [defaults setObject:minMaxArray forKey:@"minMaxArray"];
     

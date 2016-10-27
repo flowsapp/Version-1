@@ -378,30 +378,45 @@
     view.resultLabel.alpha = 0.0f;
     for (NSDictionary *meanDict in minMaxArray) {
         if ([meanDict[@"siteNumber"] isEqualToString:resultDict[@"siteNumber"]]) {
-            if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
-                view.resultLabel.text = @"N/A";
-//                string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"regular historical average is %@",meanDict[@"meanValue"]]];
-//                [string addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,7)];
-                [view.resultLabel setTextColor:[UIColor whiteColor]];
-            }else{
-                if ([resultDict[@"siteValue"] doubleValue] < [meanDict[@"25Value"] doubleValue] && meanDict[@"25Value"] != [NSNull null]) {
-                    string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"low historical average is %@",meanDict[@"meanValue"]]];
-                    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0] range:NSMakeRange(0,3)];
-                    [view.resultLabel setTextColor:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0]];
-                    
-                }else if ([resultDict[@"siteValue"] doubleValue] > [meanDict[@"75Value"] doubleValue] && meanDict[@"75Value"] != [NSNull null]) {
-                    string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"high historical average is %@",meanDict[@"meanValue"]]];
-                    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.15 green:0.58 blue:1.00 alpha:1.0] range:NSMakeRange(0,4)];
-                    [view.resultLabel setTextColor:[UIColor colorWithRed:0.15 green:0.58 blue:1.00 alpha:1.0]];
-                    
-                    
+            
+            
+            if (meanDict[@"missingData"]) {
+                //code for missing mean min
+                if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
+                    view.resultLabel.text = @"N/A";
+                    [view.resultLabel setTextColor:[UIColor whiteColor]];
                 }else{
-                    string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"normal historical average is %@",meanDict[@"meanValue"]]];
-                    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0] range:NSMakeRange(0,6)];
-                    [view.resultLabel setTextColor:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0]];
-                    
+                    string = @"";
+                    [view.resultLabel setTextColor:[UIColor whiteColor]];
                 }
+            }else{
+                if ([resultDict[@"siteValue"] isEqualToString:@"Ssn"] || [resultDict[@"siteValue"] isEqualToString:@"Dis"] || [resultDict[@"siteValue"] isEqualToString:@"Ice"]) {
+                    view.resultLabel.text = @"N/A";
+                    //                string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"regular historical average is %@",meanDict[@"meanValue"]]];
+                    //                [string addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,7)];
+                    [view.resultLabel setTextColor:[UIColor whiteColor]];
+                }else{
+                    if ([resultDict[@"siteValue"] doubleValue] < [meanDict[@"25Value"] doubleValue] && meanDict[@"25Value"] != [NSNull null]) {
+                        string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"low historical average is %@",meanDict[@"meanValue"]]];
+                        [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0] range:NSMakeRange(0,3)];
+                        [view.resultLabel setTextColor:[UIColor colorWithRed:0.93 green:0.39 blue:0.25 alpha:1.0]];
+                        
+                    }else if ([resultDict[@"siteValue"] doubleValue] > [meanDict[@"75Value"] doubleValue] && meanDict[@"75Value"] != [NSNull null]) {
+                        string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"high historical average is %@",meanDict[@"meanValue"]]];
+                        [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.15 green:0.58 blue:1.00 alpha:1.0] range:NSMakeRange(0,4)];
+                        [view.resultLabel setTextColor:[UIColor colorWithRed:0.15 green:0.58 blue:1.00 alpha:1.0]];
+                        
+                        
+                    }else{
+                        string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"normal historical average is %@",meanDict[@"meanValue"]]];
+                        [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0] range:NSMakeRange(0,6)];
+                        [view.resultLabel setTextColor:[UIColor colorWithRed:0.42 green:0.91 blue:0.46 alpha:1.0]];
+                        
+                    }
+                }
+
             }
+            
             
             
         }
